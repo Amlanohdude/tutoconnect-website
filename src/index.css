@@ -198,3 +198,56 @@ body {
   }
 }
 
+/* River Stream Infinite Marquee Animations (GPU-composited translate3d) */
+@keyframes riverStreamLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes riverStreamRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-river-left {
+  display: flex;
+  width: max-content;
+  animation: riverStreamLeft 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-river-right {
+  display: flex;
+  width: max-content;
+  animation: riverStreamRight 44s linear infinite;
+  will-change: transform;
+}
+
+.pause-hover:hover .animate-river-left,
+.pause-hover:hover .animate-river-right {
+  animation-play-state: paused;
+}
+
+/* Edge Fade Mask Utility */
+.mask-river-fade {
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-river-left,
+  .animate-river-right {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+

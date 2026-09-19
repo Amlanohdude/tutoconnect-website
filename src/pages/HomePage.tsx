@@ -13,6 +13,7 @@ import {
   Building,
   Laptop,
   Plus,
+  GraduationCap,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -91,40 +92,57 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const teachingModes = [
     {
       name: 'Home Tuition',
-      detail: 'Tutor travels to student residence for 1-on-1 guidance.',
+      detail: 'Personalized 1-on-1 guidance at the student residence.',
       icon: <Home className="w-4 h-4 text-[#2563EB]" />,
     },
     {
       name: "Tutor's Location",
-      detail: 'Student attends classes at the educator study space.',
+      detail: 'Classes conducted at the educator’s private study space.',
       icon: <Building className="w-4 h-4 text-[#2563EB]" />,
     },
     {
-      name: 'Centre-Based',
-      detail: 'Tuition organized at educational centres or institutes.',
-      icon: <Building className="w-4 h-4 text-[#2563EB]" />,
+      name: 'Tuition Centre',
+      detail: 'Group or institute-based batches across Guwahati.',
+      icon: <GraduationCap className="w-4 h-4 text-[#2563EB]" />,
     },
     {
-      name: 'Independent Online Tuition',
-      detail: 'Educators arrange online sessions using their own preferred tools.',
+      name: 'Independent Online',
+      detail: 'Direct virtual sessions via Google Meet, Zoom, or WhatsApp.',
       icon: <Laptop className="w-4 h-4 text-[#2563EB]" />,
     },
   ];
 
-  const subjects = [
-    'Mathematics',
-    'Science',
-    'Physics',
-    'Chemistry',
-    'Biology',
-    'English',
-    'Commerce & Accounts',
-    'Social Science',
-    'Assamese & Languages',
-    'Computer Science',
+  const riverSubjects = [
+    { name: 'Mathematics', emoji: '📐', tag: 'Class 1–12' },
+    { name: 'General Science', emoji: '🔬', tag: 'Class 6–10' },
+    { name: 'Physics', emoji: '⚡', tag: 'Class 9–12' },
+    { name: 'Chemistry', emoji: '🧪', tag: 'Class 9–12' },
+    { name: 'Biology', emoji: '🧬', tag: 'Medical Prep' },
+    { name: 'English Grammar & Lit', emoji: '📚', tag: 'All Boards' },
+    { name: 'Commerce & Accounts', emoji: '📊', tag: 'Class 11–12' },
+    { name: 'Economics', emoji: '📈', tag: 'Micro & Macro' },
+    { name: 'Assamese & MIL', emoji: '📝', tag: 'State Board' },
+    { name: 'Social Science', emoji: '🌍', tag: 'Hist & Civics' },
+    { name: 'Computer Science', emoji: '💻', tag: 'Python & IP' },
+    { name: 'Business Studies', emoji: '💼', tag: 'Commerce' },
+    { name: 'Hindi & Bengali', emoji: '🗣️', tag: 'Languages' },
+    { name: 'Sanskrit', emoji: '📜', tag: 'Classical' },
   ];
 
-  const boards = ['SEBA', 'AHSEC', 'CBSE', 'ICSE'];
+  const riverBoardsAndLevels = [
+    { name: 'ASSEB Div-I (SEBA)', tag: 'State Board', badge: 'HSLC' },
+    { name: 'ASSEB Div-II (AHSEC)', tag: 'Higher Secondary', badge: 'HS' },
+    { name: 'CBSE Curriculum', tag: 'Central Board', badge: 'NCERT' },
+    { name: 'ICSE & ISC', tag: 'CISCE Board', badge: 'All Grades' },
+    { name: 'Class 9–10 Boards', tag: 'Secondary', badge: 'Board Prep' },
+    { name: 'Class 11–12 Science', tag: 'PCM / PCB', badge: 'Core Science' },
+    { name: 'Class 11–12 Commerce', tag: 'Accounts & Math', badge: 'Commerce' },
+    { name: 'Class 11–12 Arts', tag: 'Humanities', badge: 'Arts' },
+    { name: 'Middle School (6–8)', tag: 'Classes 6–8', badge: 'Foundation' },
+    { name: 'Primary Classes (1–5)', tag: 'Classes 1–5', badge: 'Early Learning' },
+    { name: 'Crash Courses & Revision', tag: 'Exam Focus', badge: 'Fast-Track' },
+    { name: 'Direct 1-on-1 Tuition', tag: 'Personalized', badge: 'Custom Pace' },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-[#0F172A] selection:bg-[#0EA5E9] selection:text-white">
@@ -321,11 +339,88 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       />
 
       {/* ========================================================================= */}
-      {/* 5. TUITION / TEACHING OPTIONS & SUBJECTS */}
+      {/* 5. TUITION / TEACHING OPTIONS & SUBJECTS (Idea 1: River Stream) */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+      <section className="py-20 sm:py-24 bg-[#F8FAFC] border-b border-[#E2E8F0] overflow-hidden">
+        {/* Technical SEO: Schema.org Course ItemList for Subject & Board Coverage */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: 'Guwahati Tuition Subjects & Curricula',
+              description:
+                'TutoConnect tuition subjects, educational boards, and classes supported across Guwahati, Assam',
+              itemListElement: [
+                {
+                  '@type': 'Course',
+                  position: 1,
+                  name: 'Mathematics Tuition in Guwahati',
+                  description:
+                    'Tuition for Class 1 to 12 Mathematics covering ASSEB SEBA, CBSE, and ICSE boards in Guwahati.',
+                  provider: {
+                    '@type': 'Organization',
+                    name: 'TutoConnect',
+                    sameAs: 'https://tutoconnect.in',
+                  },
+                },
+                {
+                  '@type': 'Course',
+                  position: 2,
+                  name: 'Science & Physics Tuition in Guwahati',
+                  description:
+                    'General Science, Physics, Chemistry, and Biology tuition for Secondary and Higher Secondary students.',
+                  provider: {
+                    '@type': 'Organization',
+                    name: 'TutoConnect',
+                    sameAs: 'https://tutoconnect.in',
+                  },
+                },
+                {
+                  '@type': 'Course',
+                  position: 3,
+                  name: 'Commerce & Accountancy Tuition in Guwahati',
+                  description:
+                    'Accountancy, Business Studies, and Economics tuition for AHSEC and CBSE Class 11-12 students.',
+                  provider: {
+                    '@type': 'Organization',
+                    name: 'TutoConnect',
+                    sameAs: 'https://tutoconnect.in',
+                  },
+                },
+                {
+                  '@type': 'Course',
+                  position: 4,
+                  name: 'ASSEB (SEBA & AHSEC) Board Tuition',
+                  description:
+                    'Vernacular and English medium state board tuition for HSLC and Higher Secondary exams in Guwahati.',
+                  provider: {
+                    '@type': 'Organization',
+                    name: 'TutoConnect',
+                    sameAs: 'https://tutoconnect.in',
+                  },
+                },
+                {
+                  '@type': 'Course',
+                  position: 5,
+                  name: 'CBSE & ICSE Board Tuition in Guwahati',
+                  description:
+                    'Comprehensive school tuition for CBSE and ICSE students across Beltola, Hatigaon, Zoo Road, and Guwahati.',
+                  provider: {
+                    '@type': 'Organization',
+                    name: 'TutoConnect',
+                    sameAs: 'https://tutoconnect.in',
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+
         <div className="container-edufy">
-          <div className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center">
+          {/* Centered Minimal Header */}
+          <div className="max-w-2xl mx-auto mb-12 space-y-2.5 text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Scope &amp; Availability
             </span>
@@ -333,70 +428,83 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               Tuition for What You Need
             </h2>
             <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
-              Flexible teaching arrangements and subjects across all major school boards in Guwahati.
+              Flexible teaching arrangements, essential subjects, and school boards across Guwahati.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            {/* Left: Teaching arrangements */}
-            <div className="lg:col-span-5 space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#475569] block mb-2">
-                Teaching Arrangements
-              </span>
-              {teachingModes.map((mode) => (
-                <div
-                  key={mode.name}
-                  className="p-4 rounded-[18px] bg-white border border-[#E2E8F0] flex items-start gap-3"
-                >
-                  <div className="mt-0.5">{mode.icon}</div>
-                  <div>
-                    <div className="text-xs font-bold text-[#0F172A]">{mode.name}</div>
-                    <div className="text-xs text-[#64748B] mt-0.5">{mode.detail}</div>
+          {/* Minimal 4-Column Teaching Modes Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-5xl mx-auto mb-12">
+            {teachingModes.map((mode) => (
+              <div
+                key={mode.name}
+                className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#CBD5E1] hover:shadow-sm transition-all duration-200 flex flex-col justify-between"
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="w-8 h-8 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center shrink-0">
+                    {mode.icon}
                   </div>
+                  <h3 className="text-xs font-bold text-[#0F172A] tracking-tight">{mode.name}</h3>
                 </div>
-              ))}
+                <p className="text-[11px] text-[#64748B] leading-relaxed">{mode.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* River Stream: Dual Continuous Infinite Flows */}
+          <div className="max-w-6xl mx-auto space-y-3">
+            <div className="text-center mb-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#64748B]">
+                Curriculum &amp; Subject Coverage
+              </span>
             </div>
 
-            {/* Right: Popular subjects & Boards */}
-            <div className="lg:col-span-7 space-y-6">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#475569] block mb-3">
-                  Popular Subjects
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {subjects.map((sub) => (
-                    <span
-                      key={sub}
-                      className="px-3.5 py-1.5 rounded-full bg-white text-[#0F172A] text-xs font-medium border border-[#E2E8F0]"
-                    >
-                      {sub}
+            {/* River Stream Wrapper with Edge Mask and Hover Pause */}
+            <div className="mask-river-fade overflow-hidden py-1 space-y-3 pause-hover">
+              {/* Stream 1: Popular Subjects (Flows Left) */}
+              <div className="animate-river-left flex items-center gap-3 w-max py-0.5">
+                {[...riverSubjects, ...riverSubjects].map((sub, idx) => (
+                  <div
+                    key={`stream-sub-${idx}`}
+                    className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-xs hover:border-[#2563EB] hover:text-[#2563EB] transition-colors duration-150 cursor-default select-none text-xs text-[#0F172A]"
+                  >
+                    <span className="text-sm leading-none">{sub.emoji}</span>
+                    <span className="font-medium whitespace-nowrap">{sub.name}</span>
+                    <span className="text-[10px] text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-medium whitespace-nowrap">
+                      {sub.tag}
                     </span>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
 
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#475569] block mb-3">
-                  School Boards Covered
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {boards.map((board) => (
-                    <span
-                      key={board}
-                      className="px-3.5 py-1.5 rounded-full bg-[#EFF6FF] text-[#2563EB] text-xs font-semibold border border-[#DBEAFE]"
-                    >
-                      {board}
+              {/* Stream 2: Boards & Stages (Flows Right) */}
+              <div className="animate-river-right flex items-center gap-3 w-max py-0.5">
+                {[...riverBoardsAndLevels, ...riverBoardsAndLevels].map((item, idx) => (
+                  <div
+                    key={`stream-board-${idx}`}
+                    className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-xs hover:border-[#0284C7] transition-colors duration-150 cursor-default select-none text-xs text-[#0F172A]"
+                  >
+                    <span className="font-semibold text-[#0F172A] whitespace-nowrap">{item.name}</span>
+                    <span className="text-[10px] text-[#2563EB] bg-[#EFF6FF] border border-[#DBEAFE] px-2 py-0.5 rounded-full font-bold whitespace-nowrap">
+                      {item.badge}
                     </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="p-4 rounded-[18px] bg-white border border-[#E2E8F0] text-[11px] text-[#64748B] leading-relaxed">
-                TutoConnect connects students/parents and tutors directly. Independent online tuition
-                is arranged directly between them; TutoConnect does not currently provide in-app video
-                classes.
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
+
+          {/* Bottom Context & Direct Link */}
+          <div className="mt-10 pt-6 border-t border-[#E2E8F0] max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p className="text-xs text-[#64748B] leading-relaxed max-w-xl">
+              Tuition arrangements and independent online sessions are coordinated directly between parents and tutors with 0% platform commission.
+            </p>
+            <button
+              onClick={() => onNavigate('/tuition/guwahati/')}
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2563EB] hover:text-[#1D4ED8] shrink-0 group"
+            >
+              <span>Explore tutors across Guwahati</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+            </button>
           </div>
         </div>
       </section>
