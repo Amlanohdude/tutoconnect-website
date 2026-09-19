@@ -30,28 +30,40 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
   const faqs = [
     {
-      q: 'Is TutoConnect really free with 0% commission?',
-      a: 'Yes, completely. TutoConnect is a direct-connection platform for Guwahati. We do not charge finder fees from families or deduct commissions from educators. Whatever tuition fee is agreed upon goes 100% directly to the educator.',
+      q: 'Is TutoConnect free to use? Does TutoConnect charge commission?',
+      a: 'TutoConnect is currently free to use for students, parents, and tutors during our initial launch. We currently do not charge families a finder fee or deduct commission from tuition fees. Any tuition fee agreed between a student or parent and a tutor is paid directly between them.',
     },
     {
-      q: 'Which school boards and classes are supported across Guwahati?',
-      a: 'Tutors on TutoConnect cover SEBA (State Board of Assam), AHSEC, CBSE, and ICSE. Available tuition spans Primary (Classes 1–5), Middle (Classes 6–8), High School (Classes 9–10), Higher Secondary (Classes 11–12 Science, Commerce, Arts), and College degree courses.',
+      q: 'Can I find tutors and tuition in Guwahati?',
+      a: 'Yes. TutoConnect is launching in Guwahati with tutors offering tuition for a range of school subjects, academic needs, and exam preparation. Depending on tutor availability, students and parents can find tutors for Mathematics, Science, English, Languages, Commerce, Arts, and other subjects.',
+    },
+    {
+      q: 'Which school boards and classes are supported in Guwahati?',
+      a: 'Tutors on TutoConnect can offer tuition for students following ASSEB (formerly SEBA) Division-I, ASSEB Division-II (formerly AHSEC), CBSE, and ICSE curricula. Available tutors may cover Primary (Classes 1–5), Middle School (Classes 6–8), High School (Classes 9–10), Higher Secondary (Classes 11–12), and selected college-level subjects.',
+    },
+    {
+      q: 'Where can tuition classes take place?',
+      a: "Tuition arrangements depend on the tutor and student. TutoConnect supports different learning preferences, including home tuition at the student's residence, classes at the tutor's location or tuition centre, and online tuition.",
+    },
+    {
+      q: "How can I check a tutor's qualifications and experience?",
+      a: 'Tutor profiles can include information such as qualifications, subjects taught, teaching experience, preferred classes, location, and tuition rates. Parents and students should review the profile carefully and speak directly with the tutor before finalizing tuition. You can also ask the tutor to provide relevant qualification or identity documents and consider an introductory class before making a longer-term arrangement.',
+    },
+    {
+      q: 'How can I find a tutor near me in Guwahati?',
+      a: 'Search for tutors based on your subject, class, and preferred location. Tutor profiles can indicate the areas they serve, helping students and parents discover tutors around localities such as Beltola, Hatigaon, Dispur, Chandmari, Zoo Road, Jalukbari, and other parts of Guwahati, subject to tutor availability.',
     },
     {
       q: 'How do tuition payments work between parents and tutors?',
-      a: 'Payments are settled directly between parents and tutors via whatever payment method you prefer (UPI, Google Pay, Cash, or Direct Bank Transfer). TutoConnect does not process payments or hold student funds in escrow, eliminating middleman cuts.',
+      a: 'TutoConnect currently does not process or hold tuition payments. Parents or students and tutors arrange payment directly between themselves using a mutually agreed method such as UPI, bank transfer, or cash.',
     },
     {
-      q: 'Where can private tuition classes take place?',
-      a: "Tuition formats are arranged flexibly based on your preference: Home Tuition (tutor visits the student's residence), Tutor's Study Location (classes at the tutor's space), Centre-based tuition, or independent online classes.",
+      q: 'How can tutors join TutoConnect?',
+      a: 'Tutors can download the TutoConnect Android app, choose "Become a Tutor," and create their tutor profile. They can add their subjects, qualifications, experience, preferred teaching locations, availability, and tuition rates so students and parents can discover them.',
     },
     {
-      q: 'How can parents verify tutor qualifications and ensure safety?',
-      a: 'Every tutor profile showcases degrees, qualifications, teaching background, and subjects taught. We always encourage parents to speak directly over phone or WhatsApp, request physical degree or identity verification upon first meeting, and schedule an introductory trial class.',
-    },
-    {
-      q: 'How do educators in Guwahati register and start getting inquiries?',
-      a: 'Download the TutoConnect Android app, tap "Become a Tutor", and set up your profile in under 3 minutes. Specify your academic qualifications, subjects and classes taught, and preferred Guwahati localities (e.g. Beltola, Zoo Road, Chandmari, Jalukbari) to become discoverable to nearby families.',
+      q: 'Will TutoConnect always be free?',
+      a: 'TutoConnect is currently free during our initial launch. As the platform grows, we may introduce optional paid features, subscriptions, or other in-app services. Any future charges will be clearly communicated before they apply.',
     },
   ];
 

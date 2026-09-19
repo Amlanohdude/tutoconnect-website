@@ -178,41 +178,52 @@ export const BecomeTutorPage: React.FC<BecomeTutorPageProps> = ({ onNavigate }) 
           </div>
 
           <div className="space-y-4">
-            <div className="p-6 rounded-[18px] bg-[#F8FAFC] border border-[#E2E8F0] shadow-xs space-y-2">
-              <h4 className="font-display font-bold text-base text-[#0F172A]">
-                Does TutoConnect guarantee students or income?
-              </h4>
-              <p className="text-sm text-[#64748B] leading-relaxed">
-                No. TutoConnect is a discovery and direct connection platform. It does not guarantee student placements or earnings. Discovery depends on local family demand, subjects taught, and geographic proximity in Guwahati.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-[18px] bg-[#F8FAFC] border border-[#E2E8F0] shadow-xs space-y-2">
-              <h4 className="font-display font-bold text-base text-[#0F172A]">
-                Are there commission cuts on my tuition fees?
-              </h4>
-              <p className="text-sm text-[#64748B] leading-relaxed">
-                No. TutoConnect does not take a percentage or commission cut from tuition fees. You and the student or parent agree on hourly or monthly rates directly.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-[18px] bg-[#F8FAFC] border border-[#E2E8F0] shadow-xs space-y-2">
-              <h4 className="font-display font-bold text-base text-[#0F172A]">
-                Does TutoConnect provide an online classroom or video tool?
-              </h4>
-              <p className="text-sm text-[#64748B] leading-relaxed">
-                No. TutoConnect is a matchmaking directory. Tutors offering remote instruction use their preferred external video software (such as Google Meet or Zoom).
-              </p>
-            </div>
-
-            <div className="p-6 rounded-[18px] bg-[#F8FAFC] border border-[#E2E8F0] shadow-xs space-y-2">
-              <h4 className="font-display font-bold text-base text-[#0F172A]">
-                Can I specify which parts of Guwahati I want to travel to?
-              </h4>
-              <p className="text-sm text-[#64748B] leading-relaxed">
-                Yes. During onboarding, you select the specific localities you prefer (such as Beltola, Zoo Road, Chandmari, Dispur, etc.) so that parents in those areas can discover your profile.
-              </p>
-            </div>
+            {[
+              {
+                q: 'Does TutoConnect guarantee students or tuition income?',
+                a: 'No. TutoConnect is a tutor discovery and direct-connection platform. It does not guarantee student placements, tuition enquiries, or earnings. The number of enquiries a tutor receives can depend on factors such as location, subjects, experience, profile information, and local demand in Guwahati.',
+              },
+              {
+                q: 'Does TutoConnect currently charge tutors a commission?',
+                a: 'No. During our initial launch, TutoConnect does not deduct a commission from tuition fees. Tutors and students or parents can discuss and agree on tuition fees directly.',
+              },
+              {
+                q: 'How can tutors find students in Guwahati?',
+                a: 'Create a detailed tutor profile with your subjects, classes, qualifications, experience, tuition rates, and preferred teaching locations. Students and parents searching for tuition in those areas may discover your profile through TutoConnect.',
+              },
+              {
+                q: 'Can I choose where I teach in Guwahati?',
+                a: 'Yes. Tutors can specify the Guwahati localities where they prefer to teach. This helps students and parents discover tutors whose preferred teaching areas match their requirements.',
+              },
+              {
+                q: 'Can tutors teach online, at home, or at a tuition centre?',
+                a: "Yes. Tutors can indicate the teaching modes they offer, such as online classes, teaching at the student's home, teaching from their own location, or teaching at a tuition centre, depending on their setup.",
+              },
+              {
+                q: 'Does TutoConnect provide an online classroom or video tool?',
+                a: 'TutoConnect currently focuses on helping students, parents, and tutors discover and connect with one another. Tutors offering online tuition can use their preferred external meeting platform, such as Google Meet or Zoom.',
+              },
+              {
+                q: 'What information can I add to my tutor profile?',
+                a: 'Tutors can provide information such as their subjects, classes taught, qualifications, teaching experience, preferred teaching locations, available teaching modes, availability, and tuition rates. A complete and accurate profile can help students and parents understand whether the tutor matches their requirements.',
+              },
+              {
+                q: 'Is TutoConnect free for tutors?',
+                a: 'TutoConnect is currently free for tutors during our initial launch. We currently do not deduct commission from tuition fees. As the platform develops, optional paid features or subscription services may be introduced, and any applicable charges will be clearly communicated before they apply.',
+              },
+            ].map((faq) => (
+              <div
+                key={faq.q}
+                className="p-6 rounded-[18px] bg-[#F8FAFC] border border-[#E2E8F0] shadow-xs space-y-2"
+              >
+                <h4 className="font-display font-bold text-base text-[#0F172A]">
+                  {faq.q}
+                </h4>
+                <p className="text-sm text-[#64748B] leading-relaxed">
+                  {faq.a}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
