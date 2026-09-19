@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import React from 'react';
 import { PageRoute } from '../../types';
 import { ArrowRight } from 'lucide-react';
 
@@ -74,11 +73,19 @@ const Card: React.FC<{
   };
 
   const theme = themeStyles[step.colorTheme || 'blue'];
+  const stepId = `step-${step.number}`;
 
   return (
     <div
-      className={`relative w-full md:w-[300px] transition-all duration-300 hover:z-30 hover:scale-105 hover:rotate-0 cursor-default select-none ${position.rotate} ${position.className}`}
+      id={stepId}
+      itemProp="step"
+      itemScope
+      itemType="https://schema.org/HowToStep"
+      className={`relative w-full md:w-[300px] transform-gpu transition-all duration-300 ease-out hover:z-30 hover:scale-105 hover:rotate-0 cursor-default select-none ${position.rotate} ${position.className}`}
     >
+      <meta itemProp="position" content={step.number} />
+      <meta itemProp="url" content={`#${stepId}`} />
+
       <div className="bg-white p-2.5 rounded-[26px] shadow-[0px_10px_25px_0px_rgba(0,0,0,0.07)] border border-slate-100 hover:border-slate-200 transition-colors">
         <Pin className={`w-7 h-7 ${theme.text} z-20 mb-4 mx-auto drop-shadow-xs`} />
         <div
@@ -94,10 +101,16 @@ const Card: React.FC<{
               Step
             </span>
           </div>
-          <h3 className="text-xl font-bold text-[#0F172A] leading-tight mb-2 tracking-tight">
+          <h3
+            itemProp="name"
+            className="text-xl font-bold text-[#0F172A] leading-tight mb-2 tracking-tight"
+          >
             {step.title}
           </h3>
-          <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed">
+          <p
+            itemProp="text"
+            className="text-slate-600 text-xs sm:text-[13px] leading-relaxed"
+          >
             {step.description}
           </p>
         </div>
@@ -117,18 +130,6 @@ export const HowItWorksPinboard: React.FC<HowItWorksPinboardProps> = ({
   ctaRoute = '/how-it-works/',
   className = '',
 }) => {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-      setPrefersReducedMotion(mq.matches);
-      const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-      mq.addEventListener('change', handler);
-      return () => mq.removeEventListener('change', handler);
-    }
-  }, []);
-
   const isThreeSteps = steps.length === 3;
 
   // Staggered zig-zag coordinates
@@ -148,7 +149,7 @@ export const HowItWorksPinboard: React.FC<HowItWorksPinboardProps> = ({
   const positions = isThreeSteps ? positionsThree : positionsFour;
   const stageHeight = isThreeSteps ? 680 : 860;
 
-  // Generate SVG curved connector path
+  // Mathematically calculated bezier curve connecting pins
   const pathD = isThreeSteps
     ? 'M 290 140 C 480 140, 520 280, 710 280 C 850 280, 520 440, 290 480'
     : 'M 290 140 C 480 140, 520 280, 710 280 C 850 280, 520 440, 290 480 C 290 560, 520 640, 710 640';
@@ -156,9 +157,15 @@ export const HowItWorksPinboard: React.FC<HowItWorksPinboardProps> = ({
   return (
     <section
       aria-label={title}
+      itemScope
+      itemType="https://schema.org/HowTo"
       className={`relative py-16 sm:py-24 bg-white overflow-hidden text-center select-none ${className}`}
     >
-      {/* Technical SEO: Schema.org HowTo Structured Data (JSON-LD) */}
+      <meta itemProp="name" content={`${title} - TutoConnect`} />
+      <meta itemProp="description" content={subtitle} />
+      <meta itemProp="totalTime" content="PT3M" />
+
+      {/* Enhanced Technical SEO: Schema.org HowTo Structured Data (JSON-LD) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -167,11 +174,30 @@ export const HowItWorksPinboard: React.FC<HowItWorksPinboardProps> = ({
             '@type': 'HowTo',
             name: `${title} - TutoConnect`,
             description: subtitle,
+            totalTime: 'PT3M',
+            estimatedCost: {
+              '@type': 'MonetaryAmount',
+              currency: 'INR',
+              value: '0',
+            },
+            supply: [
+              {
+                '@type': 'HowToSupply',
+                name: 'Android Smartphone',
+              },
+            ],
+            tool: [
+              {
+                '@type': 'HowToTool',
+                name: 'TutoConnect Mobile App',
+              },
+            ],
             step: steps.map((s, idx) => ({
               '@type': 'HowToStep',
               position: idx + 1,
               name: s.title,
               text: s.description,
+              url: `https://tutoconnect.in/#step-${s.number}`,
             })),
           }),
         }}
@@ -215,36 +241,25 @@ export const HowItWorksPinboard: React.FC<HowItWorksPinboardProps> = ({
               isThreeSteps ? 'md:h-[680px]' : 'md:h-[860px]'
             }`}
           >
-            {/* Animated Flowing SVG Dashed Line (Desktop Only) */}
+            {/* Hardware-Accelerated Looping SVG Dashed Line (Desktop Only - 0% CPU Off-Screen) */}
             <svg
               className="absolute top-0 left-0 w-full h-full pointer-events-none hidden md:block z-0"
               viewBox={`0 0 1000 ${stageHeight}`}
               preserveAspectRatio="none"
               aria-hidden="true"
             >
-              <motion.path
+              <path
                 d={pathD}
                 stroke="#CBD5E1"
                 strokeWidth="2.5"
-                strokeDasharray="8 6"
                 fill="none"
                 strokeLinecap="round"
                 vectorEffect="non-scaling-stroke"
-                initial={{ strokeDashoffset: 0 }}
-                animate={
-                  prefersReducedMotion
-                    ? { strokeDashoffset: 0 }
-                    : { strokeDashoffset: -140 }
-                }
-                transition={{
-                  duration: 3.5,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
+                className="animate-tuto-flow-dash"
               />
             </svg>
 
-            {/* Semantic Ordered List for Accessibility & SEO */}
+            {/* Semantic Ordered List with Dual-Layer Schema.org Microdata */}
             <ol className="contents list-none p-0 m-0">
               {steps.map((step, idx) => (
                 <li key={step.number} className="contents">

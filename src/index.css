@@ -174,3 +174,27 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Hardware-Accelerated Looping SVG Flow Dash (0% CPU off-screen via browser compositor) */
+@keyframes tutoFlowDash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -140;
+  }
+}
+
+.animate-tuto-flow-dash {
+  stroke-dasharray: 8 6;
+  animation: tutoFlowDash 3.5s linear infinite;
+  will-change: stroke-dashoffset;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-tuto-flow-dash {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
