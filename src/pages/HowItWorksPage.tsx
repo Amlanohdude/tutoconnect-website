@@ -2,16 +2,74 @@ import React, { useState } from 'react';
 import { PageRoute } from '../types';
 import { PhoneMockup } from '../components/PhoneMockup';
 import { PillBadge, BrandStar } from '../components/ui/Decorations';
+import { HowItWorksPinboard, StepItem } from '../components/ui/HowItWorksPinboard';
 import {
   GraduationCap,
   Users,
   ChevronRight,
   ArrowRight,
+  Smartphone,
+  ShieldCheck,
+  CheckCircle2,
 } from 'lucide-react';
 
 interface HowItWorksPageProps {
   onNavigate: (route: PageRoute) => void;
 }
+
+const studentSteps: StepItem[] = [
+  {
+    number: '01',
+    title: 'Discover Tutors',
+    description: 'Search by subject, class, and your locality in Guwahati. Filter by home tuition, tutor’s study space, or online classes.',
+    colorTheme: 'blue',
+  },
+  {
+    number: '02',
+    title: 'Explore Profiles',
+    description: 'Review verified qualifications, degrees, subjects taught, board expertise (SEBA, CBSE, AHSEC), and educator bios.',
+    colorTheme: 'cyan',
+  },
+  {
+    number: '03',
+    title: 'Direct Contact',
+    description: 'Reach out to the educator directly via phone call or WhatsApp through the app with zero intermediary fees.',
+    colorTheme: 'purple',
+  },
+  {
+    number: '04',
+    title: 'Arrange Tuition',
+    description: 'Agree on schedules, tuition fees, and lesson locations directly with 0% platform commission or hidden markups.',
+    colorTheme: 'orange',
+  },
+];
+
+const tutorSteps: StepItem[] = [
+  {
+    number: '01',
+    title: 'Create Profile',
+    description: 'Download the app, register as an educator in Guwahati, and input your teaching preferences in under 3 minutes.',
+    colorTheme: 'blue',
+  },
+  {
+    number: '02',
+    title: 'Showcase Expertise',
+    description: 'Highlight your academic degrees, teaching background, subjects, and preferred localities across Guwahati.',
+    colorTheme: 'cyan',
+  },
+  {
+    number: '03',
+    title: 'Get Discovered',
+    description: 'Students and parents searching for your subjects in your Guwahati areas can view your verified public profile.',
+    colorTheme: 'purple',
+  },
+  {
+    number: '04',
+    title: 'Connect Directly',
+    description: 'Receive direct student inquiries and coordinate teaching logistics independently while keeping 100% of your earnings.',
+    colorTheme: 'orange',
+  },
+];
 
 export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) => {
   const [role, setRole] = useState<'student' | 'tutor'>('student');
@@ -35,7 +93,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
       </div>
 
       {/* Header with Role Selector */}
-      <section className="pt-14 pb-16 border-b border-[#E2E8F0] bg-white text-left">
+      <section className="pt-14 pb-12 border-b border-[#E2E8F0] bg-white text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-5">
             <PillBadge
@@ -81,153 +139,156 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
         </div>
       </section>
 
-      {/* Step-by-Step Flow */}
-      <section className="py-20 bg-[#F8FAFC] text-left">
+      {/* 21st.dev Pinboard 4-Step Animated Flow */}
+      <HowItWorksPinboard
+        key={role}
+        steps={role === 'student' ? studentSteps : tutorSteps}
+        eyebrow={role === 'student' ? '4-Step Student Walkthrough' : '4-Step Educator Walkthrough'}
+        title={role === 'student' ? 'How Students & Parents Connect' : 'How Tutors & Teachers Connect'}
+        subtitle={
+          role === 'student'
+            ? 'Follow these four direct steps to discover, evaluate, and arrange private home or online tuition across Guwahati.'
+            : 'Follow these four steps to register your teaching qualifications, gain visibility across Guwahati neighbourhoods, and start tutoring.'
+        }
+        showCta={false}
+      />
+
+      {/* Visual Mobile Screen Mockups Showcase */}
+      <section className="py-20 bg-[#F8FAFC] border-t border-b border-[#E2E8F0] text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {role === 'student' ? (
-            <div className="space-y-16">
-              {/* Step 1 & 2 */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-6 space-y-6">
-                  {/* Step 1 */}
-                  <div className="p-8 rounded-[24px] bg-white border border-[#E2E8F0] shadow-xs space-y-3">
-                    <div className="w-10 h-10 rounded-full bg-[#EFF6FF] flex items-center justify-center font-display font-bold text-sm text-[#2563EB] border border-[#DBEAFE]">
-                      01
-                    </div>
-                    <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">Step 01</div>
-                    <h3 className="font-display text-2xl font-bold text-[#0F172A]">Discover tutors</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">
-                      Search by subject, class, and your locality in Guwahati. Filter by home tuition, tutor’s location, or online arrangements.
-                    </p>
-                  </div>
+          <div className="max-w-3xl mb-12 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+              In-App Experience
+            </span>
+            <h2 className="font-display-section text-[#0F172A]">
+              {role === 'student' ? 'What You See in the App' : 'Educator Experience in the App'}
+            </h2>
+            <p className="text-sm sm:text-base text-[#64748B]">
+              {role === 'student'
+                ? 'High clarity screens designed for quick browsing and transparent educator evaluation in Guwahati.'
+                : 'Simple profile creation and direct contact management built to empower local teachers.'}
+            </p>
+          </div>
 
-                  {/* Step 2 */}
-                  <div className="p-8 rounded-[24px] bg-white border border-[#E2E8F0] shadow-xs space-y-3">
-                    <div className="w-10 h-10 rounded-full bg-[#EFF6FF] flex items-center justify-center font-display font-bold text-sm text-[#2563EB] border border-[#DBEAFE]">
-                      02
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {role === 'student' ? (
+              <>
+                <div className="bg-white rounded-[28px] p-6 sm:p-8 border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-6">
+                  <div className="shrink-0">
+                    <PhoneMockup screen="discovery" size="sm" />
+                  </div>
+                  <div className="space-y-3 text-left">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-[#2563EB] text-xs font-bold">
+                      <Smartphone className="w-3.5 h-3.5" />
+                      <span>Search & Filters</span>
                     </div>
-                    <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">Step 02</div>
-                    <h3 className="font-display text-2xl font-bold text-[#0F172A]">Explore profiles</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">
-                      Review qualifications, degrees, subjects taught, board experience (SEBA, CBSE, AHSEC), and teaching bio.
+                    <h3 className="font-display text-xl font-bold text-[#0F172A]">
+                      Guwahati Locality Search
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed">
+                      Filter by Zoo Road, Beltola, Chandmari, Jalukbari, and more. Select CBSE, SEBA, or AHSEC syllabi and class levels.
                     </p>
+                    <ul className="space-y-1.5 text-xs text-[#0F172A] font-medium pt-1">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+                        <span>Instant radius filtering</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+                        <span>Home & online modes</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
-                <div className="lg:col-span-6 flex justify-center">
-                  <div className="w-full max-w-md bg-white rounded-[30px] p-6 border border-[#DBEAFE] shadow-xs">
-                    <PhoneMockup screen="discovery" size="md" />
+                <div className="bg-white rounded-[28px] p-6 sm:p-8 border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-6">
+                  <div className="shrink-0">
+                    <PhoneMockup screen="profile" size="sm" />
                   </div>
-                </div>
-              </div>
-
-              {/* Step 3 & 4 */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-12 border-t border-[#E2E8F0]">
-                <div className="lg:col-span-6 order-2 lg:order-1 flex justify-center">
-                  <div className="w-full max-w-md bg-white rounded-[30px] p-6 border border-[#DBEAFE] shadow-xs">
-                    <PhoneMockup screen="profile" size="md" />
-                  </div>
-                </div>
-
-                <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-                  {/* Step 3 */}
-                  <div className="p-8 rounded-[24px] bg-white border border-[#E2E8F0] shadow-xs space-y-3">
-                    <div className="w-10 h-10 rounded-full bg-[#EFF6FF] flex items-center justify-center font-display font-bold text-sm text-[#2563EB] border border-[#DBEAFE]">
-                      03
+                  <div className="space-y-3 text-left">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] text-xs font-bold">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      <span>Transparent Profile</span>
                     </div>
-                    <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">Step 03</div>
-                    <h3 className="font-display text-2xl font-bold text-[#0F172A]">Connect directly</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">
-                      Reach out to the tutor directly through the TutoConnect Android app to discuss your learning goals.
+                    <h3 className="font-display text-xl font-bold text-[#0F172A]">
+                      Direct Educator Contact
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed">
+                      View qualifications, degrees, subjects taught, and experience. Tap directly to Call or WhatsApp the tutor.
                     </p>
-                  </div>
-
-                  {/* Step 4 */}
-                  <div className="p-8 rounded-[24px] bg-white border border-[#E2E8F0] shadow-xs space-y-3">
-                    <div className="w-10 h-10 rounded-full bg-[#EFF6FF] flex items-center justify-center font-display font-bold text-sm text-[#2563EB] border border-[#DBEAFE]">
-                      04
-                    </div>
-                    <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">Step 04</div>
-                    <h3 className="font-display text-2xl font-bold text-[#0F172A]">Arrange tuition</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">
-                      Agree on schedules, tuition fees, and lesson locations directly with the educator without intermediary friction.
-                    </p>
+                    <ul className="space-y-1.5 text-xs text-[#0F172A] font-medium pt-1">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+                        <span>Direct phone & WhatsApp</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+                        <span>0% commission on fees</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-16">
-              {/* Tutor Flow */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-6 space-y-6">
-                  {/* Step 1 */}
-                  <div className="p-8 rounded-[24px] bg-white border border-[#E2E8F0] shadow-xs space-y-3">
-                    <div className="w-10 h-10 rounded-full bg-[#EFF6FF] flex items-center justify-center font-display font-bold text-sm text-[#2563EB] border border-[#DBEAFE]">
-                      01
-                    </div>
-                    <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">Step 01</div>
-                    <h3 className="font-display text-2xl font-bold text-[#0F172A]">Create profile</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">
-                      Download the app, register as an educator, and input your basic profile information.
-                    </p>
+              </>
+            ) : (
+              <>
+                <div className="bg-white rounded-[28px] p-6 sm:p-8 border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-6">
+                  <div className="shrink-0">
+                    <PhoneMockup screen="tutor-onboarding" size="sm" />
                   </div>
-
-                  {/* Step 2 */}
-                  <div className="p-8 rounded-[24px] bg-white border border-[#E2E8F0] shadow-xs space-y-3">
-                    <div className="w-10 h-10 rounded-full bg-[#EFF6FF] flex items-center justify-center font-display font-bold text-sm text-[#2563EB] border border-[#DBEAFE]">
-                      02
+                  <div className="space-y-3 text-left">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-[#2563EB] text-xs font-bold">
+                      <Smartphone className="w-3.5 h-3.5" />
+                      <span>Easy Registration</span>
                     </div>
-                    <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">Step 02</div>
-                    <h3 className="font-display text-2xl font-bold text-[#0F172A]">Showcase expertise</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">
-                      Add your academic degrees, teaching background, subjects, and preferred localities across Guwahati.
+                    <h3 className="font-display text-xl font-bold text-[#0F172A]">
+                      Step-by-Step Onboarding
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed">
+                      List your degrees, subjects, teaching modes (Home tuition / Tutor place / Online), and locations you can cover.
                     </p>
+                    <ul className="space-y-1.5 text-xs text-[#0F172A] font-medium pt-1">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+                        <span>Takes under 3 minutes</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+                        <span>Customizable locality list</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
-                <div className="lg:col-span-6 flex justify-center">
-                  <div className="w-full max-w-md bg-white rounded-[30px] p-6 border border-[#DBEAFE] shadow-xs">
-                    <PhoneMockup screen="tutor-onboarding" size="md" />
+                <div className="bg-white rounded-[28px] p-6 sm:p-8 border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-6">
+                  <div className="shrink-0">
+                    <PhoneMockup screen="profile" size="sm" />
                   </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-12 border-t border-[#E2E8F0]">
-                <div className="lg:col-span-6 order-2 lg:order-1 flex justify-center">
-                  <div className="w-full max-w-md bg-white rounded-[30px] p-6 border border-[#DBEAFE] shadow-xs">
-                    <PhoneMockup screen="profile" size="md" />
-                  </div>
-                </div>
-
-                <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-                  {/* Step 3 */}
-                  <div className="p-8 rounded-[24px] bg-white border border-[#E2E8F0] shadow-xs space-y-3">
-                    <div className="w-10 h-10 rounded-full bg-[#EFF6FF] flex items-center justify-center font-display font-bold text-sm text-[#2563EB] border border-[#DBEAFE]">
-                      03
+                  <div className="space-y-3 text-left">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      <span>Public Presence</span>
                     </div>
-                    <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">Step 03</div>
-                    <h3 className="font-display text-2xl font-bold text-[#0F172A]">Get discovered</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">
-                      Students and parents searching for your subjects in your Guwahati areas can view your public profile.
+                    <h3 className="font-display text-xl font-bold text-[#0F172A]">
+                      Keep 100% of Your Earnings
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed">
+                      Students contact you directly. You set your own hourly or monthly rates without any intermediary deduction.
                     </p>
-                  </div>
-
-                  {/* Step 4 */}
-                  <div className="p-8 rounded-[24px] bg-white border border-[#E2E8F0] shadow-xs space-y-3">
-                    <div className="w-10 h-10 rounded-full bg-[#EFF6FF] flex items-center justify-center font-display font-bold text-sm text-[#2563EB] border border-[#DBEAFE]">
-                      04
-                    </div>
-                    <div className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">Step 04</div>
-                    <h3 className="font-display text-2xl font-bold text-[#0F172A]">Connect</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">
-                      Receive direct inquiries and coordinate teaching logistics independently with zero commissions.
-                    </p>
+                    <ul className="space-y-1.5 text-xs text-[#0F172A] font-medium pt-1">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+                        <span>Zero commission deducted</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+                        <span>Direct payment from parents</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </section>
 

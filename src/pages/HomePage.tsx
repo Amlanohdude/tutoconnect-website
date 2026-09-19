@@ -3,6 +3,7 @@ import { PageRoute } from '../types';
 import { PhoneMockup } from '../components/PhoneMockup';
 import { PhoneShowcaseCarousel } from '../components/ui/PhoneShowcaseCarousel';
 import { InteractiveTiltPhone } from '../components/ui/InteractiveTiltPhone';
+import { HowItWorksPinboard, StepItem } from '../components/ui/HowItWorksPinboard';
 import {
   ArrowRight,
   Download,
@@ -25,6 +26,27 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
+
+  const homeSteps: StepItem[] = [
+    {
+      number: '01',
+      title: 'Discover',
+      description: 'Search tutors matching your class, subject, and area in Guwahati. Filter verified educator profiles.',
+      colorTheme: 'blue',
+    },
+    {
+      number: '02',
+      title: 'Connect',
+      description: 'Reach out directly via phone call or WhatsApp with zero middleman commissions or platform cut.',
+      colorTheme: 'cyan',
+    },
+    {
+      number: '03',
+      title: 'Arrange',
+      description: 'Agree on schedule, fees, and location directly with the educator without intermediary friction.',
+      colorTheme: 'purple',
+    },
+  ];
 
   const teachingModes = [
     {
@@ -267,66 +289,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. SIMPLE HOW IT WORKS (Horizontal Sequence) */}
+      {/* 4. HOW IT WORKS PINBOARD (21st.dev Animated Flow) */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0] text-left">
-        <div className="container-edufy">
-          <div className="max-w-2xl mb-12 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
-              Simple Process
-            </span>
-            <h2 className="font-display-section text-[#0F172A]">
-              How It Works
-            </h2>
-            <p className="text-sm sm:text-base text-[#64748B]">
-              Three direct steps to connect students and tutors.
-            </p>
-          </div>
-
-          {/* Horizontal sequence on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            <div className="p-6 rounded-[22px] bg-[#F8FAFC] border border-[#E2E8F0] space-y-3">
-              <span className="inline-block text-xs font-bold px-2.5 py-1 rounded-full bg-white text-[#2563EB] border border-[#E2E8F0]">
-                01
-              </span>
-              <h3 className="font-display text-lg font-bold text-[#0F172A]">Discover</h3>
-              <p className="text-sm text-[#64748B] leading-relaxed">
-                Search tutors matching your class, subject, and area in Guwahati.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-[22px] bg-[#F8FAFC] border border-[#E2E8F0] space-y-3">
-              <span className="inline-block text-xs font-bold px-2.5 py-1 rounded-full bg-white text-[#2563EB] border border-[#E2E8F0]">
-                02
-              </span>
-              <h3 className="font-display text-lg font-bold text-[#0F172A]">Connect</h3>
-              <p className="text-sm text-[#64748B] leading-relaxed">
-                Reach out directly via phone or WhatsApp with zero middleman commissions.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-[22px] bg-[#F8FAFC] border border-[#E2E8F0] space-y-3">
-              <span className="inline-block text-xs font-bold px-2.5 py-1 rounded-full bg-white text-[#2563EB] border border-[#E2E8F0]">
-                03
-              </span>
-              <h3 className="font-display text-lg font-bold text-[#0F172A]">Arrange</h3>
-              <p className="text-sm text-[#64748B] leading-relaxed">
-                Agree on schedule, fees, and location directly with the educator.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 text-left">
-            <button
-              onClick={() => onNavigate('/how-it-works/')}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#2563EB] hover:underline cursor-pointer"
-            >
-              <span>Learn more about how TutoConnect works</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
-      </section>
+      <HowItWorksPinboard
+        steps={homeSteps}
+        title="How It Works"
+        eyebrow="Simple Process"
+        subtitle="Three direct steps to connect students and tutors in Guwahati with 0% commission."
+        showCta={true}
+        onNavigate={onNavigate}
+        ctaText="Learn more about how TutoConnect works"
+        ctaRoute="/how-it-works/"
+        className="border-b border-[#E2E8F0]"
+      />
 
       {/* ========================================================================= */}
       {/* 5. TUITION / TEACHING OPTIONS & SUBJECTS */}
