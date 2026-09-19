@@ -3,6 +3,7 @@ import { TutoConnectLogo } from './TutoConnectLogo';
 import { PageRoute } from '../types';
 import { Menu, X, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { NavHeader } from './ui/nav-header';
 
 interface NavbarProps {
   currentRoute: PageRoute;
@@ -55,26 +56,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
             <TutoConnectLogo size={32} />
           </button>
 
-          {/* Edufy-inspired Floating Central Pill Nav */}
-          <nav className="hidden lg:flex items-center bg-[#F1F5F9] rounded-full p-1 border border-[#E2E8F0]/80">
-            {navItems.map((item) => {
-              const isActive = currentRoute === item.route;
-              return (
-                <button
-                  key={item.route}
-                  id={`nav-link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
-                  onClick={() => handleLinkClick(item.route)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-white text-[#2563EB] font-semibold shadow-xs'
-                      : 'text-[#0F172A] hover:text-[#2563EB]'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
+          {/* 21st.dev-inspired Magnetic Sliding Pill Nav with Active-Aware Memory & SEO Anchors */}
+          <div className="hidden lg:flex items-center">
+            <NavHeader
+              items={navItems}
+              currentRoute={currentRoute}
+              onNavigate={handleLinkClick}
+              variant="edufy"
+            />
+          </div>
 
           {/* Right Action CTA (Download App Pill) */}
           <div className="hidden sm:flex items-center gap-3">
