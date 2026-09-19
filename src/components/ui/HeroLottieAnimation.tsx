@@ -66,7 +66,7 @@ export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ classN
       {/* Ambient Radial Soft Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Layer 1: Floating Animated Student Companion (Delightful companion offset to the top-right) */}
+      {/* Layer 1: Floating Animated Student Companion (Popped into the foreground z-30 in front of the phone) */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 15 }}
         animate={{
@@ -83,7 +83,7 @@ export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ classN
           opacity: { duration: 0.4 },
           scale: { duration: 0.5 },
         }}
-        className="absolute -top-8 -right-4 sm:-top-12 sm:-right-16 md:-top-14 md:-right-20 z-10 w-52 sm:w-64 md:w-72 aspect-square pointer-events-none drop-shadow-2xl"
+        className="absolute -top-6 -right-2 sm:-top-10 sm:-right-8 md:-top-12 md:-right-12 z-30 w-52 sm:w-60 md:w-68 aspect-square pointer-events-none drop-shadow-[0_15px_30px_rgba(15,23,42,0.22)]"
         aria-hidden="true"
       >
         <div ref={studentAnimRef} className="w-full h-full" />
