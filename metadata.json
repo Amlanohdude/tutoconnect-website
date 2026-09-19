@@ -1,0 +1,6 @@
+{
+  "name": "TutoConnect",
+  "description": "TutoConnect connects students and parents with tutors and teachers for tuition in Guwahati, Assam. Discover tutors, explore profiles, and connect on Android.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
