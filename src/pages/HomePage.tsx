@@ -4,6 +4,7 @@ import { PhoneMockup } from '../components/PhoneMockup';
 import { PhoneShowcaseCarousel } from '../components/ui/PhoneShowcaseCarousel';
 import { InteractiveTiltPhone } from '../components/ui/InteractiveTiltPhone';
 import { HowItWorksPinboard, StepItem } from '../components/ui/HowItWorksPinboard';
+import { HeroLottieAnimation } from '../components/ui/HeroLottieAnimation';
 import {
   ArrowRight,
   Download,
@@ -294,18 +295,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             </motion.div>
 
-            {/* Right: Authentic Android Phone Visual */}
+            {/* Right: Bespoke Education Discovery Lottie Animation */}
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.1 }}
               className="lg:col-span-5 flex justify-center lg:justify-end"
             >
-              <div className="relative p-5 sm:p-8 rounded-[36px] bg-[#F8FAFC] border border-[#E2E8F0]">
-                <InteractiveTiltPhone maxTilt={10} scaleOnHover={1.02} enableGlare={true}>
-                  <PhoneMockup screen="discovery" size="lg" />
-                </InteractiveTiltPhone>
-              </div>
+              <HeroLottieAnimation />
             </motion.div>
           </div>
         </div>
