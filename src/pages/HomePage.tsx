@@ -234,7 +234,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Asymmetrical Two-Column Split) */}
       {/* ========================================================================= */}
-      <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 border-b border-[#E2E8F0] overflow-hidden">
+      <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 bg-white border-b border-[#E2E8F0] overflow-hidden">
         <div className="container-edufy">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left: Display typography, concise statement, dual CTAs */}
@@ -385,7 +385,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 3. REAL APP SHOWCASE (3-Phone Stage Carousel) */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+      <section className="py-20 sm:py-28 bg-white border-b border-[#E2E8F0]">
         <div className="container-edufy">
           <div className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
@@ -422,7 +422,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 5. TUITION / TEACHING OPTIONS & SUBJECTS (Idea 1: River Stream) */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-[#F8FAFC] border-b border-[#E2E8F0] overflow-hidden">
+      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0] overflow-hidden">
         {/* Technical SEO: Schema.org Course ItemList for Subject & Board Coverage */}
         <script
           type="application/ld+json"
