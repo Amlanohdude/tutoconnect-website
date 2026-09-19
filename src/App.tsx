@@ -16,7 +16,6 @@ import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { DownloadPage } from './pages/DownloadPage';
-import { ExternalLink } from 'lucide-react';
 
 // SEO metadata dictionary matching the specific page purposes
 const routeMetadata: Record<string, { title: string; description: string }> = {
@@ -202,22 +201,6 @@ export default function App() {
 
       {/* Site Footer */}
       <Footer onNavigate={handleNavigate} />
-
-      {/* Floating Dev Testing Button: Open in New Tab */}
-      <div className="fixed bottom-5 right-5 z-50">
-        <a
-          id="dev-floating-open-new-tab"
-          href={typeof window !== 'undefined' ? window.location.href : '#'}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1E3A8A] text-white text-xs font-semibold shadow-xl hover:bg-[#2563EB] hover:shadow-2xl transition-all duration-200 border border-white/20 active:scale-95 cursor-pointer group"
-          title="Open this application in a new browser tab for testing"
-        >
-          <span className="w-2 h-2 rounded-full bg-[#0EA5E9] animate-pulse"></span>
-          <span>Dev: Open in New Tab</span>
-          <ExternalLink className="w-3.5 h-3.5 text-white/80 group-hover:text-white transition-colors" />
-        </a>
-      </div>
     </div>
   );
 }
