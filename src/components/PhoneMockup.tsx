@@ -79,9 +79,9 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
 
           {/* SCREEN CONTENT: EXACT TUTOCONNECT APP DISCOVERY */}
           {screen === 'discovery' && (
-            <div className="h-[550px] flex flex-col bg-[#F8FAFC] text-left">
+            <div className="relative h-[605px] flex flex-col bg-[#F8FAFC] text-left overflow-hidden">
               {/* App Blue Header Banner */}
-              <div className="bg-gradient-to-b from-[#1D4ED8] via-[#2563EB] to-[#2563EB] pt-8 pb-4 px-3.5 rounded-b-[24px] shadow-sm flex-shrink-0 relative z-20">
+              <div className="bg-gradient-to-b from-[#1D4ED8] via-[#2563EB] to-[#2563EB] pt-8 pb-3.5 px-3 rounded-b-[24px] shadow-sm flex-shrink-0 relative z-20">
                 {/* Title & Actions Row */}
                 <div className="flex items-start justify-between">
                   <div>
@@ -117,68 +117,60 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
               </div>
 
               {/* Scrollable Tutor Feeds by Subject */}
-              <div className="flex-1 overflow-y-auto no-scrollbar px-3.5 py-3 space-y-4">
+              <div className="flex-1 overflow-y-auto no-scrollbar px-3 pt-2.5 pb-20 space-y-2.5">
                 {/* CATEGORY 1: Mathematics Tutors */}
                 <div>
-                  <h4 className="font-bold text-xs sm:text-[13px] text-[#0F172A] tracking-tight mb-2">
+                  <h4 className="font-bold text-xs sm:text-[13px] text-[#0F172A] tracking-tight mb-1.5">
                     Mathematics Tutors
                   </h4>
-                  {/* Horizontal Scroll Row */}
-                  <div className="flex gap-2.5 overflow-x-hidden -mr-3.5 pr-3.5">
+                  {/* Horizontal Scroll Row showing Card 1 + Peeking Card 2 */}
+                  <div className="flex gap-2 overflow-x-hidden -mr-3 pr-3">
                     {/* Card 1: Nitin Das */}
-                    <div className="w-[235px] sm:w-[245px] flex-shrink-0 bg-white rounded-2xl p-3 border border-[#E2E8F0] shadow-xs flex flex-col justify-between">
+                    <div className="w-[195px] sm:w-[205px] flex-shrink-0 bg-white rounded-2xl p-2 border border-[#E2E8F0] shadow-xs flex flex-col justify-between">
                       <div>
-                        {/* Top Profile Header */}
-                        <div className="flex items-start gap-2.5">
-                          {/* Avatar with Verified Badge */}
-                          <div className="relative w-11 h-11 flex-shrink-0">
-                            <div className="w-11 h-11 rounded-full overflow-hidden bg-emerald-950 border border-emerald-800 flex items-center justify-center">
-                              {/* Stylized Avatar Silhouette */}
-                              <div className="w-full h-full bg-gradient-to-tr from-slate-900 via-emerald-950 to-slate-800 flex items-center justify-center text-white font-bold text-xs">
-                                <span className="opacity-80">ND</span>
-                              </div>
-                            </div>
-                            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center ring-2 ring-white">
-                              <Check className="w-2.5 h-2.5 stroke-[3]" />
-                            </div>
-                          </div>
-
-                          {/* Info Column */}
+                        {/* Top Profile Header with Real Avatar */}
+                        <div className="flex items-start gap-2">
+                          <img
+                            src="/tutors/nitin.png"
+                            alt="Nitin Das"
+                            className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-xs flex-shrink-0"
+                          />
                           <div className="flex-1 min-w-0">
-                            <div className="font-bold text-xs text-[#0F172A] truncate">Nitin Das</div>
-                            <div className="flex items-center gap-1 mt-0.5 text-[9px] text-[#64748B]">
+                            <div className="font-bold text-[12px] text-[#0F172A] truncate">Nitin Das</div>
+                            <div className="flex items-center gap-1 text-[8.5px] text-[#64748B]">
                               <span className="flex items-center gap-0.5 text-[#F59E0B] font-bold">
                                 <Star className="w-2.5 h-2.5 fill-[#F59E0B]" /> 5.0
                               </span>
                               <span className="text-[#94A3B8]">(1)</span>
-                              <span className="text-neutral-300">•</span>
-                              <span className="flex items-center gap-0.5 text-[#2563EB] font-medium">
-                                <Briefcase className="w-2.5 h-2.5" /> 2 yrs exp
-                              </span>
-                            </div>
-                            <div className="flex items-center justify-between mt-1">
-                              <div className="flex items-center gap-0.5 text-[9px] text-[#0284C7] font-medium truncate">
-                                <MapPin className="w-2.5 h-2.5 text-[#0284C7] flex-shrink-0" />
-                                <span>koliabor</span>
-                              </div>
-                              <span className="text-[8px] font-semibold px-1.5 py-0.5 rounded-full bg-[#E0F2FE] text-[#0284C7]">
-                                Tuto Centre
+                              <span className="flex items-center gap-0.5 text-[#2563EB] font-medium ml-0.5 truncate">
+                                <Briefcase className="w-2.5 h-2.5 flex-shrink-0" /> 2 yrs exp
                               </span>
                             </div>
                           </div>
                         </div>
 
+                        {/* Location & Badge */}
+                        <div className="flex items-center justify-between mt-1">
+                          <div className="flex items-center gap-0.5 text-[8.5px] text-[#0284C7] font-medium truncate">
+                            <MapPin className="w-2.5 h-2.5 text-[#0284C7] flex-shrink-0" />
+                            <span>koliabor</span>
+                          </div>
+                          <span className="text-[7.5px] font-semibold px-1.5 py-0.5 rounded-full bg-[#E0F2FE] text-[#0284C7]">
+                            Tuto Centre
+                          </span>
+                        </div>
+
                         {/* Bio Quote */}
-                        <p className="text-[9.5px] text-[#64748B] line-clamp-2 mt-2 leading-relaxed">
+                        <p className="text-[8.5px] text-[#64748B] line-clamp-2 mt-1 leading-tight">
                           i like engineering stuff and i like sharing my knowledge through tutoconnect
                         </p>
 
                         {/* Subject Pills */}
-                        <div className="flex items-center gap-1 mt-2 flex-wrap text-[8.5px]">
-                          <span className="px-2 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
+                        <div className="flex items-center gap-1 mt-1 flex-wrap text-[7.5px]">
+                          <span className="px-1.5 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
                             Chemistry
                           </span>
-                          <span className="px-2 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
+                          <span className="px-1.5 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
                             Physics
                           </span>
                           <span className="px-1.5 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
@@ -188,56 +180,62 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                       </div>
 
                       {/* Bottom Rate & Book Action */}
-                      <div className="mt-3 pt-2 border-t border-[#F1F5F9] flex items-center justify-between">
+                      <div className="mt-2 pt-1 border-t border-[#F1F5F9] flex items-center justify-between">
                         <div>
-                          <div className="text-[7.5px] tracking-wider text-[#94A3B8] font-bold uppercase">
+                          <div className="text-[7px] tracking-wider text-[#94A3B8] font-bold uppercase">
                             RATE
                           </div>
-                          <div className="font-extrabold text-xs text-[#0F172A]">₹300 / hr</div>
+                          <div className="font-extrabold text-[11px] text-[#0F172A]">₹300 / hr</div>
                         </div>
-                        <button className="px-3 py-1.5 rounded-xl bg-[#2563EB] text-white text-[9px] font-extrabold tracking-wider uppercase shadow-xs">
+                        <button className="px-2.5 py-1 rounded-lg bg-[#2563EB] text-white text-[8px] font-extrabold tracking-wider uppercase shadow-xs hover:bg-[#1D4ED8] transition-colors">
                           BOOK NOW
                         </button>
                       </div>
                     </div>
 
-                    {/* Card 2: Amlan (Peeking horizontally) */}
-                    <div className="w-[235px] sm:w-[245px] flex-shrink-0 bg-white rounded-2xl p-3 border border-[#E2E8F0] shadow-xs opacity-90 flex flex-col justify-between">
+                    {/* Card 2: Amlanjyoti Das (Peeking Card) */}
+                    <div className="w-[195px] sm:w-[205px] flex-shrink-0 bg-white rounded-2xl p-2 border border-[#E2E8F0] shadow-xs flex flex-col justify-between opacity-95">
                       <div>
-                        <div className="flex items-start gap-2.5">
-                          <div className="relative w-11 h-11 flex-shrink-0">
-                            <div className="w-11 h-11 rounded-full overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-800 font-bold text-xs">
-                              AD
-                            </div>
-                            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center ring-2 ring-white">
-                              <Check className="w-2.5 h-2.5 stroke-[3]" />
-                            </div>
-                          </div>
+                        <div className="flex items-start gap-2">
+                          <img
+                            src="/tutors/amlan.png"
+                            alt="Amlanjyoti Das"
+                            className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-xs flex-shrink-0"
+                          />
                           <div className="flex-1 min-w-0">
-                            <div className="font-bold text-xs text-[#0F172A] truncate">Amlanjyoti Das</div>
-                            <div className="flex items-center gap-1 mt-0.5 text-[9px] text-[#64748B]">
+                            <div className="font-bold text-[12px] text-[#0F172A] truncate">Amlanjyoti Das</div>
+                            <div className="flex items-center gap-1 text-[8.5px] text-[#64748B]">
                               <span className="flex items-center gap-0.5 text-[#F59E0B] font-bold">
                                 <Star className="w-2.5 h-2.5 fill-[#F59E0B]" /> 5.0
                               </span>
                               <span className="text-[#94A3B8]">(1)</span>
-                              <span className="text-neutral-300">•</span>
-                              <span className="flex items-center gap-0.5 text-[#2563EB] font-medium">
-                                <Briefcase className="w-2.5 h-2.5" /> 2 yrs...
+                              <span className="flex items-center gap-0.5 text-[#2563EB] font-medium ml-0.5">
+                                <Briefcase className="w-2.5 h-2.5 flex-shrink-0" /> 2 yrs...
                               </span>
-                            </div>
-                            <div className="text-[9px] text-[#0284C7] font-medium mt-1 truncate">
-                              📍 Sewali path, Ha...
                             </div>
                           </div>
                         </div>
-                        <p className="text-[9.5px] text-[#64748B] line-clamp-2 mt-2 leading-relaxed">
+
+                        <div className="flex items-center gap-0.5 text-[8.5px] text-[#0284C7] font-medium mt-1 truncate">
+                          <MapPin className="w-2.5 h-2.5 text-[#0284C7] flex-shrink-0" />
+                          <span>Sewali path, Hatigaon</span>
+                        </div>
+
+                        <p className="text-[8.5px] text-[#64748B] line-clamp-2 mt-1 leading-tight">
                           I Love Teaching Mathematics to school students...
                         </p>
+
+                        <div className="flex items-center gap-1 mt-1 flex-wrap text-[7.5px]">
+                          <span className="px-1.5 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
+                            Mathematics
+                          </span>
+                        </div>
                       </div>
-                      <div className="mt-3 pt-2 border-t border-[#F1F5F9] flex items-center justify-between">
+
+                      <div className="mt-2 pt-1 border-t border-[#F1F5F9] flex items-center justify-between">
                         <div>
-                          <div className="text-[7.5px] tracking-wider text-[#94A3B8] font-bold uppercase">RATE</div>
-                          <div className="font-extrabold text-xs text-[#0F172A]">₹320 / hr</div>
+                          <div className="text-[7px] tracking-wider text-[#94A3B8] font-bold uppercase">RATE</div>
+                          <div className="font-extrabold text-[11px] text-[#0F172A]">₹320 / hr</div>
                         </div>
                       </div>
                     </div>
@@ -246,157 +244,160 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
 
                 {/* CATEGORY 2: English Tutors */}
                 <div>
-                  <h4 className="font-bold text-xs sm:text-[13px] text-[#0F172A] tracking-tight mb-2">
+                  <h4 className="font-bold text-xs sm:text-[13px] text-[#0F172A] tracking-tight mb-1.5">
                     English Tutors
                   </h4>
-                  {/* Horizontal Scroll Row */}
-                  <div className="flex gap-2.5 overflow-x-hidden -mr-3.5 pr-3.5">
+                  {/* Horizontal Scroll Row showing Card 1 + Peeking Card 2 */}
+                  <div className="flex gap-2 overflow-x-hidden -mr-3 pr-3">
                     {/* Card 1: Amlanjyoti Das */}
-                    <div className="w-[235px] sm:w-[245px] flex-shrink-0 bg-white rounded-2xl p-3 border border-[#E2E8F0] shadow-xs flex flex-col justify-between">
+                    <div className="w-[195px] sm:w-[205px] flex-shrink-0 bg-white rounded-2xl p-2 border border-[#E2E8F0] shadow-xs flex flex-col justify-between">
                       <div>
-                        {/* Top Profile Header */}
-                        <div className="flex items-start gap-2.5">
-                          <div className="relative w-11 h-11 flex-shrink-0">
-                            <div className="w-11 h-11 rounded-full overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-800 font-bold text-xs">
-                              AD
-                            </div>
-                            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center ring-2 ring-white">
-                              <Check className="w-2.5 h-2.5 stroke-[3]" />
-                            </div>
-                          </div>
-
+                        {/* Top Profile Header with Real Avatar */}
+                        <div className="flex items-start gap-2">
+                          <img
+                            src="/tutors/amlan.png"
+                            alt="Amlanjyoti Das"
+                            className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-xs flex-shrink-0"
+                          />
                           <div className="flex-1 min-w-0">
-                            <div className="font-bold text-xs text-[#0F172A] truncate">Amlanjyoti Das</div>
-                            <div className="flex items-center gap-1 mt-0.5 text-[9px] text-[#64748B]">
+                            <div className="font-bold text-[12px] text-[#0F172A] truncate">Amlanjyoti Das</div>
+                            <div className="flex items-center gap-1 text-[8.5px] text-[#64748B]">
                               <span className="flex items-center gap-0.5 text-[#F59E0B] font-bold">
                                 <Star className="w-2.5 h-2.5 fill-[#F59E0B]" /> 5.0
                               </span>
                               <span className="text-[#94A3B8]">(1)</span>
-                              <span className="text-neutral-300">•</span>
-                              <span className="flex items-center gap-0.5 text-[#2563EB] font-medium">
-                                <Briefcase className="w-2.5 h-2.5" /> 2 yrs exp
-                              </span>
-                            </div>
-                            <div className="flex items-center justify-between mt-1">
-                              <div className="flex items-center gap-0.5 text-[9px] text-[#0284C7] font-medium truncate">
-                                <MapPin className="w-2.5 h-2.5 text-[#0284C7] flex-shrink-0" />
-                                <span>Sewali path, Hatigaon</span>
-                              </div>
-                              <span className="text-[8px] font-semibold px-1.5 py-0.5 rounded-full bg-[#ECFDF5] text-[#059669]">
-                                Home Tuition
+                              <span className="flex items-center gap-0.5 text-[#2563EB] font-medium ml-0.5">
+                                <Briefcase className="w-2.5 h-2.5 flex-shrink-0" /> 2 yrs exp
                               </span>
                             </div>
                           </div>
                         </div>
 
+                        {/* Location & Badge */}
+                        <div className="flex items-center justify-between mt-1">
+                          <div className="flex items-center gap-0.5 text-[8.5px] text-[#0284C7] font-medium truncate">
+                            <MapPin className="w-2.5 h-2.5 text-[#0284C7] flex-shrink-0" />
+                            <span>Sewali path, Hatigaon</span>
+                          </div>
+                          <span className="text-[7.5px] font-semibold px-1.5 py-0.5 rounded-full bg-[#ECFDF5] text-[#059669]">
+                            Home Tuition
+                          </span>
+                        </div>
+
                         {/* Bio Quote */}
-                        <p className="text-[9.5px] text-[#64748B] line-clamp-2 mt-2 leading-relaxed">
+                        <p className="text-[8.5px] text-[#64748B] line-clamp-2 mt-1 leading-tight">
                           I Love Teaching Mathematics to school students. I am currently pursuing my bachel...
                         </p>
 
                         {/* Subject Pills */}
-                        <div className="flex items-center gap-1 mt-2 flex-wrap text-[8.5px]">
-                          <span className="px-2 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
+                        <div className="flex items-center gap-1 mt-1 flex-wrap text-[7.5px]">
+                          <span className="px-1.5 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
                             Mathematics
                           </span>
-                          <span className="px-2 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
+                          <span className="px-1.5 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
                             English
                           </span>
                         </div>
                       </div>
 
                       {/* Bottom Rate & Book Action */}
-                      <div className="mt-3 pt-2 border-t border-[#F1F5F9] flex items-center justify-between">
+                      <div className="mt-2 pt-1 border-t border-[#F1F5F9] flex items-center justify-between">
                         <div>
-                          <div className="text-[7.5px] tracking-wider text-[#94A3B8] font-bold uppercase">
+                          <div className="text-[7px] tracking-wider text-[#94A3B8] font-bold uppercase">
                             RATE
                           </div>
-                          <div className="font-extrabold text-xs text-[#0F172A]">₹320 / hr</div>
+                          <div className="font-extrabold text-[11px] text-[#0F172A]">₹320 / hr</div>
                         </div>
-                        <button className="px-3 py-1.5 rounded-xl bg-[#2563EB] text-white text-[9px] font-extrabold tracking-wider uppercase shadow-xs">
+                        <button className="px-2.5 py-1 rounded-lg bg-[#2563EB] text-white text-[8px] font-extrabold tracking-wider uppercase shadow-xs hover:bg-[#1D4ED8] transition-colors">
                           BOOK NOW
                         </button>
                       </div>
                     </div>
 
-                    {/* Card 2: Mayank (Peeking) */}
-                    <div className="w-[235px] sm:w-[245px] flex-shrink-0 bg-white rounded-2xl p-3 border border-[#E2E8F0] shadow-xs opacity-90 flex flex-col justify-between">
+                    {/* Card 2: Mayank (Peeking Card) */}
+                    <div className="w-[195px] sm:w-[205px] flex-shrink-0 bg-white rounded-2xl p-2 border border-[#E2E8F0] shadow-xs flex flex-col justify-between opacity-95">
                       <div>
-                        <div className="flex items-start gap-2.5">
-                          <div className="relative w-11 h-11 flex-shrink-0">
-                            <div className="w-11 h-11 rounded-full overflow-hidden bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-800 font-bold text-xs">
-                              M
-                            </div>
-                            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center ring-2 ring-white">
-                              <Check className="w-2.5 h-2.5 stroke-[3]" />
-                            </div>
-                          </div>
+                        <div className="flex items-start gap-2">
+                          <img
+                            src="/tutors/mayank.png"
+                            alt="Mayank"
+                            className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-xs flex-shrink-0"
+                          />
                           <div className="flex-1 min-w-0">
-                            <div className="font-bold text-xs text-[#0F172A] truncate">Mayank</div>
-                            <div className="flex items-center gap-1 mt-0.5 text-[9px] text-[#64748B]">
+                            <div className="font-bold text-[12px] text-[#0F172A] truncate">Mayank</div>
+                            <div className="flex items-center gap-1 text-[8.5px] text-[#64748B]">
                               <span className="flex items-center gap-0.5 text-[#F59E0B] font-bold">
                                 <Star className="w-2.5 h-2.5 fill-[#F59E0B]" /> New
                               </span>
                               <span className="text-[#94A3B8]">(0)</span>
-                              <span className="text-neutral-300">•</span>
-                              <span className="flex items-center gap-0.5 text-[#2563EB] font-medium">
-                                <Briefcase className="w-2.5 h-2.5" /> 2 y...
+                              <span className="flex items-center gap-0.5 text-[#2563EB] font-medium ml-0.5">
+                                <Briefcase className="w-2.5 h-2.5 flex-shrink-0" /> 2 y...
                               </span>
-                            </div>
-                            <div className="text-[9px] text-[#0284C7] font-medium mt-1 truncate">
-                              📍 Guwahati
                             </div>
                           </div>
                         </div>
-                        <p className="text-[9.5px] text-[#64748B] mt-2 leading-relaxed">
+
+                        <div className="flex items-center gap-0.5 text-[8.5px] text-[#0284C7] font-medium mt-1 truncate">
+                          <MapPin className="w-2.5 h-2.5 text-[#0284C7] flex-shrink-0" />
+                          <span>Guwahati</span>
+                        </div>
+
+                        <p className="text-[8.5px] text-[#64748B] mt-1 leading-tight">
                           English Tutor
                         </p>
+
+                        <div className="flex items-center gap-1 mt-1 flex-wrap text-[7.5px]">
+                          <span className="px-1.5 py-0.5 rounded-full bg-white border border-[#93C5FD] text-[#2563EB] font-medium">
+                            English
+                          </span>
+                        </div>
                       </div>
-                      <div className="mt-3 pt-2 border-t border-[#F1F5F9] flex items-center justify-between">
+
+                      <div className="mt-2 pt-1 border-t border-[#F1F5F9] flex items-center justify-between">
                         <div>
-                          <div className="text-[7.5px] tracking-wider text-[#94A3B8] font-bold uppercase">RATE</div>
-                          <div className="font-extrabold text-xs text-[#0F172A]">₹200 / hr</div>
+                          <div className="text-[7px] tracking-wider text-[#94A3B8] font-bold uppercase">RATE</div>
+                          <div className="font-extrabold text-[11px] text-[#0F172A]">₹200 / hr</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* CATEGORY 3: EVS Tutors Heading (Peeking at bottom) */}
-                <div>
-                  <h4 className="font-bold text-xs sm:text-[13px] text-[#0F172A] tracking-tight mb-2">
+                {/* CATEGORY 3: EVS Tutors Heading (Peeking above bottom nav) */}
+                <div className="pt-0.5 pb-2">
+                  <h4 className="font-bold text-xs sm:text-[13px] text-[#0F172A] tracking-tight">
                     Environmental Science (EVS) Tutors
                   </h4>
                 </div>
               </div>
 
-              {/* Exact Android App Bottom Navigation */}
-              <div className="bg-white border-t border-[#E2E8F0] px-4 pt-2 pb-1 relative z-20 flex-shrink-0">
+              {/* Exact Android App Bottom Navigation - Pinned Flush to Absolute Bottom */}
+              <div className="absolute bottom-0 inset-x-0 bg-white border-t border-[#E2E8F0] px-4 pt-2 pb-1.5 z-30 shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
                 <div className="flex items-end justify-around text-[9px]">
                   {/* Active Home Tab with Floating Circle */}
                   <div className="flex flex-col items-center cursor-pointer">
-                    <div className="-mt-6 w-11 h-11 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-lg ring-3 ring-white hover:bg-[#1D4ED8] transition-transform active:scale-95">
+                    <div className="-mt-7 w-11 h-11 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-lg ring-3 ring-white hover:bg-[#1D4ED8] transition-transform active:scale-95">
                       <Home className="w-5 h-5" />
                     </div>
-                    <span className="font-bold text-[#2563EB] mt-1">Home</span>
+                    <span className="font-bold text-[#2563EB] mt-0.5">Home</span>
                   </div>
 
                   {/* Bookings */}
-                  <div className="flex flex-col items-center text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer py-1">
+                  <div className="flex flex-col items-center text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer py-0.5">
                     <Calendar className="w-4 h-4" />
-                    <span className="font-medium mt-1">Bookings</span>
+                    <span className="font-medium mt-0.5">Bookings</span>
                   </div>
 
                   {/* Messages */}
-                  <div className="flex flex-col items-center text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer py-1">
+                  <div className="flex flex-col items-center text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer py-0.5">
                     <MessageSquare className="w-4 h-4" />
-                    <span className="font-medium mt-1">Messages</span>
+                    <span className="font-medium mt-0.5">Messages</span>
                   </div>
 
                   {/* Menu */}
-                  <div className="flex flex-col items-center text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer py-1">
+                  <div className="flex flex-col items-center text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer py-0.5">
                     <Menu className="w-4 h-4" />
-                    <span className="font-medium mt-1">Menu</span>
+                    <span className="font-medium mt-0.5">Menu</span>
                   </div>
                 </div>
 
