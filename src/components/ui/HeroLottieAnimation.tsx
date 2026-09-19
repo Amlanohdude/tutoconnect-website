@@ -1,36 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
 import lottie, { AnimationItem } from 'lottie-web/build/player/lottie_light';
+import { motion } from 'motion/react';
+import { InteractiveTiltPhone } from './InteractiveTiltPhone';
+import { PhoneMockup } from '../PhoneMockup';
 
 interface HeroLottieAnimationProps {
   className?: string;
 }
 
 export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ className = '' }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const studentAnimRef = useRef<HTMLDivElement>(null);
   const [animLoaded, setAnimLoaded] = useState(false);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!studentAnimRef.current) return;
 
     let anim: AnimationItem | null = null;
     let isMounted = true;
 
-    // Check for prefers-reduced-motion
+    // Respect user's prefers-reduced-motion setting
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    fetch('/teacher-student-lottie.json')
+    fetch('/student-lottie.json')
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error ${res.status}`);
         return res.json();
       })
       .then((animationData) => {
-        if (!containerRef.current || !isMounted) return;
+        if (!studentAnimRef.current || !isMounted) return;
 
-        // Ensure container is empty before loading animation
-        containerRef.current.innerHTML = '';
+        // Clear any previous SVGs before instantiating
+        studentAnimRef.current.innerHTML = '';
 
         anim = lottie.loadAnimation({
-          container: containerRef.current,
+          container: studentAnimRef.current,
           renderer: 'svg',
           loop: !prefersReducedMotion,
           autoplay: !prefersReducedMotion,
@@ -44,7 +47,7 @@ export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ classN
         });
       })
       .catch((err) => {
-        console.error('Failed to load Teacher-Student Hero Lottie animation:', err);
+        console.error('Failed to load student Lottie animation:', err);
       });
 
     return () => {
@@ -52,26 +55,52 @@ export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ classN
       if (anim) {
         anim.destroy();
       }
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
+      if (studentAnimRef.current) {
+        studentAnimRef.current.innerHTML = '';
       }
     };
   }, []);
 
   return (
-    <div className={`relative w-full max-w-[520px] mx-auto flex items-center justify-center ${className}`}>
-      {/* Subtle Ambient Radial Backlight for depth */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-100/35 rounded-full blur-3xl pointer-events-none" />
+    <div className={`relative w-full max-w-[480px] sm:max-w-[540px] mx-auto flex items-center justify-center select-none ${className}`}>
+      {/* Ambient Radial Soft Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Pure Lottie Animation Canvas - No pills, badges, or card borders */}
-      <div
-        ref={containerRef}
-        className={`relative z-10 w-full aspect-[640/520] transition-opacity duration-500 ${
-          animLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        role="img"
-        aria-label="TutoConnect 1-on-1 Teacher and Student Tutoring Animation"
-      />
+      {/* Layer 1: Floating Animated Student Companion (Delightful companion offset to the top-right) */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 15 }}
+        animate={{
+          opacity: animLoaded ? 1 : 0,
+          scale: 1,
+          y: [0, -10, 0],
+        }}
+        transition={{
+          y: {
+            duration: 4.2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          },
+          opacity: { duration: 0.4 },
+          scale: { duration: 0.5 },
+        }}
+        className="absolute -top-8 -right-4 sm:-top-12 sm:-right-16 md:-top-14 md:-right-20 z-10 w-52 sm:w-64 md:w-72 aspect-square pointer-events-none drop-shadow-2xl"
+        aria-hidden="true"
+      >
+        <div ref={studentAnimRef} className="w-full h-full" />
+      </motion.div>
+
+      {/* Layer 2: Authentic 3D Interactive Phone Mockup (Front Anchor) */}
+      <div className="relative z-20 pt-4 sm:pt-6 pr-6 sm:pr-10">
+        <InteractiveTiltPhone
+          maxTilt={12}
+          scaleOnHover={1.03}
+          enableGlare={true}
+          restingRotateY={-5}
+          restingRotateX={3}
+        >
+          <PhoneMockup screen="discovery" size="md" />
+        </InteractiveTiltPhone>
+      </div>
     </div>
   );
 };
