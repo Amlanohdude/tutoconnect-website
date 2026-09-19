@@ -26,7 +26,7 @@ const slides: SlideItem[] = [
     badge: 'Verified Credentials',
     title: 'Review Detailed Educator Profiles',
     seoDescription:
-      'Examine verified educator backgrounds, academic degrees from Gauhati University, student review ratings, and transparent hourly rates.',
+      'Examine verified educator backgrounds, academic degrees from top institutions (IIT Madras, Gauhati University), student review ratings, and transparent hourly rates.',
   },
   {
     id: 'tutor-onboarding',

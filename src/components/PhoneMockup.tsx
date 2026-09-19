@@ -22,6 +22,10 @@ import {
   Star,
   Briefcase,
   Menu,
+  X,
+  User,
+  Award,
+  Info,
 } from 'lucide-react';
 
 export type ScreenType = 'discovery' | 'profile' | 'tutor-onboarding';
@@ -428,92 +432,155 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
           )}
 
           {screen === 'profile' && (
-            <div className="h-[540px] flex flex-col bg-white text-left">
-              {/* Profile Top Bar */}
-              <div className="px-4 py-2.5 bg-white border-b border-[#E2E8F0] flex items-center justify-between">
-                <div className="flex items-center gap-2 text-[#0F172A]">
-                  <ArrowLeft className="w-4 h-4" />
-                  <span className="font-bold text-xs">Tutor Profile</span>
+            <div className="h-[540px] flex flex-col bg-white text-left overflow-hidden">
+              {/* Modal Sheet Drag Handle & Header */}
+              <div className="pt-2 px-4 pb-2 bg-white flex flex-col border-b border-slate-100 flex-shrink-0">
+                <div className="w-9 h-1 bg-slate-300 rounded-full mx-auto mb-2" />
+                <div className="flex items-center justify-between">
+                  <h3 className="font-extrabold text-[14px] text-[#0F172A] tracking-tight">
+                    Teacher Profile
+                  </h3>
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-600 transition-colors">
+                    <X className="w-4 h-4" />
+                  </div>
                 </div>
-                <Share2 className="w-3.5 h-3.5 text-[#64748B]" />
               </div>
 
-              {/* Profile Body */}
-              <div className="flex-1 overflow-y-auto no-scrollbar p-4 space-y-3.5">
-                {/* Header info */}
-                <div className="flex items-start gap-3">
-                  <div className="w-12 h-12 rounded-full bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center font-bold text-base flex-shrink-0 border border-[#DBEAFE]">
-                    PS
+              {/* Profile Scrollable Body */}
+              <div className="flex-1 overflow-y-auto no-scrollbar p-3 space-y-2.5 bg-white">
+                {/* 1. Educator Hero Summary Card */}
+                <div className="p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]/70 text-center flex flex-col items-center shadow-2xs">
+                  {/* Circular Vector Avatar with Verified Checkmark */}
+                  <div className="relative w-14 h-14 mb-2">
+                    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-xs">
+                      <svg viewBox="0 0 72 72" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="72" height="72" fill="#E0F2FE" />
+                        <circle cx="36" cy="36" r="32" fill="#BAE6FD" opacity="0.6" />
+                        {/* Shoulders & Dark Shirt */}
+                        <path d="M14 68 C16 52, 26 48, 36 48 C46 48, 56 52, 58 68" fill="#1E293B" />
+                        <path d="M29 48 L36 56 L43 48 Z" fill="#334155" />
+                        {/* Neck */}
+                        <rect x="31.5" y="38" width="9" height="12" rx="3.5" fill="#FDBA74" />
+                        {/* Head */}
+                        <ellipse cx="36" cy="30" rx="12.5" ry="14.5" fill="#FED7AA" />
+                        {/* Ears */}
+                        <circle cx="23" cy="31" r="3" fill="#FDBA74" />
+                        <circle cx="49" cy="31" r="3" fill="#FDBA74" />
+                        {/* Modern Haircut */}
+                        <path d="M23 27 C23 18, 28 15, 36 15 C44 15, 49 18, 49 27 C49 24, 46 22, 43 21 C39 20, 33 21, 29 23 C26 25, 24 27, 23 27 Z" fill="#0F172A" />
+                        {/* Modern Spectacles */}
+                        <rect x="25.5" y="27" width="8.5" height="7" rx="2.5" stroke="#0F172A" strokeWidth="1.4" fill="white" fillOpacity="0.5" />
+                        <rect x="38" y="27" width="8.5" height="7" rx="2.5" stroke="#0F172A" strokeWidth="1.4" fill="white" fillOpacity="0.5" />
+                        <line x1="34" y1="30" x2="38" y2="30" stroke="#0F172A" strokeWidth="1.4" />
+                        {/* Eyes */}
+                        <circle cx="29.7" cy="30.5" r="1.2" fill="#0F172A" />
+                        <circle cx="42.2" cy="30.5" r="1.2" fill="#0F172A" />
+                        {/* Eyebrows */}
+                        <path d="M26.5 25 Q29.5 24 33 25" stroke="#0F172A" strokeWidth="1.2" strokeLinecap="round" />
+                        <path d="M39 25 Q42.5 24 45.5 25" stroke="#0F172A" strokeWidth="1.2" strokeLinecap="round" />
+                        {/* Gentle Smile */}
+                        <path d="M32.5 38 Q36 41 39.5 38" stroke="#9A3412" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+                      </svg>
+                    </div>
+                    {/* Blue Verified Badge */}
+                    <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center ring-2 ring-white shadow-xs">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                    </div>
+                  </div>
+
+                  {/* Name & ID Screened Pill */}
+                  <div className="flex flex-wrap items-center justify-center gap-1.5 mb-1">
+                    <h4 className="font-extrabold text-[13.5px] text-[#0F172A] tracking-tight">
+                      Mauchum Datta Lahkar
+                    </h4>
+                    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-[#DBEAFE] text-[#2563EB] text-[9px] font-bold">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                      <span>ID SCREENED</span>
+                      <Info className="w-2.5 h-2.5 text-[#3B82F6]" />
+                    </span>
+                  </div>
+
+                  {/* Location */}
+                  <div className="flex items-center justify-center gap-1 text-[10.5px] text-[#64748B] font-medium mb-2.5">
+                    <MapPin className="w-2.5 h-2.5 text-[#64748B]" />
+                    <span>Guwahati</span>
+                  </div>
+
+                  {/* Tags Row */}
+                  <div className="flex items-center justify-center gap-1.5 flex-wrap">
+                    <span className="inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full bg-[#FEF3C7] text-[#D97706] font-bold text-[9.5px]">
+                      <Star className="w-2.5 h-2.5 fill-[#D97706]" />
+                      <span>New</span>
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#E0F2FE] text-[#0284C7] font-bold text-[9.5px]">
+                      3+ Yrs Exp
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#CCFBF1] text-[#0F766E] font-bold text-[9.5px]">
+                      Tuto Centre
+                    </span>
+                  </div>
+                </div>
+
+                {/* 2. About Me Card */}
+                <div className="p-3 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]/70 text-left space-y-1.5 shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#0F172A]">
+                    <User className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <span>About Me</span>
+                  </div>
+                  <p className="text-[9.5px] text-[#475569] leading-relaxed">
+                    I am a dedicated Maths teacher from Guwahati, helping students build strong basics from Class 6–12 with clear explanations and lots of practice. I focus on making concepts easy, step-by-step, so that even “weak in maths” students gain confidence, improve their marks, and stop fearing the subject.
+                  </p>
+                </div>
+
+                {/* 3. Subjects Offered Card */}
+                <div className="p-3 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]/70 text-left space-y-2 shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#0F172A]">
+                    <GraduationCap className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <span>Subjects Offered</span>
+                  </div>
+                  <span className="inline-block px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#2563EB] font-bold text-[9.5px]">
+                    Mathematical Science
+                  </span>
+                </div>
+
+                {/* 4. Education & Credentials Card */}
+                <div className="p-3 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]/70 text-left space-y-1.5 shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#0F172A]">
+                    <Award className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <span>Education &amp; Credentials</span>
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5">
-                      <h4 className="font-bold text-sm text-[#0F172A]">Pranjal Sarma</h4>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#0EA5E9]" />
+                    <div className="text-[8.5px] font-bold uppercase tracking-wider text-[#64748B]">
+                      Highest Qualification
                     </div>
-                    <div className="text-[11px] text-[#64748B]">M.Sc. Mathematics · Gauhati Univ</div>
-                    <div className="text-[10px] text-[#64748B] flex items-center gap-1 mt-0.5">
-                      <MapPin className="w-3 h-3 text-[#2563EB]" />
-                      <span>Zoo Road, Beltola, Chandmari</span>
+                    <div className="text-[11px] font-bold text-[#0F172A]">
+                      BS in Data Science • IIT Madras
                     </div>
                   </div>
-                </div>
-
-                {/* Teaching Preferences */}
-                <div className="p-3 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#64748B] mb-1.5">
-                    Tuition Arrangements
+                  <div className="pt-1 border-t border-[#E2E8F0]/60">
+                    <div className="text-[8.5px] font-bold uppercase tracking-wider text-[#64748B]">
+                      Classes Taught
+                    </div>
+                    <div className="text-[9.5px] text-[#475569]">
+                      Class 6–10 (Basics) • Class 11–12 (Advanced)
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-1.5 text-[10px]">
-                    <span className="px-2.5 py-1 rounded-full bg-white border border-[#E2E8F0] font-medium text-[#0F172A] flex items-center gap-1">
-                      <Home className="w-2.5 h-2.5 text-[#2563EB]" />
-                      <span>Home Tuition</span>
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full bg-white border border-[#E2E8F0] font-medium text-[#0F172A] flex items-center gap-1">
-                      <MapPin className="w-2.5 h-2.5 text-[#2563EB]" />
-                      <span>Tutor's Location</span>
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full bg-white border border-[#E2E8F0] font-medium text-[#0F172A] flex items-center gap-1">
-                      <Laptop className="w-2.5 h-2.5 text-[#2563EB]" />
-                      <span>Online Available</span>
-                    </span>
-                  </div>
-                </div>
-
-                {/* Subjects Taught */}
-                <div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#64748B] mb-1.5">
-                    Subjects & Classes
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 text-[10px]">
-                    <span className="px-2.5 py-1 rounded-full bg-[#EFF6FF] text-[#2563EB] font-semibold border border-[#DBEAFE]">
-                      Class 10 Mathematics (SEBA / CBSE)
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full bg-[#F8FAFC] text-[#0F172A] font-medium border border-[#E2E8F0]">
-                      Class 11 & 12 Mathematics (AHSEC)
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full bg-[#F8FAFC] text-[#0F172A] font-medium border border-[#E2E8F0]">
-                      Class 9 General Science
-                    </span>
-                  </div>
-                </div>
-
-                {/* About & Approach */}
-                <div className="text-[11px] text-[#64748B] leading-relaxed bg-[#F8FAFC] p-3 rounded-2xl border border-[#E2E8F0]">
-                  <div className="font-bold text-[10px] uppercase tracking-wider text-[#0F172A] mb-1">
-                    About the Tutor
-                  </div>
-                  Over 6 years of private tuition experience in Guwahati. Focuses on foundational clarity, step-by-step problem solving, and regular syllabus revision.
                 </div>
               </div>
 
-              {/* Bottom Action Bar */}
-              <div className="p-3 bg-white border-t border-[#E2E8F0] flex items-center gap-2">
-                <button className="flex-1 py-2.5 px-3 rounded-full bg-[#2563EB] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs">
-                  <Phone className="w-3.5 h-3.5 text-[#0EA5E9]" />
-                  <span>Connect Directly</span>
-                </button>
-                <button className="p-2.5 rounded-full border border-[#E2E8F0] text-[#0F172A] hover:bg-[#F0F6FF]">
-                  <MessageSquare className="w-4 h-4 text-[#2563EB]" />
+              {/* Sticky Bottom Action Bar */}
+              <div className="px-3.5 py-2.5 bg-white border-t border-[#E2E8F0] flex items-center justify-between shadow-md flex-shrink-0 z-20">
+                <div>
+                  <div className="text-[8px] font-bold uppercase tracking-wider text-[#64748B]">
+                    HOURLY RATE
+                  </div>
+                  <div className="font-extrabold text-[15px] text-[#0F172A] leading-tight">
+                    ₹300 / hr
+                  </div>
+                </div>
+                <button className="px-3.5 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[9.5px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-transform active:scale-95">
+                  <Calendar className="w-3.5 h-3.5 text-white" />
+                  <span>BOOK TUITION</span>
                 </button>
               </div>
             </div>
