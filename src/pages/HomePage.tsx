@@ -200,16 +200,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 2. TWO-SIDED ENTRY ("One Place. Two Sides.") */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0] text-left">
+      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0]">
         <div className="container-edufy">
-          <div className="max-w-2xl mb-12 space-y-2">
+          <div className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Two Audiences
             </span>
             <h2 className="font-display-section text-[#0F172A]">
               One Place. Two Sides.
             </h2>
-            <p className="text-sm sm:text-base text-[#64748B] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
               Direct discovery and connection for both sides of tuition in Guwahati.
             </p>
           </div>
@@ -274,16 +274,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 3. REAL APP SHOWCASE (3-Phone Stage Carousel) */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-[#E2E8F0] text-center">
+      <section className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-[#E2E8F0]">
         <div className="container-edufy">
-          <div className="max-w-2xl mx-auto mb-10 space-y-2 text-center">
+          <div className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Android Application
             </span>
             <h2 className="font-display-section text-[#0F172A]">
               See TutoConnect in Action
             </h2>
-            <p className="text-sm sm:text-base text-[#64748B]">
+            <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
               Experience how students and tutors connect directly in Guwahati.
             </p>
           </div>
@@ -311,16 +311,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 5. TUITION / TEACHING OPTIONS & SUBJECTS */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-[#F8FAFC] border-b border-[#E2E8F0] text-left">
+      <section className="py-20 sm:py-24 bg-[#F8FAFC] border-b border-[#E2E8F0]">
         <div className="container-edufy">
-          <div className="max-w-2xl mb-12 space-y-2">
+          <div className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Scope &amp; Availability
             </span>
             <h2 className="font-display-section text-[#0F172A]">
               Tuition for What You Need
             </h2>
-            <p className="text-sm sm:text-base text-[#64748B]">
+            <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
               Flexible teaching arrangements and subjects across all major school boards in Guwahati.
             </p>
           </div>
@@ -392,22 +392,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 6. GUWAHATI SEO SECTION */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0] text-left">
+      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0]">
         <div className="container-edufy">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl mx-auto text-center space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Guwahati, Assam
             </span>
             <h2 className="font-display-section text-[#0F172A]">
               Tuition in Guwahati
             </h2>
-            <p className="text-base text-[#64748B] leading-relaxed">
+            <p className="text-base text-[#64748B] leading-relaxed max-w-2xl mx-auto">
               TutoConnect helps students and parents discover tutors across Guwahati and connect
               directly based on subject, location, and teaching preference. Whether you need
               tuition near Beltola, Hatigaon, Zoo Road, Chandmari, Dispur, or Jalukbari, connect
               directly with educators for school curriculum and board preparation.
             </p>
-            <div className="pt-2">
+            <div className="pt-2 flex justify-center">
               <button
                 id="explore-guwahati-btn"
                 onClick={() => onNavigate('/tuition/guwahati/')}
@@ -505,9 +505,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 8. FINAL CALL TO ACTION */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-white text-left">
+      <section className="py-20 sm:py-24 bg-white">
         <div className="container-edufy">
-          <div className="p-8 sm:p-14 rounded-[32px] bg-[#1E3A8A] text-white relative overflow-hidden shadow-lg">
+          <div className="p-8 sm:p-14 rounded-[32px] bg-[#1E3A8A] text-white relative overflow-hidden shadow-lg text-center">
             {/* Ambient gradients */}
             <div
               className="absolute -right-20 -top-20 w-96 h-96 bg-[#2563EB]/30 rounded-full blur-3xl pointer-events-none"
@@ -518,7 +518,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               aria-hidden="true"
             />
 
-            <div className="relative z-10 max-w-2xl space-y-5">
+            <div className="relative z-10 max-w-2xl mx-auto space-y-5">
               <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-xs font-semibold uppercase tracking-wider text-[#0EA5E9] border border-white/10">
                 Android Application
               </span>
@@ -527,11 +527,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 Ready to get started with TutoConnect?
               </h2>
 
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-lg mx-auto">
                 Find tuition in Guwahati or create your tutor profile and connect with local learners.
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                 <a
                   href="https://play.google.com/store/apps/details?id=in.tutoconnect.app"
                   target="_blank"

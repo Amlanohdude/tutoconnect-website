@@ -93,47 +93,51 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
       </div>
 
       {/* Header with Role Selector */}
-      <section className="pt-14 pb-12 border-b border-[#E2E8F0] bg-white text-left">
+      <section className="pt-14 pb-12 border-b border-[#E2E8F0] bg-white text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-5">
-            <PillBadge
-              text="Platform Walkthrough"
-              bgColor="#EFF6FF"
-              dotColor="#0EA5E9"
-              textColor="#0F172A"
-              borderColor="#DBEAFE"
-            />
+          <div className="max-w-3xl mx-auto space-y-5 text-center">
+            <div className="flex justify-center">
+              <PillBadge
+                text="Platform Walkthrough"
+                bgColor="#EFF6FF"
+                dotColor="#0EA5E9"
+                textColor="#0F172A"
+                borderColor="#DBEAFE"
+              />
+            </div>
             <h1 className="font-display text-4xl sm:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.08]">
               How TutoConnect works
             </h1>
-            <p className="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-xl mx-auto">
               A transparent mobile platform connecting students seeking guidance with educators offering tuition across Guwahati.
             </p>
 
             {/* Role Switcher Pills */}
-            <div className="pt-2 inline-flex p-1.5 rounded-full bg-[#F0F6FF] border border-[#DBEAFE] shadow-xs">
-              <button
-                onClick={() => setRole('student')}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                  role === 'student'
-                    ? 'bg-[#2563EB] text-white shadow-xs'
-                    : 'text-[#0F172A] hover:text-[#2563EB]'
-                }`}
-              >
-                <GraduationCap className="w-4 h-4" />
-                <span>For Students & Parents</span>
-              </button>
-              <button
-                onClick={() => setRole('tutor')}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                  role === 'tutor'
-                    ? 'bg-[#0EA5E9] text-white shadow-xs'
-                    : 'text-[#0F172A] hover:text-[#2563EB]'
-                }`}
-              >
-                <Users className="w-4 h-4" />
-                <span>For Tutors & Teachers</span>
-              </button>
+            <div className="pt-2 flex justify-center">
+              <div className="inline-flex p-1.5 rounded-full bg-[#F0F6FF] border border-[#DBEAFE] shadow-xs">
+                <button
+                  onClick={() => setRole('student')}
+                  className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                    role === 'student'
+                      ? 'bg-[#2563EB] text-white shadow-xs'
+                      : 'text-[#0F172A] hover:text-[#2563EB]'
+                  }`}
+                >
+                  <GraduationCap className="w-4 h-4" />
+                  <span>For Students & Parents</span>
+                </button>
+                <button
+                  onClick={() => setRole('tutor')}
+                  className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                    role === 'tutor'
+                      ? 'bg-[#0EA5E9] text-white shadow-xs'
+                      : 'text-[#0F172A] hover:text-[#2563EB]'
+                  }`}
+                >
+                  <Users className="w-4 h-4" />
+                  <span>For Tutors & Teachers</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -154,16 +158,16 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
       />
 
       {/* Visual Mobile Screen Mockups Showcase */}
-      <section className="py-20 bg-[#F8FAFC] border-t border-b border-[#E2E8F0] text-left">
+      <section className="py-20 bg-[#F8FAFC] border-t border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12 space-y-3">
+          <div className="max-w-3xl mx-auto mb-14 space-y-2.5 text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               In-App Experience
             </span>
             <h2 className="font-display-section text-[#0F172A]">
               {role === 'student' ? 'What You See in the App' : 'Educator Experience in the App'}
             </h2>
-            <p className="text-sm sm:text-base text-[#64748B]">
+            <p className="text-sm sm:text-base text-[#64748B] max-w-xl mx-auto leading-relaxed">
               {role === 'student'
                 ? 'High clarity screens designed for quick browsing and transparent educator evaluation in Guwahati.'
                 : 'Simple profile creation and direct contact management built to empower local teachers.'}
