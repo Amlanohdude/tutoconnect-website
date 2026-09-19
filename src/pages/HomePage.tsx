@@ -12,6 +12,7 @@ import {
   Home,
   Building,
   Laptop,
+  Plus,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -22,74 +23,37 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   // FAQ accordion state
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [activeFaqCategory, setActiveFaqCategory] = useState<'all' | 'students' | 'tutors' | 'pricing'>('all');
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const faqCategories = [
-    { id: 'all', label: 'All Questions' },
-    { id: 'students', label: 'Students & Parents' },
-    { id: 'tutors', label: 'Tutors & Teachers' },
-    { id: 'pricing', label: 'Fees & Safety' },
-  ] as const;
-
   const faqs = [
     {
-      q: 'Is TutoConnect really 100% free with 0% commission?',
-      a: 'Yes, absolutely. TutoConnect is a direct-connection platform for Guwahati. We charge zero finder fees from families and deduct 0% commission from educators. Whatever tuition fee is agreed between parent and tutor goes 100% directly to the educator.',
-      category: ['pricing', 'students', 'tutors'],
-      badge: '0% Commission',
+      q: 'Is TutoConnect really free with 0% commission?',
+      a: 'Yes, completely. TutoConnect is a direct-connection platform for Guwahati. We do not charge finder fees from families or deduct commissions from educators. Whatever tuition fee is agreed upon goes 100% directly to the educator.',
     },
     {
       q: 'Which school boards and classes are supported across Guwahati?',
-      a: 'Tutors on TutoConnect cover SEBA (State Board of Assam), AHSEC (Assam Higher Secondary Education Council), CBSE, and ICSE. Available tuition spans Primary (Classes 1–5), Middle (Classes 6–8), High School (Classes 9–10), Higher Secondary (Classes 11–12 Science, Commerce, Arts), and College degree courses.',
-      category: ['students'],
-      badge: 'Guwahati Boards',
+      a: 'Tutors on TutoConnect cover SEBA (State Board of Assam), AHSEC, CBSE, and ICSE. Available tuition spans Primary (Classes 1–5), Middle (Classes 6–8), High School (Classes 9–10), Higher Secondary (Classes 11–12 Science, Commerce, Arts), and College degree courses.',
     },
     {
       q: 'How do tuition payments work between parents and tutors?',
-      a: 'Tuition payments are settled directly between parents and tutors via whatever payment method you prefer (UPI, Google Pay, PhonePe, Cash, or Direct Bank Transfer). TutoConnect does not process payments or hold any student funds in escrow, eliminating middleman cuts.',
-      category: ['pricing', 'students'],
-      badge: 'Direct Payment',
+      a: 'Payments are settled directly between parents and tutors via whatever payment method you prefer (UPI, Google Pay, Cash, or Direct Bank Transfer). TutoConnect does not process payments or hold student funds in escrow, eliminating middleman cuts.',
     },
     {
-      q: 'Where can private tuition classes take place in Guwahati?',
-      a: "Tuition formats are arranged flexibly between both parties. Depending on preference, classes can be Home Tuition (the tutor travels to the student's residence), Tutor's Study Location (the student attends classes at the teacher's space), Centre-based tuition, or independent online classes.",
-      category: ['students', 'tutors'],
-      badge: 'Flexible Formats',
+      q: 'Where can private tuition classes take place?',
+      a: "Tuition formats are arranged flexibly based on your preference: Home Tuition (tutor visits the student's residence), Tutor's Study Location (classes at the tutor's space), Centre-based tuition, or independent online classes.",
     },
     {
       q: 'How can parents verify tutor qualifications and ensure safety?',
-      a: 'Every tutor profile showcases degrees, qualifications, teaching background, and subjects taught. We always encourage parents to speak directly over phone or WhatsApp, request physical degree or identity verification upon first meeting, and schedule an initial trial class before confirming long-term arrangements.',
-      category: ['pricing', 'students'],
-      badge: 'Safety & Trust',
+      a: 'Every tutor profile showcases degrees, qualifications, teaching background, and subjects taught. We always encourage parents to speak directly over phone or WhatsApp, request physical degree or identity verification upon first meeting, and schedule an introductory trial class.',
     },
     {
       q: 'How do educators in Guwahati register and start getting inquiries?',
-      a: 'Download the TutoConnect Android app, tap "Become a Tutor", and complete your profile in under 3 minutes. Specify your academic qualifications, subjects and classes taught, and your preferred Guwahati teaching localities (e.g. Beltola, Zoo Road, Chandmari, Jalukbari). Your verified profile is then published for nearby families to discover.',
-      category: ['tutors'],
-      badge: 'For Educators',
-    },
-    {
-      q: 'Does TutoConnect guarantee a minimum number of student inquiries?',
-      a: 'No platform can honestly promise guaranteed student volume. TutoConnect acts as a transparent discovery bridge connecting active families with nearby educators. Tutors who provide comprehensive academic credentials, clear bios, and competitive rates see the best engagement from parents.',
-      category: ['tutors', 'pricing'],
-      badge: 'Transparent Terms',
-    },
-    {
-      q: 'Does TutoConnect host in-app live video classes?',
-      a: 'No. TutoConnect does not host in-app video streaming infrastructure. If a tutor and student agree to conduct online sessions, they coordinate directly using their preferred video conferencing tools such as Google Meet, Zoom, or WhatsApp video calling.',
-      category: ['students', 'tutors'],
-      badge: 'Platform Scope',
+      a: 'Download the TutoConnect Android app, tap "Become a Tutor", and set up your profile in under 3 minutes. Specify your academic qualifications, subjects and classes taught, and preferred Guwahati localities (e.g. Beltola, Zoo Road, Chandmari, Jalukbari) to become discoverable to nearby families.',
     },
   ];
-
-  const filteredFaqs =
-    activeFaqCategory === 'all'
-      ? faqs
-      : faqs.filter((f) => f.category.includes(activeFaqCategory));
 
   const homeSteps: StepItem[] = [
     {
@@ -458,9 +422,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. CENTERED PREMIUM FAQ SECTION WITH CATEGORY TABS (Approach 1) */}
+      {/* 7. ULTRA-CLEAN MINIMAL FAQ (Linear / Apple Divider Style) */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-[#F8FAFC] border-b border-[#E2E8F0] relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0] relative overflow-hidden">
         {/* Technical SEO: Schema.org FAQPage Structured Data (JSON-LD) */}
         <script
           type="application/ld+json"
@@ -481,83 +445,41 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         />
 
         <div className="container-edufy relative z-10">
-          {/* Centered Header */}
-          <div className="max-w-2xl mx-auto mb-10 space-y-3 text-center">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
-              Got Questions?
-            </span>
+          {/* Centered Minimal Header */}
+          <div className="max-w-2xl mx-auto mb-12 sm:mb-16 text-center space-y-3">
             <h2 className="font-display-section text-[#0F172A]">
               Frequently Asked Questions
             </h2>
             <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
-              Clear, transparent answers to help students, parents, and private tutors connect with confidence in Guwahati.
+              Clear, transparent answers about tuition discovery, fees, and safety in Guwahati.
             </p>
           </div>
 
-          {/* Centered Category Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-            {faqCategories.map((cat) => {
-              const isActive = activeFaqCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => {
-                    setActiveFaqCategory(cat.id);
-                    setOpenFaq(null);
-                  }}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                    isActive
-                      ? 'bg-[#2563EB] text-white shadow-xs'
-                      : 'bg-white text-[#64748B] border border-[#E2E8F0] hover:border-[#CBD5E1] hover:text-[#0F172A]'
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Centered Accordion List */}
-          <div className="max-w-3xl mx-auto space-y-3.5">
-            {filteredFaqs.map((faq, index) => {
+          {/* Hairline Divider List */}
+          <div className="max-w-3xl mx-auto border-t border-[#E2E8F0] divide-y divide-[#E2E8F0]">
+            {faqs.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
-                <div
-                  key={faq.q}
-                  className={`rounded-[22px] bg-white border transition-all duration-200 overflow-hidden ${
-                    isOpen
-                      ? 'border-[#93C5FD] shadow-[0px_8px_20px_0px_rgba(37,99,235,0.06)]'
-                      : 'border-[#E2E8F0] hover:border-[#CBD5E1] shadow-xs'
-                  }`}
-                >
+                <div key={faq.q} className="group">
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer select-none"
+                    className="w-full py-5 sm:py-6 flex items-center justify-between gap-6 text-left cursor-pointer select-none transition-colors"
                     aria-expanded={isOpen}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-left">
-                      <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-md bg-blue-50 text-[#2563EB] border border-blue-100 self-start sm:self-auto">
-                        {faq.badge}
-                      </span>
-                      <span className="font-display text-sm sm:text-base font-bold text-[#0F172A] leading-snug">
-                        {faq.q}
-                      </span>
-                    </div>
-                    <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                        isOpen ? 'bg-[#EFF6FF] text-[#2563EB]' : 'bg-[#F1F5F9] text-[#64748B]'
+                    <span className="font-display text-base sm:text-lg font-semibold text-[#0F172A] group-hover:text-[#2563EB] transition-colors leading-snug">
+                      {faq.q}
+                    </span>
+                    <span
+                      className={`w-6 h-6 flex items-center justify-center shrink-0 text-[#64748B] group-hover:text-[#2563EB] transition-transform duration-200 ${
+                        isOpen ? 'rotate-45 text-[#2563EB]' : ''
                       }`}
                     >
-                      {isOpen ? (
-                        <ChevronUp className="w-4 h-4" />
-                      ) : (
-                        <ChevronDown className="w-4 h-4" />
-                      )}
-                    </div>
+                      <Plus className="w-5 h-5" />
+                    </span>
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 sm:px-6 pb-6 pt-2 text-xs sm:text-sm text-[#475569] leading-relaxed border-t border-[#F1F5F9]">
+                    <div className="pb-6 pr-8 text-sm sm:text-[15px] text-[#475569] leading-relaxed">
                       {faq.a}
                     </div>
                   )}
@@ -566,29 +488,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             })}
           </div>
 
-          {/* Reassurance & Direct Support Box (Centered) */}
-          <div className="mt-14 max-w-xl mx-auto p-6 sm:p-8 rounded-[26px] bg-white border border-[#E2E8F0] text-center space-y-3 shadow-xs">
-            <h3 className="font-display font-bold text-base sm:text-lg text-[#0F172A]">
-              Still have questions about tuition in Guwahati?
-            </h3>
-            <p className="text-xs sm:text-sm text-[#64748B] max-w-md mx-auto leading-relaxed">
-              Our Guwahati-based team is here to assist parents, students, and educators with any platform questions.
-            </p>
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href="mailto:tutoconnect.support@gmail.com"
-                className="btn-pill-white text-xs px-4 py-2.5 inline-flex items-center gap-2"
-              >
-                <span>Email Support</span>
-              </a>
-              <button
-                onClick={() => onNavigate('/contact/')}
-                className="btn-pill-primary text-xs px-5 py-2.5 inline-flex items-center gap-2"
-              >
-                <span>Contact Team</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+          {/* Minimal 1-Line Contact Prompt */}
+          <div className="mt-12 text-center text-sm text-[#64748B]">
+            <span>Have another question? </span>
+            <button
+              onClick={() => onNavigate('/contact/')}
+              className="font-medium text-[#2563EB] hover:underline cursor-pointer inline-flex items-center gap-1"
+            >
+              <span>Reach out to our Guwahati team</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </section>
