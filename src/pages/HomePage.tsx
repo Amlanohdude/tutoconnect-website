@@ -92,8 +92,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const teachingModes = [
     {
       name: 'Home Tuition',
-      tagline: 'Personalized 1-on-1 guidance at student’s home.',
-      badge: 'At Your Residence',
+      badge: 'At Home',
       graphic: (
         <svg viewBox="0 0 160 88" className="w-full h-full max-h-24 select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -123,8 +122,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     },
     {
       name: "Tutor's Space",
-      tagline: 'Focused classes at educator’s private studio.',
-      badge: 'Educator Studio',
+      badge: 'Private Studio',
       graphic: (
         <svg viewBox="0 0 160 88" className="w-full h-full max-h-24 select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="80" cy="44" r="34" fill="#F0F9FF" />
@@ -148,8 +146,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     },
     {
       name: 'Tuition Centre',
-      tagline: 'Structured batches at local coaching institutes.',
-      badge: 'Institute Batches',
+      badge: 'Institute Batch',
       graphic: (
         <svg viewBox="0 0 160 88" className="w-full h-full max-h-24 select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="80" cy="44" r="34" fill="#EEF2FF" />
@@ -172,8 +169,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     },
     {
       name: 'Independent Online',
-      tagline: 'Live interactive video sessions via Meet or Zoom.',
-      badge: 'Direct Virtual',
+      badge: 'Live Virtual',
       graphic: (
         <svg viewBox="0 0 160 88" className="w-full h-full max-h-24 select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="80" cy="44" r="34" fill="#F0FDFA" />
@@ -520,36 +516,26 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          {/* Modern SaaS Feature Art Cards (4 Teaching Formats) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mb-12">
+          {/* Minimal Feature Art Cards (4 Teaching Formats) */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-4xl mx-auto mb-10">
             {teachingModes.map((mode) => (
               <div
                 key={mode.name}
-                className="rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-md hover:border-[#2563EB]/40 transition-all duration-200 group overflow-hidden flex flex-col justify-between"
+                className="rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-sm hover:border-[#CBD5E1] transition-all duration-200 group overflow-hidden flex flex-col"
               >
                 {/* Visual Art Canvas */}
-                <div className="h-28 bg-[#F8FAFC] group-hover:bg-[#F0F7FF]/60 border-b border-[#E2E8F0]/70 flex items-center justify-center p-3 relative overflow-hidden transition-colors duration-200">
+                <div className="h-24 bg-[#F8FAFC] group-hover:bg-[#F0F7FF]/50 border-b border-[#E2E8F0]/70 flex items-center justify-center p-2.5 relative overflow-hidden transition-colors duration-200">
                   {mode.graphic}
                 </div>
 
-                {/* Card Content */}
-                <div className="p-4 flex flex-col justify-between flex-1">
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-bold text-[#0F172A] group-hover:text-[#2563EB] transition-colors">
-                      {mode.name}
-                    </h3>
-                    <p className="text-[11px] text-[#64748B] mt-1 leading-relaxed">
-                      {mode.tagline}
-                    </p>
-                  </div>
-                  <div className="mt-3.5 pt-2.5 border-t border-[#F1F5F9] flex items-center justify-between">
-                    <span className="text-[10px] font-semibold text-[#2563EB] bg-[#EFF6FF] px-2 py-0.5 rounded-md border border-[#DBEAFE]">
-                      {mode.badge}
-                    </span>
-                    <span className="text-[10px] font-medium text-[#94A3B8] group-hover:text-[#2563EB] transition-colors inline-flex items-center gap-0.5">
-                      <span>Available</span>
-                    </span>
-                  </div>
+                {/* Minimal Label: Title + Single Micro Tag */}
+                <div className="p-3 text-center flex flex-col items-center justify-center gap-1.5">
+                  <h3 className="text-xs sm:text-sm font-bold text-[#0F172A] tracking-tight group-hover:text-[#2563EB] transition-colors">
+                    {mode.name}
+                  </h3>
+                  <span className="text-[10px] font-medium text-[#64748B] bg-[#F1F5F9] px-2.5 py-0.5 rounded-full">
+                    {mode.badge}
+                  </span>
                 </div>
               </div>
             ))}
