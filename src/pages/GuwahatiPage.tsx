@@ -2,6 +2,7 @@ import React from 'react';
 import { PageRoute } from '../types';
 import { PhoneMockup } from '../components/PhoneMockup';
 import { PillBadge, BrandStar } from '../components/ui/Decorations';
+import { motion } from 'motion/react';
 import {
   MapPin,
   Check,
@@ -76,10 +77,23 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="w-full max-w-md bg-[#F0F6FF] rounded-[30px] p-6 border border-[#DBEAFE] shadow-xs">
+            <div className="lg:col-span-5 flex justify-center lg:justify-end relative py-4">
+              {/* Soft Ambient Radial Glow */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-80 h-72 sm:h-80 bg-blue-100/60 rounded-full blur-3xl pointer-events-none -z-10"
+                aria-hidden="true"
+              />
+
+              {/* Floating Studio Phone Mockup */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                className="relative z-10 cursor-pointer select-none drop-shadow-[0_24px_45px_rgba(15,23,42,0.16)] will-change-transform"
+              >
                 <PhoneMockup screen="discovery" size="md" />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
