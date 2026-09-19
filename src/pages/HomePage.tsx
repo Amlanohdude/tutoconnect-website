@@ -92,56 +92,52 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const teachingModes = [
     {
       name: 'Home Tuition',
-      detail: 'Personalized 1-on-1 guidance at the student residence.',
-      icon: <Home className="w-4 h-4 text-[#2563EB]" />,
+      icon: <Home className="w-3.5 h-3.5 text-[#2563EB]" />,
     },
     {
-      name: "Tutor's Location",
-      detail: 'Classes conducted at the educator’s private study space.',
-      icon: <Building className="w-4 h-4 text-[#2563EB]" />,
+      name: "Tutor's Space",
+      icon: <Building className="w-3.5 h-3.5 text-[#2563EB]" />,
     },
     {
       name: 'Tuition Centre',
-      detail: 'Group or institute-based batches across Guwahati.',
-      icon: <GraduationCap className="w-4 h-4 text-[#2563EB]" />,
+      icon: <GraduationCap className="w-3.5 h-3.5 text-[#2563EB]" />,
     },
     {
       name: 'Independent Online',
-      detail: 'Direct virtual sessions via Google Meet, Zoom, or WhatsApp.',
-      icon: <Laptop className="w-4 h-4 text-[#2563EB]" />,
+      icon: <Laptop className="w-3.5 h-3.5 text-[#2563EB]" />,
     },
   ];
 
   const riverSubjects = [
-    { name: 'Mathematics', emoji: '📐', tag: 'Class 1–12' },
-    { name: 'General Science', emoji: '🔬', tag: 'Class 6–10' },
-    { name: 'Physics', emoji: '⚡', tag: 'Class 9–12' },
-    { name: 'Chemistry', emoji: '🧪', tag: 'Class 9–12' },
-    { name: 'Biology', emoji: '🧬', tag: 'Medical Prep' },
-    { name: 'English Grammar & Lit', emoji: '📚', tag: 'All Boards' },
-    { name: 'Commerce & Accounts', emoji: '📊', tag: 'Class 11–12' },
-    { name: 'Economics', emoji: '📈', tag: 'Micro & Macro' },
-    { name: 'Assamese & MIL', emoji: '📝', tag: 'State Board' },
-    { name: 'Social Science', emoji: '🌍', tag: 'Hist & Civics' },
-    { name: 'Computer Science', emoji: '💻', tag: 'Python & IP' },
-    { name: 'Business Studies', emoji: '💼', tag: 'Commerce' },
-    { name: 'Hindi & Bengali', emoji: '🗣️', tag: 'Languages' },
-    { name: 'Sanskrit', emoji: '📜', tag: 'Classical' },
+    'Mathematics',
+    'Physics',
+    'Chemistry',
+    'Biology',
+    'General Science',
+    'English',
+    'Commerce & Accounts',
+    'Economics',
+    'Assamese',
+    'Social Science',
+    'Computer Science',
+    'Business Studies',
+    'Hindi',
+    'Bengali',
+    'Sanskrit',
   ];
 
   const riverBoardsAndLevels = [
-    { name: 'ASSEB Div-I (SEBA)', tag: 'State Board', badge: 'HSLC' },
-    { name: 'ASSEB Div-II (AHSEC)', tag: 'Higher Secondary', badge: 'HS' },
-    { name: 'CBSE Curriculum', tag: 'Central Board', badge: 'NCERT' },
-    { name: 'ICSE & ISC', tag: 'CISCE Board', badge: 'All Grades' },
-    { name: 'Class 9–10 Boards', tag: 'Secondary', badge: 'Board Prep' },
-    { name: 'Class 11–12 Science', tag: 'PCM / PCB', badge: 'Core Science' },
-    { name: 'Class 11–12 Commerce', tag: 'Accounts & Math', badge: 'Commerce' },
-    { name: 'Class 11–12 Arts', tag: 'Humanities', badge: 'Arts' },
-    { name: 'Middle School (6–8)', tag: 'Classes 6–8', badge: 'Foundation' },
-    { name: 'Primary Classes (1–5)', tag: 'Classes 1–5', badge: 'Early Learning' },
-    { name: 'Crash Courses & Revision', tag: 'Exam Focus', badge: 'Fast-Track' },
-    { name: 'Direct 1-on-1 Tuition', tag: 'Personalized', badge: 'Custom Pace' },
+    'ASSEB Div-I (SEBA)',
+    'ASSEB Div-II (AHSEC)',
+    'CBSE Curriculum',
+    'ICSE & ISC',
+    'Class 9–10 Boards',
+    'Class 11–12 Science',
+    'Class 11–12 Commerce',
+    'Class 11–12 Arts',
+    'Middle School (6–8)',
+    'Primary (1–5)',
+    'Foundation & Revision',
   ];
 
   return (
@@ -420,89 +416,75 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
         <div className="container-edufy">
           {/* Centered Minimal Header */}
-          <div className="max-w-2xl mx-auto mb-12 space-y-2.5 text-center">
+          <div className="max-w-2xl mx-auto mb-10 space-y-2 text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Scope &amp; Availability
             </span>
             <h2 className="font-display-section text-[#0F172A]">
               Tuition for What You Need
             </h2>
-            <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
-              Flexible teaching arrangements, essential subjects, and school boards across Guwahati.
+            <p className="text-sm text-[#64748B] max-w-lg mx-auto leading-relaxed">
+              Discover educators by subject, curriculum, and preferred teaching format.
             </p>
           </div>
 
-          {/* Minimal 4-Column Teaching Modes Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-5xl mx-auto mb-12">
+          {/* Compact 4 Teaching Modes */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-3xl mx-auto mb-8">
             {teachingModes.map((mode) => (
               <div
                 key={mode.name}
-                className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#CBD5E1] hover:shadow-sm transition-all duration-200 flex flex-col justify-between"
+                className="px-3.5 py-2.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs hover:border-[#CBD5E1] transition-all flex items-center justify-center gap-2.5"
               >
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-8 h-8 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center shrink-0">
-                    {mode.icon}
-                  </div>
-                  <h3 className="text-xs font-bold text-[#0F172A] tracking-tight">{mode.name}</h3>
+                <div className="w-6 h-6 rounded-md bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center shrink-0">
+                  {mode.icon}
                 </div>
-                <p className="text-[11px] text-[#64748B] leading-relaxed">{mode.detail}</p>
+                <span className="text-xs font-semibold text-[#0F172A] tracking-tight whitespace-nowrap">
+                  {mode.name}
+                </span>
               </div>
             ))}
           </div>
 
           {/* River Stream: Dual Continuous Infinite Flows */}
-          <div className="max-w-6xl mx-auto space-y-3">
-            <div className="text-center mb-1">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#64748B]">
-                Curriculum &amp; Subject Coverage
-              </span>
-            </div>
-
+          <div className="max-w-5xl mx-auto space-y-2.5">
             {/* River Stream Wrapper with Edge Mask and Hover Pause */}
-            <div className="mask-river-fade overflow-hidden py-1 space-y-3 pause-hover">
+            <div className="mask-river-fade overflow-hidden py-1 space-y-2.5 pause-hover">
               {/* Stream 1: Popular Subjects (Flows Left) */}
-              <div className="animate-river-left flex items-center gap-3 w-max py-0.5">
-                {[...riverSubjects, ...riverSubjects].map((sub, idx) => (
-                  <div
+              <div className="animate-river-left flex items-center gap-2.5 w-max py-0.5">
+                {[...riverSubjects, ...riverSubjects].map((subject, idx) => (
+                  <span
                     key={`stream-sub-${idx}`}
-                    className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-xs hover:border-[#2563EB] hover:text-[#2563EB] transition-colors duration-150 cursor-default select-none text-xs text-[#0F172A]"
+                    className="px-4 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-2xs hover:border-[#2563EB] hover:text-[#2563EB] transition-colors duration-150 cursor-default select-none text-xs font-medium text-[#0F172A] whitespace-nowrap"
                   >
-                    <span className="text-sm leading-none">{sub.emoji}</span>
-                    <span className="font-medium whitespace-nowrap">{sub.name}</span>
-                    <span className="text-[10px] text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-medium whitespace-nowrap">
-                      {sub.tag}
-                    </span>
-                  </div>
+                    {subject}
+                  </span>
                 ))}
               </div>
 
               {/* Stream 2: Boards & Stages (Flows Right) */}
-              <div className="animate-river-right flex items-center gap-3 w-max py-0.5">
-                {[...riverBoardsAndLevels, ...riverBoardsAndLevels].map((item, idx) => (
-                  <div
+              <div className="animate-river-right flex items-center gap-2.5 w-max py-0.5">
+                {[...riverBoardsAndLevels, ...riverBoardsAndLevels].map((board, idx) => (
+                  <span
                     key={`stream-board-${idx}`}
-                    className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-xs hover:border-[#0284C7] transition-colors duration-150 cursor-default select-none text-xs text-[#0F172A]"
+                    className="px-4 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-2xs hover:bg-white hover:border-[#0284C7] hover:text-[#0F172A] transition-colors duration-150 cursor-default select-none text-xs font-medium text-[#475569] whitespace-nowrap"
                   >
-                    <span className="font-semibold text-[#0F172A] whitespace-nowrap">{item.name}</span>
-                    <span className="text-[10px] text-[#2563EB] bg-[#EFF6FF] border border-[#DBEAFE] px-2 py-0.5 rounded-full font-bold whitespace-nowrap">
-                      {item.badge}
-                    </span>
-                  </div>
+                    {board}
+                  </span>
                 ))}
               </div>
             </div>
           </div>
 
           {/* Bottom Context & Direct Link */}
-          <div className="mt-10 pt-6 border-t border-[#E2E8F0] max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <p className="text-xs text-[#64748B] leading-relaxed max-w-xl">
-              Tuition arrangements and independent online sessions are coordinated directly between parents and tutors with 0% platform commission.
-            </p>
+          <div className="mt-8 pt-6 border-t border-[#E2E8F0] max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <span className="text-xs text-[#64748B]">
+              0% platform commission • Direct connection with educators
+            </span>
             <button
               onClick={() => onNavigate('/tuition/guwahati/')}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2563EB] hover:text-[#1D4ED8] shrink-0 group"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] shrink-0 group"
             >
-              <span>Explore tutors across Guwahati</span>
+              <span>Explore tutors in Guwahati</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
             </button>
           </div>
