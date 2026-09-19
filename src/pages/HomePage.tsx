@@ -92,19 +92,111 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const teachingModes = [
     {
       name: 'Home Tuition',
-      icon: <Home className="w-3.5 h-3.5 text-[#2563EB]" />,
+      tagline: 'Personalized 1-on-1 guidance at student’s home.',
+      badge: 'At Your Residence',
+      graphic: (
+        <svg viewBox="0 0 160 88" className="w-full h-full max-h-24 select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lampGlow" x1="68" y1="46" x2="90" y2="70" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#38BDF8" stopOpacity="0.4" />
+              <stop offset="1" stopColor="#38BDF8" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <circle cx="80" cy="44" r="34" fill="#EFF6FF" />
+          {/* House Blueprint Outline */}
+          <path d="M52 58 L52 42 L80 20 L108 42 L108 58" stroke="#CBD5E1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M96 28 L96 22 L102 22 L102 33" stroke="#CBD5E1" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          {/* Window */}
+          <rect x="71" y="30" width="18" height="18" rx="2.5" fill="#DBEAFE" stroke="#2563EB" strokeWidth="1.5" />
+          <line x1="80" y1="30" x2="80" y2="48" stroke="#2563EB" strokeWidth="1" strokeOpacity="0.7" />
+          <line x1="71" y1="39" x2="89" y2="39" stroke="#2563EB" strokeWidth="1" strokeOpacity="0.7" />
+          {/* Desk & Lamp Light Beam */}
+          <line x1="38" y1="68" x2="122" y2="68" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round" />
+          <polygon points="66,48 102,68 62,68" fill="url(#lampGlow)" />
+          {/* Desk Lamp */}
+          <path d="M56 68 L56 52 Q56 46 64 46 L68 46" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+          <path d="M66 43 L74 50 L64 52 Z" fill="#2563EB" />
+          {/* Study Book */}
+          <path d="M74 65 Q80 62 86 65 Q80 67 74 65 Z" fill="#FFFFFF" stroke="#0F172A" strokeWidth="1.2" />
+        </svg>
+      ),
     },
     {
       name: "Tutor's Space",
-      icon: <Building className="w-3.5 h-3.5 text-[#2563EB]" />,
+      tagline: 'Focused classes at educator’s private studio.',
+      badge: 'Educator Studio',
+      graphic: (
+        <svg viewBox="0 0 160 88" className="w-full h-full max-h-24 select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="80" cy="44" r="34" fill="#F0F9FF" />
+          {/* Easel / Whiteboard */}
+          <rect x="54" y="18" width="52" height="36" rx="4" fill="#FFFFFF" stroke="#0F172A" strokeWidth="1.5" />
+          {/* Chart / Lesson lines */}
+          <path d="M62 44 L70 36 L78 40 L94 28" stroke="#0284C7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <line x1="62" y1="26" x2="76" y2="26" stroke="#CBD5E1" strokeWidth="1.5" strokeLinecap="round" />
+          {/* Easel Stand Legs */}
+          <line x1="64" y1="54" x2="56" y2="70" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="96" y1="54" x2="104" y2="70" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="80" y1="54" x2="80" y2="70" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
+          {/* Pin */}
+          <circle cx="80" cy="18" r="2" fill="#2563EB" />
+          {/* Book Stack */}
+          <rect x="110" y="60" width="14" height="3.5" rx="1" fill="#38BDF8" stroke="#0284C7" strokeWidth="0.8" />
+          <rect x="108" y="64.5" width="18" height="4" rx="1" fill="#2563EB" />
+          <line x1="38" y1="70" x2="122" y2="70" stroke="#CBD5E1" strokeWidth="1.2" strokeLinecap="round" />
+        </svg>
+      ),
     },
     {
       name: 'Tuition Centre',
-      icon: <GraduationCap className="w-3.5 h-3.5 text-[#2563EB]" />,
+      tagline: 'Structured batches at local coaching institutes.',
+      badge: 'Institute Batches',
+      graphic: (
+        <svg viewBox="0 0 160 88" className="w-full h-full max-h-24 select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="80" cy="44" r="34" fill="#EEF2FF" />
+          {/* Academy Roof / Pediment */}
+          <polygon points="80,16 46,32 114,32" fill="#FFFFFF" stroke="#0F172A" strokeWidth="1.5" strokeLinejoin="round" />
+          <circle cx="80" cy="25" r="3.5" fill="#2563EB" />
+          <rect x="44" y="32" width="72" height="4" rx="1" fill="#E2E8F0" stroke="#0F172A" strokeWidth="1.2" />
+          {/* Classical Columns */}
+          <rect x="52" y="36" width="6" height="24" rx="1" fill="#F8FAFC" stroke="#64748B" strokeWidth="1.2" />
+          <rect x="70" y="36" width="6" height="24" rx="1" fill="#F8FAFC" stroke="#64748B" strokeWidth="1.2" />
+          <rect x="84" y="36" width="6" height="24" rx="1" fill="#F8FAFC" stroke="#64748B" strokeWidth="1.2" />
+          <rect x="102" y="36" width="6" height="24" rx="1" fill="#F8FAFC" stroke="#64748B" strokeWidth="1.2" />
+          {/* Arched Entrance */}
+          <path d="M74 60 L74 46 A6 6 0 0 1 86 46 L86 60 Z" fill="#DBEAFE" stroke="#2563EB" strokeWidth="1.2" />
+          {/* Plinth Base */}
+          <rect x="42" y="60" width="76" height="4" rx="1" fill="#F1F5F9" stroke="#0F172A" strokeWidth="1.2" />
+          <line x1="36" y1="65.5" x2="124" y2="65.5" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      ),
     },
     {
       name: 'Independent Online',
-      icon: <Laptop className="w-3.5 h-3.5 text-[#2563EB]" />,
+      tagline: 'Live interactive video sessions via Meet or Zoom.',
+      badge: 'Direct Virtual',
+      graphic: (
+        <svg viewBox="0 0 160 88" className="w-full h-full max-h-24 select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="80" cy="44" r="34" fill="#F0FDFA" />
+          {/* Laptop Screen */}
+          <rect x="54" y="20" width="52" height="34" rx="3" fill="#0F172A" stroke="#0F172A" strokeWidth="1.5" />
+          <rect x="57" y="23" width="46" height="28" rx="1.5" fill="#1E293B" />
+          {/* Tutor Video Screen */}
+          <rect x="60" y="26" width="24" height="16" rx="1" fill="#2563EB" />
+          <circle cx="72" cy="31" r="2.8" fill="#BFDBFE" />
+          <path d="M66 40 Q72 36 78 40" stroke="#BFDBFE" strokeWidth="1" fill="none" />
+          {/* Student Thumbnail */}
+          <rect x="88" y="26" width="12" height="9" rx="1" fill="#334155" />
+          {/* Live Waveform */}
+          <path d="M60 46 L65 46 L67 44 L69 48 L71 43 L73 47 L75 46 L81 46" stroke="#38BDF8" strokeWidth="1" strokeLinecap="round" fill="none" />
+          {/* Laptop Base Deck */}
+          <path d="M44 56 L116 56 L112 60 L48 60 Z" fill="#CBD5E1" stroke="#0F172A" strokeWidth="1.2" strokeLinejoin="round" />
+          <rect x="74" y="56" width="12" height="1.5" rx="0.5" fill="#94A3B8" />
+          {/* Connection Signal Waves */}
+          <circle cx="118" cy="26" r="2.5" fill="#0EA5E9" />
+          <path d="M122 21 A7 7 0 0 1 122 31" stroke="#0EA5E9" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+          <path d="M125 17 A12 12 0 0 1 125 35" stroke="#0EA5E9" strokeWidth="1" strokeDasharray="2 2" strokeLinecap="round" fill="none" opacity="0.6" />
+        </svg>
+      ),
     },
   ];
 
@@ -428,25 +520,52 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          {/* Compact 4 Teaching Modes */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-3xl mx-auto mb-8">
+          {/* Modern SaaS Feature Art Cards (4 Teaching Formats) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mb-12">
             {teachingModes.map((mode) => (
               <div
                 key={mode.name}
-                className="px-3.5 py-2.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs hover:border-[#CBD5E1] transition-all flex items-center justify-center gap-2.5"
+                className="rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-md hover:border-[#2563EB]/40 transition-all duration-200 group overflow-hidden flex flex-col justify-between"
               >
-                <div className="w-6 h-6 rounded-md bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center shrink-0">
-                  {mode.icon}
+                {/* Visual Art Canvas */}
+                <div className="h-28 bg-[#F8FAFC] group-hover:bg-[#F0F7FF]/60 border-b border-[#E2E8F0]/70 flex items-center justify-center p-3 relative overflow-hidden transition-colors duration-200">
+                  {mode.graphic}
                 </div>
-                <span className="text-xs font-semibold text-[#0F172A] tracking-tight whitespace-nowrap">
-                  {mode.name}
-                </span>
+
+                {/* Card Content */}
+                <div className="p-4 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-[#0F172A] group-hover:text-[#2563EB] transition-colors">
+                      {mode.name}
+                    </h3>
+                    <p className="text-[11px] text-[#64748B] mt-1 leading-relaxed">
+                      {mode.tagline}
+                    </p>
+                  </div>
+                  <div className="mt-3.5 pt-2.5 border-t border-[#F1F5F9] flex items-center justify-between">
+                    <span className="text-[10px] font-semibold text-[#2563EB] bg-[#EFF6FF] px-2 py-0.5 rounded-md border border-[#DBEAFE]">
+                      {mode.badge}
+                    </span>
+                    <span className="text-[10px] font-medium text-[#94A3B8] group-hover:text-[#2563EB] transition-colors inline-flex items-center gap-0.5">
+                      <span>Available</span>
+                    </span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
 
           {/* River Stream: Dual Continuous Infinite Flows */}
-          <div className="max-w-5xl mx-auto space-y-2.5">
+          <div className="max-w-5xl mx-auto space-y-3">
+            <div className="flex items-center justify-between px-1 mb-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#64748B]">
+                Curriculum &amp; Subject Coverage
+              </span>
+              <span className="text-[10px] text-[#94A3B8]">
+                Hover stream to pause
+              </span>
+            </div>
+
             {/* River Stream Wrapper with Edge Mask and Hover Pause */}
             <div className="mask-river-fade overflow-hidden py-1 space-y-2.5 pause-hover">
               {/* Stream 1: Popular Subjects (Flows Left) */}
