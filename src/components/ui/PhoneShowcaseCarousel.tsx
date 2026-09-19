@@ -103,7 +103,7 @@ export const PhoneShowcaseCarousel: React.FC = () => {
       onKeyDown={handleKeyDown}
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
-      className="w-full relative outline-none select-none flex flex-col items-center"
+      className="w-full relative outline-none focus:outline-none focus:ring-0 focus-visible:outline-none border-none select-none flex flex-col items-center"
     >
       {/* ========================================================================= */}
       {/* TECHNICAL SEO: Schema.org SoftwareApplication JSON-LD Structured Data */}
@@ -135,41 +135,41 @@ export const PhoneShowcaseCarousel: React.FC = () => {
       />
 
       {/* ========================================================================= */}
-      {/* 3-PHONE STAGE (100% Lightweight 2D GPU Transforms, Zero 3D Engine Overhead) */}
+      {/* 3-PHONE STAGE (Identical True-Size Phones, Zero Clipping, Pure 2D Smooth Transforms) */}
       {/* ========================================================================= */}
-      <div className="relative w-full h-[580px] sm:h-[640px] flex items-center justify-center overflow-hidden">
-        {/* Ambient Radial Glow */}
+      <div className="relative w-full min-h-[660px] sm:min-h-[720px] py-8 flex items-center justify-center overflow-visible">
+        {/* Soft Ambient Radial Glow (Seamless blend into white canvas) */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] sm:w-[540px] h-[480px] sm:h-[540px] bg-gradient-to-tr from-blue-100/60 via-indigo-50/40 to-transparent rounded-full blur-3xl pointer-events-none -z-10"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] sm:w-[600px] h-[520px] sm:h-[600px] bg-gradient-to-tr from-blue-100/40 via-indigo-50/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10"
           aria-hidden="true"
         />
 
-        {/* Left Flanking Phone (Flat 2D Tilt with Smooth Spring Hover Reaction) */}
+        {/* Left Flanking Phone (True Size "lg", Flat 2D Angle with Spring Hover Reaction) */}
         <motion.div
           onClick={handlePrev}
           initial={false}
           animate={{
             rotate: -4,
-            scale: 0.88,
-            opacity: 0.45,
+            scale: 1,
+            opacity: 0.6,
           }}
           whileHover={{
-            scale: 0.92,
-            opacity: 0.8,
+            scale: 1.02,
+            opacity: 0.85,
             rotate: -2,
             y: -6,
           }}
           transition={{ type: 'spring', stiffness: 320, damping: 24 }}
-          className="hidden md:block absolute left-1/2 -translate-x-[calc(50%+160px)] lg:-translate-x-[calc(50%+185px)] z-10 cursor-pointer pointer-events-auto select-none will-change-transform"
+          className="hidden md:block absolute left-1/2 -translate-x-[calc(50%+175px)] lg:-translate-x-[calc(50%+205px)] z-10 cursor-pointer pointer-events-auto select-none will-change-transform"
           title={`Previous: ${slides[prevIndex].title}`}
           aria-hidden="true"
         >
-          <div className="pointer-events-none drop-shadow-[0_16px_30px_rgba(15,23,42,0.14)]">
-            <PhoneMockup screen={slides[prevIndex].id} size="md" />
+          <div className="pointer-events-none drop-shadow-[0_20px_35px_rgba(15,23,42,0.12)]">
+            <PhoneMockup screen={slides[prevIndex].id} size="lg" />
           </div>
         </motion.div>
 
-        {/* Center Focal Phone (Flat 2D with Spring Lift & Animated 2D Axis Tilt on Hover) */}
+        {/* Center Focal Phone (True Size "lg", Spring Lift & Subtle 2D Angle on Hover) */}
         <motion.div
           initial={false}
           whileHover={{
@@ -241,28 +241,28 @@ export const PhoneShowcaseCarousel: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Right Flanking Phone (Flat 2D Tilt with Smooth Spring Hover Reaction) */}
+        {/* Right Flanking Phone (True Size "lg", Flat 2D Angle with Spring Hover Reaction) */}
         <motion.div
           onClick={handleNext}
           initial={false}
           animate={{
             rotate: 4,
-            scale: 0.88,
-            opacity: 0.45,
+            scale: 1,
+            opacity: 0.6,
           }}
           whileHover={{
-            scale: 0.92,
-            opacity: 0.8,
+            scale: 1.02,
+            opacity: 0.85,
             rotate: 2,
             y: -6,
           }}
           transition={{ type: 'spring', stiffness: 320, damping: 24 }}
-          className="hidden md:block absolute left-1/2 -translate-x-[calc(50%-160px)] lg:-translate-x-[calc(50%-185px)] z-10 cursor-pointer pointer-events-auto select-none will-change-transform"
+          className="hidden md:block absolute left-1/2 -translate-x-[calc(50%-175px)] lg:-translate-x-[calc(50%-205px)] z-10 cursor-pointer pointer-events-auto select-none will-change-transform"
           title={`Next: ${slides[nextIndex].title}`}
           aria-hidden="true"
         >
-          <div className="pointer-events-none drop-shadow-[0_16px_30px_rgba(15,23,42,0.14)]">
-            <PhoneMockup screen={slides[nextIndex].id} size="md" />
+          <div className="pointer-events-none drop-shadow-[0_20px_35px_rgba(15,23,42,0.12)]">
+            <PhoneMockup screen={slides[nextIndex].id} size="lg" />
           </div>
         </motion.div>
       </div>
