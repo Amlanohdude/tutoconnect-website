@@ -11,6 +11,7 @@ interface InteractiveTiltPhoneProps {
   restingRotateY?: number;
   restingRotateX?: number;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onHoverChange?: (hovered: boolean) => void;
 }
 
 export const InteractiveTiltPhone: React.FC<InteractiveTiltPhoneProps> = ({
@@ -23,6 +24,7 @@ export const InteractiveTiltPhone: React.FC<InteractiveTiltPhoneProps> = ({
   restingRotateY = 0,
   restingRotateX = 0,
   onClick,
+  onHoverChange,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -98,10 +100,12 @@ export const InteractiveTiltPhone: React.FC<InteractiveTiltPhoneProps> = ({
 
   const handleMouseEnter = () => {
     setIsHovered(true);
+    onHoverChange?.(true);
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    onHoverChange?.(false);
     // Smoothly spring back to rest position
     mouseX.set(0);
     mouseY.set(0);

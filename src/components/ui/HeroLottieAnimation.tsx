@@ -11,6 +11,7 @@ interface HeroLottieAnimationProps {
 export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ className = '' }) => {
   const studentAnimRef = useRef<HTMLDivElement>(null);
   const [animLoaded, setAnimLoaded] = useState(false);
+  const [isPhoneHovered, setIsPhoneHovered] = useState(false);
 
   useEffect(() => {
     if (!studentAnimRef.current) return;
@@ -66,37 +67,69 @@ export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ classN
       {/* Ambient Radial Soft Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Layer 1: Floating Animated Student Companion (Popped into the foreground z-30 in front of the phone) */}
+      {/* Layer 1: Floating Animated Student Companion with Interactive Sideways Glide on Phone Hover */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 15 }}
-        animate={{
-          opacity: animLoaded ? 1 : 0,
-          scale: 1,
-          y: [0, -10, 0],
-        }}
-        transition={{
-          y: {
-            duration: 4.2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          },
-          opacity: { duration: 0.4 },
-          scale: { duration: 0.5 },
-        }}
-        className="absolute -top-6 -right-2 sm:-top-10 sm:-right-8 md:-top-12 md:-right-12 z-30 w-52 sm:w-60 md:w-68 aspect-square pointer-events-none drop-shadow-[0_15px_30px_rgba(15,23,42,0.22)]"
+        initial={{ opacity: 0, scale: 0.9, x: 0, y: 15 }}
+        animate={
+          isPhoneHovered
+            ? {
+                opacity: animLoaded ? 1 : 0,
+                scale: 1.04,
+                x: 52,
+                y: -14,
+                rotate: 4,
+              }
+            : {
+                opacity: animLoaded ? 1 : 0,
+                scale: 1,
+                x: 0,
+                y: [0, -10, 0],
+                rotate: 0,
+              }
+        }
+        transition={
+          isPhoneHovered
+            ? {
+                x: { type: 'spring', stiffness: 260, damping: 22 },
+                y: { type: 'spring', stiffness: 260, damping: 22 },
+                rotate: { type: 'spring', stiffness: 260, damping: 22 },
+                scale: { type: 'spring', stiffness: 260, damping: 22 },
+                opacity: { duration: 0.3 },
+              }
+            : {
+                x: { type: 'spring', stiffness: 220, damping: 24 },
+                rotate: { type: 'spring', stiffness: 220, damping: 24 },
+                scale: { type: 'spring', stiffness: 220, damping: 24 },
+                y: {
+                  duration: 4.2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                },
+                opacity: { duration: 0.4 },
+              }
+        }
+        className="absolute -top-6 -right-2 sm:-top-10 sm:-right-8 md:-top-12 md:-right-12 z-30 w-52 sm:w-60 md:w-68 aspect-square pointer-events-none drop-shadow-[0_15px_30px_rgba(15,23,42,0.22)] will-change-transform"
         aria-hidden="true"
       >
-        <div ref={studentAnimRef} className="w-full h-full" />
+        <div
+          ref={studentAnimRef}
+          className="w-full h-full rounded-full overflow-hidden [clip-path:circle(48.8%_at_50%_50%)]"
+        />
       </motion.div>
 
       {/* Layer 2: Authentic 3D Interactive Phone Mockup (Front Anchor) */}
-      <div className="relative z-20 pt-4 sm:pt-6 pr-6 sm:pr-10">
+      <div
+        className="relative z-20 pt-4 sm:pt-6 pr-6 sm:pr-10"
+        onMouseEnter={() => setIsPhoneHovered(true)}
+        onMouseLeave={() => setIsPhoneHovered(false)}
+      >
         <InteractiveTiltPhone
           maxTilt={12}
           scaleOnHover={1.03}
           enableGlare={true}
           restingRotateY={-5}
           restingRotateX={3}
+          onHoverChange={setIsPhoneHovered}
         >
           <PhoneMockup screen="discovery" size="md" />
         </InteractiveTiltPhone>
