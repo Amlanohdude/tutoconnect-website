@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0E7FF"/>
+      <stop offset="100%" stop-color="#C7D2FE"/>
+    </linearGradient>
+    <linearGradient id="shirt1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <clipPath id="circleClip1">
+      <circle cx="50" cy="50" r="48"/>
+    </clipPath>
+  </defs>
+  
+  <g clip-path="url(#circleClip1)">
+    <!-- Background Circle -->
+    <circle cx="50" cy="50" r="50" fill="url(#bg1)"/>
+    
+    <!-- Torso / Shoulders -->
+    <path d="M22 100 C22 76, 36 70, 50 70 C64 70, 78 76, 78 100 Z" fill="url(#shirt1)"/>
+    <!-- Collar / Inner Shirt -->
+    <path d="M44 70 L50 82 L56 70 Z" fill="#3B82F6"/>
+    
+    <!-- Neck -->
+    <rect x="44" y="58" width="12" height="16" rx="4" fill="#F87171" opacity="0.8"/>
+    <rect x="44" y="58" width="12" height="16" rx="4" fill="#FBBF24" opacity="0.9"/>
+    
+    <!-- Head Base -->
+    <ellipse cx="50" cy="46" rx="18" ry="21" fill="#F59E0B" opacity="0.9"/>
+    
+    <!-- Hair (Back/Base) -->
+    <path d="M30 42 C30 25, 40 18, 50 18 C60 18, 70 25, 70 42 C70 43, 67 36, 64 36 C58 36, 54 28, 46 28 C38 28, 32 38, 30 42 Z" fill="#0F172A"/>
+    
+    <!-- Eyes -->
+    <circle cx="43" cy="44" r="2.2" fill="#0F172A"/>
+    <circle cx="57" cy="44" r="2.2" fill="#0F172A"/>
+    <!-- Eye Highlights -->
+    <circle cx="43.8" cy="43.3" r="0.7" fill="#FFFFFF"/>
+    <circle cx="57.8" cy="43.3" r="0.7" fill="#FFFFFF"/>
+    
+    <!-- Eyebrows -->
+    <path d="M39 39 Q43 37 47 39" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <path d="M53 39 Q57 37 61 39" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    
+    <!-- Nose -->
+    <path d="M49 46 Q50 49 52 49" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    
+    <!-- Smile -->
+    <path d="M44 54 Q50 59 56 54" stroke="#0F172A" stroke-width="2" stroke-linecap="round" fill="none"/>
+    
+    <!-- Cheeks (Blush) -->
+    <ellipse cx="38" cy="51" rx="3" ry="1.8" fill="#F87171" opacity="0.35"/>
+    <ellipse cx="62" cy="51" rx="3" ry="1.8" fill="#F87171" opacity="0.35"/>
+    
+    <!-- Modern Hair Front Tufts -->
+    <path d="M32 36 Q38 23 52 23 Q66 23 68 36 Q60 27 48 29 Q38 31 32 36 Z" fill="#1E293B"/>
+  </g>
+  
+  <!-- Outer subtle border -->
+  <circle cx="50" cy="50" r="48" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+</svg>

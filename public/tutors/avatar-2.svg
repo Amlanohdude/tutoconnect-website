@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D1FAE5"/>
+      <stop offset="100%" stop-color="#A7F3D0"/>
+    </linearGradient>
+    <linearGradient id="shirt2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <clipPath id="circleClip2">
+      <circle cx="50" cy="50" r="48"/>
+    </clipPath>
+  </defs>
+  
+  <g clip-path="url(#circleClip2)">
+    <!-- Background Circle -->
+    <circle cx="50" cy="50" r="50" fill="url(#bg2)"/>
+    
+    <!-- Torso / Shoulders -->
+    <path d="M22 100 C22 75, 36 69, 50 69 C64 69, 78 75, 78 100 Z" fill="url(#shirt2)"/>
+    <path d="M42 69 L50 79 L58 69 Z" fill="#FFFFFF"/>
+    
+    <!-- Neck -->
+    <rect x="44" y="56" width="12" height="16" rx="4" fill="#FCD34D"/>
+    
+    <!-- Head Base -->
+    <ellipse cx="50" cy="45" rx="17.5" ry="20" fill="#FBBF24"/>
+    
+    <!-- Hair Base -->
+    <path d="M31 40 C31 22, 42 16, 50 16 C58 16, 69 22, 69 40 C69 42, 65 34, 62 34 C56 34, 52 24, 46 25 C39 26, 33 34, 31 40 Z" fill="#18181B"/>
+    
+    <!-- Glasses -->
+    <rect x="36" y="39" width="12" height="10" rx="3.5" fill="#FFFFFF" fill-opacity="0.25" stroke="#18181B" stroke-width="2"/>
+    <rect x="52" y="39" width="12" height="10" rx="3.5" fill="#FFFFFF" fill-opacity="0.25" stroke="#18181B" stroke-width="2"/>
+    <!-- Glasses Bridge -->
+    <path d="M48 43 Q50 41 52 43" stroke="#18181B" stroke-width="2" fill="none"/>
+    <!-- Glasses Temples -->
+    <path d="M36 43 L32 42" stroke="#18181B" stroke-width="2" stroke-linecap="round"/>
+    <path d="M64 43 L68 42" stroke="#18181B" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Eyes behind glasses -->
+    <circle cx="42" cy="44" r="2" fill="#18181B"/>
+    <circle cx="58" cy="44" r="2" fill="#18181B"/>
+    <circle cx="42.7" cy="43.3" r="0.6" fill="#FFFFFF"/>
+    <circle cx="58.7" cy="43.3" r="0.6" fill="#FFFFFF"/>
+    
+    <!-- Eyebrows -->
+    <path d="M37 36 Q42 34 46 36" stroke="#18181B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <path d="M54 36 Q58 34 63 36" stroke="#18181B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    
+    <!-- Nose -->
+    <path d="M49 46 Q50 49 52 49" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    
+    <!-- Confident Friendly Smile -->
+    <path d="M43 53 Q50 59 57 53" stroke="#18181B" stroke-width="2" stroke-linecap="round" fill="none"/>
+    
+    <!-- Blush -->
+    <ellipse cx="36" cy="50" rx="2.5" ry="1.5" fill="#F87171" opacity="0.4"/>
+    <ellipse cx="64" cy="50" rx="2.5" ry="1.5" fill="#F87171" opacity="0.4"/>
+    
+    <!-- Hair Highlights / Front Fade -->
+    <path d="M33 34 Q39 21 53 21 Q67 21 67 34 Q58 25 47 26 Q38 27 33 34 Z" fill="#27272A"/>
+  </g>
+  
+  <circle cx="50" cy="50" r="48" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+</svg>
