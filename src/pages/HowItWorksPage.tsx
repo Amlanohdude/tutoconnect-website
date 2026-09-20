@@ -178,10 +178,10 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             {role === 'student' ? (
               <>
                 <div className="bg-white rounded-[28px] p-6 sm:p-8 border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-6">
-                  <div className="shrink-0">
+                  <div className="shrink-0 w-full md:w-auto flex justify-center">
                     <PhoneMockup screen="discovery" size="sm" />
                   </div>
-                  <div className="space-y-3 text-left">
+                  <div className="space-y-3 text-left flex-1 min-w-0">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-[#2563EB] text-xs font-bold">
                       <Smartphone className="w-3.5 h-3.5" />
                       <span>Search & Filters</span>
@@ -206,10 +206,10 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
                 </div>
 
                 <div className="bg-white rounded-[28px] p-6 sm:p-8 border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-6">
-                  <div className="shrink-0">
+                  <div className="shrink-0 w-full md:w-auto flex justify-center">
                     <PhoneMockup screen="profile" size="sm" />
                   </div>
-                  <div className="space-y-3 text-left">
+                  <div className="space-y-3 text-left flex-1 min-w-0">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] text-xs font-bold">
                       <ShieldCheck className="w-3.5 h-3.5" />
                       <span>Transparent Profile</span>
@@ -236,10 +236,10 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             ) : (
               <>
                 <div className="bg-white rounded-[28px] p-6 sm:p-8 border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-6">
-                  <div className="shrink-0">
+                  <div className="shrink-0 w-full md:w-auto flex justify-center">
                     <PhoneMockup screen="tutor-onboarding" size="sm" />
                   </div>
-                  <div className="space-y-3 text-left">
+                  <div className="space-y-3 text-left flex-1 min-w-0">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-[#2563EB] text-xs font-bold">
                       <Smartphone className="w-3.5 h-3.5" />
                       <span>Easy Registration</span>
@@ -264,10 +264,10 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
                 </div>
 
                 <div className="bg-white rounded-[28px] p-6 sm:p-8 border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-6">
-                  <div className="shrink-0">
+                  <div className="shrink-0 w-full md:w-auto flex justify-center">
                     <PhoneMockup screen="profile" size="sm" />
                   </div>
-                  <div className="space-y-3 text-left">
+                  <div className="space-y-3 text-left flex-1 min-w-0">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold">
                       <ShieldCheck className="w-3.5 h-3.5" />
                       <span>Public Presence</span>

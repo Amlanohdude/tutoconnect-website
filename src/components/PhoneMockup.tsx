@@ -43,6 +43,8 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
 }) => {
   const widthClass =
     size === 'sm' ? 'w-[260px]' : size === 'lg' ? 'w-[310px] sm:w-[330px]' : 'w-[285px] sm:w-[305px]';
+  const screenHeightClass =
+    size === 'sm' ? 'h-[550px]' : size === 'lg' ? 'h-[630px]' : 'h-[580px]';
 
   return (
     <div
@@ -59,7 +61,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
         <div className="absolute -right-[3px] top-28 w-[3px] h-14 bg-neutral-700 rounded-r-xs" />
 
         {/* Screen Bezel & Display */}
-        <div className="relative rounded-[40px] overflow-hidden bg-white text-[#0F172A] border border-black/10">
+        <div className={`relative rounded-[40px] overflow-hidden bg-white text-[#0F172A] border border-black/10 flex flex-col ${screenHeightClass}`}>
           {/* Dynamic Island (21st.dev Signature Hardware Cutout) */}
           <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-24 h-5 rounded-full bg-black z-30 flex items-center justify-between px-2.5 pointer-events-none shadow-sm">
             <div className="w-2.5 h-2.5 rounded-full bg-[#141414] ring-1 ring-white/15 flex items-center justify-center">
@@ -68,9 +70,19 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
             <div className="w-2 h-2 rounded-full bg-[#0e0e0e]" />
           </div>
 
-          {/* Status Bar (Omitted for discovery screen to keep header clean & seamless under Dynamic Island) */}
-          {screen !== 'discovery' && (
-            <div className="h-8 bg-white px-5 pt-1.5 flex items-center justify-between text-[11px] font-semibold text-[#0F172A] relative z-20">
+          {/* Standardized Real-Time Status Bar across all screens */}
+          {screen === 'discovery' ? (
+            <div className="h-8 bg-[#1D4ED8] px-5 pt-1.5 flex items-center justify-between text-[11px] font-semibold text-white relative z-20 shrink-0">
+              <span>9:41</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold text-white">5G</span>
+                <div className="w-4 h-2.5 rounded-[3px] border border-white p-[1px] flex items-center">
+                  <div className="w-full h-full bg-white rounded-2xs" />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="h-8 bg-white px-5 pt-1.5 flex items-center justify-between text-[11px] font-semibold text-[#0F172A] relative z-20 shrink-0">
               <span>9:41</span>
               <div className="flex items-center gap-1.5">
                 <span className="text-[10px] font-bold text-[#0F172A]">5G</span>
@@ -83,9 +95,9 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
 
           {/* SCREEN CONTENT: EXACT TUTOCONNECT APP DISCOVERY */}
           {screen === 'discovery' && (
-            <div className="h-[545px] sm:h-[555px] flex flex-col bg-[#F8FAFC] text-left overflow-hidden">
+            <div className="flex-1 min-h-0 flex flex-col bg-[#F8FAFC] text-left overflow-hidden">
               {/* App Blue Header Banner */}
-              <div className="bg-gradient-to-b from-[#1D4ED8] via-[#2563EB] to-[#2563EB] pt-8 pb-3 px-3 rounded-b-[22px] shadow-sm flex-shrink-0 relative z-20">
+              <div className="bg-gradient-to-b from-[#1D4ED8] via-[#2563EB] to-[#2563EB] pt-1 pb-3 px-3 rounded-b-[22px] shadow-sm flex-shrink-0 relative z-20">
                 {/* Title & Actions Row */}
                 <div className="flex items-start justify-between">
                   <div>
@@ -432,7 +444,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
           )}
 
           {screen === 'profile' && (
-            <div className="h-[540px] flex flex-col bg-white text-left overflow-hidden">
+            <div className="flex-1 min-h-0 flex flex-col bg-white text-left overflow-hidden">
               {/* Modal Sheet Drag Handle & Header */}
               <div className="pt-2 px-4 pb-2 bg-white flex flex-col border-b border-slate-100 flex-shrink-0">
                 <div className="w-9 h-1 bg-slate-300 rounded-full mx-auto mb-2" />
@@ -447,7 +459,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
               </div>
 
               {/* Profile Scrollable Body */}
-              <div className="flex-1 overflow-y-auto no-scrollbar p-3 space-y-2.5 bg-white">
+              <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar p-3 space-y-2.5 bg-white">
                 {/* 1. Educator Hero Summary Card */}
                 <div className="p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]/70 text-center flex flex-col items-center shadow-2xs">
                   {/* Circular Vector Avatar with Verified Checkmark */}
@@ -587,15 +599,15 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
           )}
 
           {screen === 'tutor-onboarding' && (
-            <div className="h-[540px] flex flex-col bg-[#F8FAFC] text-left">
+            <div className="flex-1 min-h-0 flex flex-col bg-[#F8FAFC] text-left">
               {/* App Bar */}
-              <div className="px-4 py-2.5 bg-white border-b border-[#E2E8F0] flex items-center justify-between">
+              <div className="px-4 py-2.5 bg-white border-b border-[#E2E8F0] flex items-center justify-between flex-shrink-0">
                 <span className="font-bold text-xs text-[#0F172A]">Create Tutor Profile</span>
                 <span className="text-[10px] text-[#2563EB] font-semibold">Step 2 of 3</span>
               </div>
 
               {/* Form Content */}
-              <div className="flex-1 overflow-y-auto no-scrollbar p-4 space-y-3">
+              <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar p-4 space-y-3">
                 <div>
                   <label className="text-[10px] font-bold text-[#64748B] block mb-1">
                     Your Teaching Subjects
@@ -652,7 +664,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
 
           {/* Android Home Navigation Bar (only on screens without their own bottom bar) */}
           {screen !== 'discovery' && (
-            <div className="h-4 bg-white flex items-center justify-center pb-1">
+            <div className="h-4 bg-white flex items-center justify-center pb-1 shrink-0">
               <div className="w-24 h-1 bg-[#64748B]/30 rounded-full" />
             </div>
           )}
