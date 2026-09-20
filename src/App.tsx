@@ -16,6 +16,7 @@ import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { DownloadPage } from './pages/DownloadPage';
+import { sanitizeQueryParams, containsSqlInjection, containsXss, sanitizeSql } from './utils/security';
 
 // SEO metadata dictionary matching the specific page purposes
 const routeMetadata: Record<string, { title: string; description: string }> = {
@@ -109,12 +110,15 @@ function normalizePath(rawPathname: string): PageRoute {
     path.startsWith('//') ||
     path.startsWith('\\\\') ||
     path.includes('javascript') ||
-    path.includes('data:')
+    path.includes('data:') ||
+    containsSqlInjection(path) ||
+    containsXss(path)
   ) {
     return '/';
   }
 
-  // 4. Strip all leading slashes, backslashes, and control characters to prevent protocol-relative redirects
+  // 4. Sanitize SQL meta-characters and strip all leading slashes, backslashes, and control characters
+  path = sanitizeSql(path);
   path = path.replace(/[\0\r\n]/g, '').replace(/^[/\\]+/, '');
 
   if (!path || path === '') {
@@ -151,6 +155,35 @@ export default function App() {
   const [currentRoute, setCurrentRoute] = useState<PageRoute>(() => {
     return typeof window !== 'undefined' ? normalizePath(window.location.pathname) : '/';
   });
+
+  // Global Input & Query String Firewall (SQLi & XSS Real-Time Shield)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const sanitizeUrlEnvironment = () => {
+      const currentSearch = window.location.search;
+      const currentHash = window.location.hash;
+
+      let needsClean = false;
+      const { cleanSearch, wasSanitized: searchSanitized } = sanitizeQueryParams(currentSearch);
+
+      let cleanHash = currentHash;
+      if (containsSqlInjection(currentHash) || containsXss(currentHash)) {
+        cleanHash = '';
+        needsClean = true;
+      }
+
+      if (searchSanitized || needsClean) {
+        // Rewrite URL in browser address bar without page reload, purging hostile payloads
+        const safeUrl = window.location.pathname + cleanSearch + cleanHash;
+        window.history.replaceState({}, '', safeUrl);
+      }
+    };
+
+    sanitizeUrlEnvironment();
+    window.addEventListener('popstate', sanitizeUrlEnvironment);
+    return () => window.removeEventListener('popstate', sanitizeUrlEnvironment);
+  }, []);
 
   // Keep route synced with browser back/forward buttons
   useEffect(() => {
