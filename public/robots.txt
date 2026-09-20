@@ -1,4 +1,54 @@
+# TutoConnect Robots.txt
+# Allows full indexing for Search Engines & Generative AI Discovery
+# Disallows abusive scrapers that do not provide search or referral traffic
+
 User-agent: *
 Allow: /
+
+# Major Search Engines (SEO)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Generative AI Search & Answer Engines (GEO)
+# Allows ChatGPT Search, Perplexity, Google Gemini, and Apple Intelligence to cite TutoConnect
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Block Aggressive Non-Search Scrapers
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
 
 Sitemap: https://tutoconnect.in/sitemap.xml

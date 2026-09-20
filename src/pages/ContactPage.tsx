@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageRoute } from '../types';
 import { PillBadge, BrandStar } from '../components/ui/Decorations';
 import { Mail, ChevronRight, Check, Copy, ArrowRight } from 'lucide-react';
+import { getSupportEmail, getSupportMailto } from '../utils/security';
 
 interface ContactPageProps {
   onNavigate: (route: PageRoute) => void;
@@ -9,9 +10,11 @@ interface ContactPageProps {
 
 export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
   const [copied, setCopied] = useState(false);
+  const supportEmail = getSupportEmail();
+  const supportMailto = getSupportMailto();
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('tutoconnect.support@gmail.com');
+    navigator.clipboard.writeText(supportEmail);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -62,7 +65,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 Official Support Email
               </div>
               <h2 className="font-display text-2xl sm:text-4xl font-bold text-[#0F172A]">
-                tutoconnect.support@gmail.com
+                {supportEmail}
               </h2>
             </div>
 
@@ -72,7 +75,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
-                href="mailto:tutoconnect.support@gmail.com"
+                href={supportMailto}
                 className="btn-tuto-primary px-7 py-3.5 font-semibold text-xs inline-flex items-center gap-2 cursor-pointer shadow-md"
               >
                 <Mail className="w-4 h-4 text-white" />

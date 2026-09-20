@@ -3,6 +3,7 @@ import { TutoConnectLogo } from './TutoConnectLogo';
 import { PageRoute } from '../types';
 import { GooglePlayButton } from './GooglePlayButton';
 import { MapPin, Mail, Check } from 'lucide-react';
+import { getSupportEmail } from '../utils/security';
 
 interface FooterProps {
   onNavigate: (route: PageRoute) => void;
@@ -10,9 +11,10 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const [copied, setCopied] = useState(false);
+  const supportEmail = getSupportEmail();
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('tutoconnect.support@gmail.com');
+    navigator.clipboard.writeText(supportEmail);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -153,7 +155,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 ) : (
                   <>
                     <Mail className="w-3.5 h-3.5 text-[#2563EB]" />
-                    <span>tutoconnect.support@gmail.com</span>
+                    <span>{supportEmail}</span>
                   </>
                 )}
               </button>

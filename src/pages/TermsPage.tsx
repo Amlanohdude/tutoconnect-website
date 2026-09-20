@@ -2,6 +2,7 @@ import React from 'react';
 import { PageRoute } from '../types';
 import { ChevronRight } from 'lucide-react';
 import { PillBadge } from '../components/ui/Decorations';
+import { getSupportEmail, getSupportMailto } from '../utils/security';
 
 interface TermsPageProps {
   onNavigate: (route: PageRoute) => void;
@@ -92,8 +93,8 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
             <h2 className="font-display text-xl font-bold text-[#0F172A]">5. Contact & Inquiries</h2>
             <p className="text-xs text-[#64748B]">
               For questions concerning these Terms, contact our administration team at{' '}
-              <a href="mailto:tutoconnect.support@gmail.com" className="font-semibold text-[#2563EB] underline">
-                tutoconnect.support@gmail.com
+              <a href={getSupportMailto()} className="font-semibold text-[#2563EB] underline">
+                {getSupportEmail()}
               </a>.
             </p>
           </div>

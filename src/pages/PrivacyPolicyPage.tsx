@@ -2,6 +2,7 @@ import React from 'react';
 import { PageRoute } from '../types';
 import { ChevronRight } from 'lucide-react';
 import { PillBadge } from '../components/ui/Decorations';
+import { getSupportEmail, getSupportMailto } from '../utils/security';
 
 interface PrivacyPolicyPageProps {
   onNavigate: (route: PageRoute) => void;
@@ -96,8 +97,8 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
             <h2 className="font-display text-xl font-bold text-[#0F172A]">4. Data Retention & Deletion</h2>
             <p className="text-xs text-[#64748B]">
               We retain account and profile information for as long as your account remains active. You can request account deactivation and data deletion at any time by contacting our support team at{' '}
-              <a href="mailto:tutoconnect.support@gmail.com" className="font-semibold text-[#2563EB] underline">
-                tutoconnect.support@gmail.com
+              <a href={getSupportMailto()} className="font-semibold text-[#2563EB] underline">
+                {getSupportEmail()}
               </a>.
             </p>
           </div>

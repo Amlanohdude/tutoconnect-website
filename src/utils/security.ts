@@ -185,3 +185,19 @@ export function sanitizeQueryParams(search: string): { cleanSearch: string; wasS
     wasSanitized: wasSanitized || cleanStr !== search.replace(/^\?/, ''),
   };
 }
+
+/**
+ * Returns the decoded support email dynamically to prevent raw regex HTML scrapers
+ * from harvesting the email address directly from static build files.
+ */
+export function getSupportEmail(): string {
+  const parts = ['tutoconnect', 'support', 'gmail', 'com'];
+  return `${parts[0]}.${parts[1]}@${parts[2]}.${parts[3]}`;
+}
+
+/**
+ * Returns the dynamic mailto protocol string
+ */
+export function getSupportMailto(): string {
+  return `mailto:${getSupportEmail()}`;
+}
