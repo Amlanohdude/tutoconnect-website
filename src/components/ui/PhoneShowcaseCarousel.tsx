@@ -13,12 +13,12 @@ interface SlideItem {
 
 const slides: SlideItem[] = [
   {
-    id: 'discovery',
+    id: 'chat',
     step: '01',
-    badge: 'Hyperlocal Search',
-    title: 'Find Tuition & Tutors in Guwahati',
+    badge: 'Direct Educator Messaging',
+    title: 'Message & Arrange Directly with Tutors',
     seoDescription:
-      'Search home tutors and tuition centers across Beltola, Hatigaon, Zoo Road, Chandmari, and Jalukbari for SEBA, CBSE, and AHSEC boards.',
+      'Chat directly with verified Guwahati tutors. Ask questions about syllabus coverage, agree on class timings, schedule demo sessions, and arrange tuition without middleman fees.',
   },
   {
     id: 'profile',
