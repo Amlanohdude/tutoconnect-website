@@ -3,6 +3,7 @@ import lottie, { AnimationItem } from 'lottie-web/build/player/lottie_light';
 import { motion } from 'motion/react';
 import { InteractiveTiltPhone } from './InteractiveTiltPhone';
 import { PhoneMockup } from '../PhoneMockup';
+import { ShieldCheck, Zap } from 'lucide-react';
 
 interface HeroLottieAnimationProps {
   className?: string;
@@ -65,7 +66,27 @@ export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ classN
   return (
     <div className={`relative w-full max-w-[480px] sm:max-w-[540px] mx-auto flex items-center justify-center select-none ${className}`}>
       {/* Ambient Radial Soft Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-gradient-to-tr from-blue-200/40 via-sky-100/30 to-transparent rounded-full blur-3xl pointer-events-none animate-tuto-glow" />
+
+      {/* Ambient Micro-Badge 1 (Desktop Only): Verified Profiles */}
+      <div className="hidden lg:flex absolute top-14 -left-6 z-40 items-center gap-2.5 px-3.5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#E2E8F0] shadow-[0_8px_20px_rgba(15,23,42,0.06)] animate-tuto-float-a select-none pointer-events-none">
+        <div className="w-5 h-5 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center text-[#2563EB]">
+          <ShieldCheck className="w-3 h-3 text-[#2563EB]" />
+        </div>
+        <span className="text-xs font-semibold text-[#0F172A] whitespace-nowrap">
+          Verified Tutors <span className="text-[#64748B] font-normal">• Guwahati</span>
+        </span>
+      </div>
+
+      {/* Ambient Micro-Badge 2 (Desktop Only): Direct Contact & 0% Commission */}
+      <div className="hidden lg:flex absolute bottom-12 -left-2 z-40 items-center gap-2.5 px-3.5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#E2E8F0] shadow-[0_8px_20px_rgba(15,23,42,0.06)] animate-tuto-float-b select-none pointer-events-none">
+        <div className="w-5 h-5 rounded-full bg-[#ECFDF5] border border-[#A7F3D0] flex items-center justify-center text-[#059669]">
+          <Zap className="w-3 h-3 text-[#059669]" />
+        </div>
+        <span className="text-xs font-semibold text-[#0F172A] whitespace-nowrap">
+          Direct Connect <span className="text-[#059669] font-medium">• 0% Commission</span>
+        </span>
+      </div>
 
       {/* Layer 1: Floating Animated Student Companion with Interactive Sideways Glide on Phone Hover */}
       <motion.div

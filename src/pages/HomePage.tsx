@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageRoute } from '../types';
 import { PhoneMockup } from '../components/PhoneMockup';
 import { PhoneShowcaseCarousel } from '../components/ui/PhoneShowcaseCarousel';
@@ -25,6 +25,16 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const faqs = [
     {
@@ -235,30 +245,82 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left: Display typography, concise statement, dual CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45 }}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: isMobile ? 0 : 0.08,
+                    delayChildren: isMobile ? 0 : 0.02,
+                  },
+                },
+              }}
               className="lg:col-span-7 space-y-6 text-left"
             >
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+              {/* Eyebrow */}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: isMobile ? 0 : 10 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: isMobile ? 0.15 : 0.4, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2563EB]"
+              >
                 <MapPin className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
                 <span>Guwahati, Assam</span>
                 <span className="text-[#CBD5E1] font-light">|</span>
                 <span className="text-[#64748B] font-medium tracking-normal normal-case">Tutor & Tuition Network</span>
-              </div>
+              </motion.div>
 
-              <h1 className="font-display-hero text-[#0F172A]">
+              {/* H1 Heading */}
+              <motion.h1
+                variants={{
+                  hidden: { opacity: 0, y: isMobile ? 0 : 14 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: isMobile ? 0.15 : 0.45, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                className="font-display-hero text-[#0F172A]"
+              >
                 Find Tuition &amp; Tutors <br className="hidden sm:inline" />
                 in Guwahati
-              </h1>
+              </motion.h1>
 
-              <p className="text-base sm:text-lg text-[#64748B] max-w-xl leading-relaxed">
+              {/* Subheading */}
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: isMobile ? 0 : 12 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: isMobile ? 0.15 : 0.45, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                className="text-base sm:text-lg text-[#64748B] max-w-xl leading-relaxed"
+              >
                 Discover tutors, explore their profiles, and connect directly for tuition that fits
                 your needs.
-              </p>
+              </motion.p>
 
               {/* Dual Action Pills */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: isMobile ? 0 : 12 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: isMobile ? 0.15 : 0.45, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                className="flex flex-wrap items-center gap-3 pt-2"
+              >
                 <button
                   id="hero-find-tutor-btn"
                   onClick={() => onNavigate('/tuition/guwahati/')}
@@ -275,10 +337,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 >
                   <span>Become a Tutor</span>
                 </button>
-              </div>
+              </motion.div>
 
               {/* Android Indicator */}
-              <div className="pt-2 flex items-center gap-2 text-xs text-[#64748B]">
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: isMobile ? 0 : 8 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: isMobile ? 0.15 : 0.4, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                className="pt-2 flex items-center gap-2 text-xs text-[#64748B]"
+              >
                 <a
                   href="https://play.google.com/store/apps/details?id=in.tutoconnect.app"
                   target="_blank"
@@ -290,14 +362,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </a>
                 <span className="text-[#CBD5E1]">•</span>
                 <span>Android App</span>
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Right: Bespoke Education Discovery Lottie Animation */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.1 }}
+              initial={{ opacity: 0, scale: isMobile ? 1 : 0.96, y: isMobile ? 0 : 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{
+                duration: isMobile ? 0.2 : 0.55,
+                delay: isMobile ? 0 : 0.16,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="lg:col-span-5 flex justify-center lg:justify-end"
             >
               <HeroLottieAnimation />
@@ -311,7 +387,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0]">
         <div className="container-edufy">
-          <div className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: isMobile ? 0 : 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: isMobile ? 0.2 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center"
+          >
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Two Audiences
             </span>
@@ -321,7 +403,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
               Direct discovery and connection for both sides of tuition in Guwahati.
             </p>
-          </div>
+          </motion.div>
 
           {/* Editorial Split: Two cohesive surfaces */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
@@ -385,7 +467,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       <section className="py-20 sm:py-28 bg-white border-b border-[#E2E8F0]">
         <div className="container-edufy">
-          <div className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: isMobile ? 0 : 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: isMobile ? 0.2 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl mx-auto mb-14 space-y-2.5 text-center"
+          >
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Android Application
             </span>
@@ -395,7 +483,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
               Experience how students and tutors connect directly in Guwahati.
             </p>
-          </div>
+          </motion.div>
 
           {/* Interactive 3-Phone Stage Carousel */}
           <PhoneShowcaseCarousel />
@@ -499,7 +587,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
         <div className="container-edufy">
           {/* Centered Minimal Header */}
-          <div className="max-w-2xl mx-auto mb-10 space-y-2 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: isMobile ? 0 : 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: isMobile ? 0.2 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl mx-auto mb-10 space-y-2 text-center"
+          >
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Scope &amp; Availability
             </span>
@@ -509,7 +603,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <p className="text-sm text-[#64748B] max-w-lg mx-auto leading-relaxed">
               Discover educators by subject, curriculum, and preferred teaching format.
             </p>
-          </div>
+          </motion.div>
 
           {/* Minimal Feature Art Cards (4 Teaching Formats) */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-4xl mx-auto mb-10">
@@ -596,7 +690,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0]">
         <div className="container-edufy">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: isMobile ? 0 : 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: isMobile ? 0.2 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-3xl mx-auto text-center space-y-4"
+          >
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Guwahati, Assam
             </span>
@@ -619,7 +719,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

@@ -250,4 +250,71 @@ body {
   }
 }
 
+/* ========================================================================= */
+/* Ambient Desktop Micro-Animations (GPU-Accelerated translate3d)            */
+/* ========================================================================= */
+@keyframes tutoFloatA {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes tutoFloatB {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 6px, 0);
+  }
+}
+
+@keyframes tutoGlowPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate3d(-50%, -50%, 0) scale(1.08);
+  }
+}
+
+.animate-tuto-float-a {
+  animation: tutoFloatA 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-tuto-float-b {
+  animation: tutoFloatB 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-tuto-glow {
+  animation: tutoGlowPulse 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Technical SEO & Mobile Performance Guard:
+   Disable continuous ambient floats on mobile screens to maintain 60-120fps and low CPU/battery consumption */
+@media (max-width: 767px) {
+  .animate-tuto-float-a,
+  .animate-tuto-float-b,
+  .animate-tuto-glow {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-tuto-float-a,
+  .animate-tuto-float-b,
+  .animate-tuto-glow {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
 
