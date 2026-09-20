@@ -44,10 +44,17 @@ export const PhoneShowcaseCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<-1 | 1>(1);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-  const nextIndex = (currentIndex + 1) % slides.length;
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    checkWidth();
+    window.addEventListener('resize', checkWidth);
+    return () => window.removeEventListener('resize', checkWidth);
+  }, []);
 
   const currentSlide = slides[currentIndex];
 
@@ -139,7 +146,7 @@ export const PhoneShowcaseCarousel: React.FC = () => {
       />
 
       {/* ========================================================================= */}
-      {/* 3-PHONE STAGE (Identical True-Size Phones, Zero Clipping, Pure 2D Smooth Transforms) */}
+      {/* 3-PHONE STAGE (Persistent Identity Stage Orbit, Pure GPU Transforms) */}
       {/* ========================================================================= */}
       <div className="relative w-full min-h-[660px] sm:min-h-[720px] py-8 flex items-center justify-center overflow-visible">
         {/* Soft Ambient Radial Glow (Seamless blend into white canvas) */}
@@ -148,90 +155,92 @@ export const PhoneShowcaseCarousel: React.FC = () => {
           aria-hidden="true"
         />
 
-        {/* Left Flanking Phone (True Size "lg", Flat 2D Angle with Spring Hover Reaction) */}
-        <motion.div
-          onClick={handlePrev}
-          initial={false}
-          animate={{
-            rotate: -4,
-            scale: 1,
-            opacity: 0.6,
-          }}
-          whileHover={{
-            scale: 1.02,
-            opacity: 0.85,
-            rotate: -2,
-            y: -6,
-          }}
-          transition={{ type: 'spring', stiffness: 320, damping: 24 }}
-          className="hidden md:block absolute left-1/2 -translate-x-[calc(50%+175px)] lg:-translate-x-[calc(50%+205px)] z-10 cursor-pointer pointer-events-auto select-none will-change-transform"
-          title={`Previous: ${slides[prevIndex].title}`}
-          aria-hidden="true"
-        >
-          <div className="pointer-events-none drop-shadow-[0_20px_35px_rgba(15,23,42,0.12)]">
-            <PhoneMockup screen={slides[prevIndex].id} size="lg" />
-          </div>
-        </motion.div>
+        {/* 3-Phone Stage Anchor Box */}
+        <div className="relative w-[310px] sm:w-[330px] h-[630px] flex items-center justify-center">
+          {slides.map((slide, index) => {
+            const diff = index - currentIndex;
+            let rel = diff;
+            if (diff === 2) rel = -1;
+            if (diff === -2) rel = 1;
 
-        {/* Center Focal Phone (True Size "lg", Spring Lift & Subtle 2D Angle on Hover) */}
-        <motion.div
-          initial={false}
-          whileHover={{
-            y: -10,
-            scale: 1.025,
-            rotate: -1.5,
-          }}
-          transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-          className="relative z-20 cursor-pointer select-none will-change-transform"
-        >
-          <div className="relative drop-shadow-[0_24px_45px_rgba(15,23,42,0.18)]">
-            <AnimatePresence mode="popLayout" custom={direction} initial={false}>
+            const isFocal = rel === 0;
+            const isLeft = rel === -1;
+            const isRight = rel === 1;
+            const isWrapping = (direction === 1 && isRight) || (direction === -1 && isLeft);
+
+            // Responsive stage coordinates
+            const xPos = isFocal ? 0 : isRight ? (isDesktop ? 205 : 220) : isDesktop ? -205 : -220;
+            const rotateDeg = isFocal ? 0 : isRight ? 4 : -4;
+            const scaleVal = isFocal ? 1 : 0.94;
+            const opacityVal = isFocal ? 1 : isDesktop ? 0.6 : 0;
+            const zIndexVal = isFocal ? 30 : isWrapping ? 5 : 10;
+
+            return (
               <motion.div
-                key={currentSlide.id}
-                custom={direction}
-                variants={{
-                  enter: (dir: number) => ({
-                    x: dir > 0 ? 190 : -190,
-                    opacity: 0,
-                    scale: 0.94,
-                    rotate: dir > 0 ? 4 : -4,
-                  }),
-                  center: {
-                    x: 0,
-                    opacity: 1,
-                    scale: 1,
-                    rotate: 0,
-                    transition: {
-                      x: { type: 'spring', stiffness: 280, damping: 26 },
-                      scale: { type: 'spring', stiffness: 280, damping: 26 },
-                      rotate: { type: 'spring', stiffness: 280, damping: 26 },
-                      opacity: { duration: 0.28, ease: 'easeOut' },
-                    },
-                  },
-                  exit: (dir: number) => ({
-                    x: dir > 0 ? -190 : 190,
-                    opacity: 0,
-                    scale: 0.94,
-                    rotate: dir > 0 ? -4 : 4,
-                    transition: {
-                      x: { type: 'spring', stiffness: 280, damping: 26 },
-                      scale: { type: 'spring', stiffness: 280, damping: 26 },
-                      rotate: { type: 'spring', stiffness: 280, damping: 26 },
-                      opacity: { duration: 0.22, ease: 'easeIn' },
-                    },
-                  }),
+                key={slide.id}
+                onClick={() => {
+                  if (isLeft) handlePrev();
+                  if (isRight) handleNext();
                 }}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                className="will-change-transform"
+                initial={false}
+                animate={{
+                  x: xPos,
+                  rotate: rotateDeg,
+                  scale: scaleVal,
+                  opacity: opacityVal,
+                  zIndex: zIndexVal,
+                }}
+                whileHover={
+                  isFocal
+                    ? {
+                        y: -8,
+                        scale: 1.02,
+                        rotate: -1.5,
+                      }
+                    : {
+                        scale: 0.97,
+                        opacity: 0.85,
+                        rotate: isRight ? 2 : -2,
+                        y: -6,
+                      }
+                }
+                transition={{
+                  type: 'spring',
+                  stiffness: 260,
+                  damping: 26,
+                  mass: 0.9,
+                }}
+                className={`absolute top-0 left-0 w-full h-full will-change-transform ${
+                  isFocal ? 'cursor-default pointer-events-auto' : 'cursor-pointer pointer-events-auto'
+                } ${!isDesktop && !isFocal ? 'pointer-events-none' : ''}`}
+                style={{
+                  zIndex: zIndexVal,
+                }}
+                title={
+                  isLeft
+                    ? `Previous: ${slide.title}`
+                    : isRight
+                      ? `Next: ${slide.title}`
+                      : slide.title
+                }
+                aria-hidden={!isFocal}
+                tabIndex={isFocal ? 0 : -1}
               >
-                <PhoneMockup screen={currentSlide.id} size="lg" />
+                <div
+                  className="w-full h-full flex items-center justify-center transition-shadow duration-300"
+                  style={{
+                    filter: isFocal
+                      ? 'drop-shadow(0 24px 45px rgba(15,23,42,0.18))'
+                      : 'drop-shadow(0 20px 35px rgba(15,23,42,0.12))',
+                  }}
+                >
+                  <PhoneMockup screen={slide.id} size="lg" />
+                </div>
               </motion.div>
-            </AnimatePresence>
-          </div>
+            );
+          })}
 
-          {/* Floating Dark Glassmorphic Control Capsule */}
+          {/* Floating Dark Glassmorphic Control Capsule (Anchored at Focal Stage Bottom) */}
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-40 bg-slate-900/90 backdrop-blur-md border border-white/20 rounded-full px-2.5 py-1.5 flex items-center gap-2 shadow-2xl pointer-events-auto">
             {/* Previous Button */}
             <button
@@ -276,32 +285,7 @@ export const PhoneShowcaseCarousel: React.FC = () => {
               <ChevronRight className="w-4 h-4 text-white" />
             </button>
           </div>
-        </motion.div>
-
-        {/* Right Flanking Phone (True Size "lg", Flat 2D Angle with Spring Hover Reaction) */}
-        <motion.div
-          onClick={handleNext}
-          initial={false}
-          animate={{
-            rotate: 4,
-            scale: 1,
-            opacity: 0.6,
-          }}
-          whileHover={{
-            scale: 1.02,
-            opacity: 0.85,
-            rotate: 2,
-            y: -6,
-          }}
-          transition={{ type: 'spring', stiffness: 320, damping: 24 }}
-          className="hidden md:block absolute left-1/2 -translate-x-[calc(50%-175px)] lg:-translate-x-[calc(50%-205px)] z-10 cursor-pointer pointer-events-auto select-none will-change-transform"
-          title={`Next: ${slides[nextIndex].title}`}
-          aria-hidden="true"
-        >
-          <div className="pointer-events-none drop-shadow-[0_20px_35px_rgba(15,23,42,0.12)]">
-            <PhoneMockup screen={slides[nextIndex].id} size="lg" />
-          </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* ========================================================================= */}
