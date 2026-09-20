@@ -42,6 +42,7 @@ const AUTO_ROTATE_MS = 5000;
 
 export const PhoneShowcaseCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<-1 | 1>(1);
   const [isPlaying, setIsPlaying] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -51,14 +52,17 @@ export const PhoneShowcaseCarousel: React.FC = () => {
   const currentSlide = slides[currentIndex];
 
   const handleNext = useCallback(() => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % slides.length);
   }, []);
 
   const handlePrev = useCallback(() => {
+    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
   }, []);
 
   const handleSelect = (index: number) => {
+    setDirection(index >= currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
 
@@ -180,14 +184,47 @@ export const PhoneShowcaseCarousel: React.FC = () => {
           transition={{ type: 'spring', stiffness: 300, damping: 22 }}
           className="relative z-20 cursor-pointer select-none will-change-transform"
         >
-          <div className="drop-shadow-[0_24px_45px_rgba(15,23,42,0.18)]">
-            <AnimatePresence mode="wait">
+          <div className="relative drop-shadow-[0_24px_45px_rgba(15,23,42,0.18)]">
+            <AnimatePresence mode="popLayout" custom={direction} initial={false}>
               <motion.div
                 key={currentSlide.id}
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                custom={direction}
+                variants={{
+                  enter: (dir: number) => ({
+                    x: dir > 0 ? 190 : -190,
+                    opacity: 0,
+                    scale: 0.94,
+                    rotate: dir > 0 ? 4 : -4,
+                  }),
+                  center: {
+                    x: 0,
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 0,
+                    transition: {
+                      x: { type: 'spring', stiffness: 280, damping: 26 },
+                      scale: { type: 'spring', stiffness: 280, damping: 26 },
+                      rotate: { type: 'spring', stiffness: 280, damping: 26 },
+                      opacity: { duration: 0.28, ease: 'easeOut' },
+                    },
+                  },
+                  exit: (dir: number) => ({
+                    x: dir > 0 ? -190 : 190,
+                    opacity: 0,
+                    scale: 0.94,
+                    rotate: dir > 0 ? -4 : 4,
+                    transition: {
+                      x: { type: 'spring', stiffness: 280, damping: 26 },
+                      scale: { type: 'spring', stiffness: 280, damping: 26 },
+                      rotate: { type: 'spring', stiffness: 280, damping: 26 },
+                      opacity: { duration: 0.22, ease: 'easeIn' },
+                    },
+                  }),
+                }}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className="will-change-transform"
               >
                 <PhoneMockup screen={currentSlide.id} size="lg" />
               </motion.div>
@@ -271,13 +308,14 @@ export const PhoneShowcaseCarousel: React.FC = () => {
       {/* MINIMAL SCREEN CAPTION & PROGRESS DOTS (Crisp, High-Converting & SEO-Friendly) */}
       {/* ========================================================================= */}
       <div className="mt-4 flex flex-col items-center space-y-2">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentSlide.id}
-            initial={{ opacity: 0, y: 3 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -3 }}
-            transition={{ duration: 0.2 }}
+            custom={direction}
+            initial={{ opacity: 0, x: direction > 0 ? 16 : -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction > 0 ? -16 : 16 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
             className="text-xs sm:text-sm font-semibold text-[#0F172A] text-center"
           >
             <span className="text-[#2563EB] font-bold">{currentSlide.step}</span>
@@ -305,12 +343,12 @@ export const PhoneShowcaseCarousel: React.FC = () => {
         </div>
       </div>
 
-      {/* Accessible Figcaption for Search Crawlers (Googlebot / Bingbot) */}
+      {/* Accessible Figcaption for Search Crawlers (Googlebot / Bingbot / AI Crawlers) */}
       <figcaption className="sr-only">
         TutoConnect Android App interface demonstration:
-        1. Find Tuition & Tutors in Guwahati across Beltola, Hatigaon, Zoo Road, Chandmari, and Jalukbari for SEBA, CBSE, AHSEC boards.
+        1. Message & Arrange Directly with Tutors in Guwahati without middleman fees or platform cuts.
         2. Review Detailed Educator Profiles with verified degrees and authentic reviews.
-        3. Connect Directly via WhatsApp or phone with 0% middleman commission.
+        3. Connect & Onboard Directly via WhatsApp or phone with 0% middleman commission.
       </figcaption>
     </figure>
   );
