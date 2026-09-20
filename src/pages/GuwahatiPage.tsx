@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PageRoute } from '../types';
 import { PhoneMockup } from '../components/PhoneMockup';
-import { PillBadge, BrandStar } from '../components/ui/Decorations';
+import { BrandStar } from '../components/ui/Decorations';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   MapPin,
@@ -130,13 +130,12 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7 space-y-5 text-left relative z-10">
-              <PillBadge
-                text="Guwahati, Assam • Local Discovery Hub"
-                bgColor="#EFF6FF"
-                dotColor="#0EA5E9"
-                textColor="#0F172A"
-                borderColor="#DBEAFE"
-              />
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+                <MapPin className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
+                <span>Guwahati, Assam</span>
+                <span className="text-[#CBD5E1] font-light">|</span>
+                <span className="text-[#64748B] font-medium tracking-normal normal-case">Tuition & Tutor Network</span>
+              </div>
 
               <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.1]">
                 Find Tuition & Tutors in Guwahati
@@ -233,7 +232,7 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Side A: Students */}
             <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-4 hover:border-[#BFDBFE] transition-colors">
-              <div className="inline-block px-3 py-1 rounded-full bg-[#EFF6FF] text-xs font-semibold text-[#2563EB] border border-[#DBEAFE]">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
                 For Students & Parents
               </div>
               <h3 className="font-display text-xl sm:text-2xl font-bold text-[#0F172A]">
@@ -269,7 +268,7 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
 
             {/* Side B: Tutors */}
             <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-4 hover:border-[#BFDBFE] transition-colors">
-              <div className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-xs font-semibold text-[#0284C7] border border-[#BAE6FD]">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
                 For Tutors & Teachers
               </div>
               <h3 className="font-display text-xl sm:text-2xl font-bold text-[#0F172A]">
@@ -310,9 +309,9 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
       <section className="py-14 sm:py-18 bg-white text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10 space-y-2">
-            <div className="inline-block px-3 py-1 rounded-full bg-[#EFF6FF] text-xs font-semibold text-[#2563EB] border border-[#DBEAFE]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] block">
               Flexible Modes
-            </div>
+            </span>
             <h2 className="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] tracking-tight">
               Tuition Formats in Guwahati
             </h2>
@@ -430,9 +429,9 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
       <section className="py-16 sm:py-20 bg-white text-left">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 space-y-2 text-center sm:text-left">
-            <div className="inline-block px-3 py-1 rounded-full bg-[#EFF6FF] text-xs font-semibold text-[#2563EB] border border-[#DBEAFE]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] block">
               Local FAQ
-            </div>
+            </span>
             <h2 className="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] tracking-tight">
               Frequently asked questions in Guwahati
             </h2>

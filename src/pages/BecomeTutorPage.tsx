@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PageRoute } from '../types';
 import { PhoneMockup } from '../components/PhoneMockup';
-import { PillBadge, BrandStar } from '../components/ui/Decorations';
+import { BrandStar } from '../components/ui/Decorations';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ChevronRight,
@@ -136,13 +136,12 @@ export const BecomeTutorPage: React.FC<BecomeTutorPageProps> = ({ onNavigate }) 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7 space-y-5 text-left relative z-10">
-              <PillBadge
-                text="Educator Community • Guwahati, Assam"
-                bgColor="#EFF6FF"
-                dotColor="#0EA5E9"
-                textColor="#0F172A"
-                borderColor="#DBEAFE"
-              />
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+                <MapPin className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
+                <span>Guwahati, Assam</span>
+                <span className="text-[#CBD5E1] font-light">|</span>
+                <span className="text-[#64748B] font-medium tracking-normal normal-case">Educator Community</span>
+              </div>
 
               <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.1]">
                 Looking for students? Join TutoConnect.
@@ -228,9 +227,9 @@ export const BecomeTutorPage: React.FC<BecomeTutorPageProps> = ({ onNavigate }) 
       <section className="py-14 sm:py-18 bg-[#F8FAFC] text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10 space-y-2">
-            <div className="inline-block px-3 py-1 rounded-full bg-white text-xs font-semibold text-[#2563EB] border border-[#DBEAFE]">
-              Simple Onboarding
-            </div>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] block">
+              Onboarding Process
+            </span>
             <h2 className="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] tracking-tight">
               How to become discoverable
             </h2>
@@ -287,9 +286,9 @@ export const BecomeTutorPage: React.FC<BecomeTutorPageProps> = ({ onNavigate }) 
       <section className="py-16 sm:py-20 bg-white text-left">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 space-y-2 text-center sm:text-left">
-            <div className="inline-block px-3 py-1 rounded-full bg-[#EFF6FF] text-xs font-semibold text-[#2563EB] border border-[#DBEAFE]">
-              Got Questions?
-            </div>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] block">
+              Educator FAQ
+            </span>
             <h2 className="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] tracking-tight">
               Frequently asked questions by educators
             </h2>

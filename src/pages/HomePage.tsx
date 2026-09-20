@@ -15,6 +15,7 @@ import {
   Laptop,
   Plus,
   GraduationCap,
+  MapPin,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -244,9 +245,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               transition={{ duration: 0.45 }}
               className="lg:col-span-7 space-y-6 text-left"
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] text-xs font-semibold text-[#2563EB]">
-                <span className="w-2 h-2 rounded-full bg-[#0EA5E9]" />
-                <span>Guwahati, Assam • Android App</span>
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+                <MapPin className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
+                <span>Guwahati, Assam</span>
+                <span className="text-[#CBD5E1] font-light">|</span>
+                <span className="text-[#64748B] font-medium tracking-normal normal-case">Tutor & Tuition Network</span>
               </div>
 
               <h1 className="font-display-hero text-[#0F172A]">
