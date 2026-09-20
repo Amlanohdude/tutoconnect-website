@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageRoute } from '../../types';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export interface StepItem {
   number: string;
@@ -44,7 +45,8 @@ const Pin = ({ className }: { className?: string }) => (
 const Card: React.FC<{
   step: StepItem;
   position: StepPosition;
-}> = ({ step, position }) => {
+  index?: number;
+}> = ({ step, position, index = 0 }) => {
   const themeStyles = {
     blue: {
       bg: 'bg-blue-50/90',
@@ -76,11 +78,19 @@ const Card: React.FC<{
   const stepId = `step-${step.number}`;
 
   return (
-    <div
+    <motion.div
       id={stepId}
       itemProp="step"
       itemScope
       itemType="https://schema.org/HowToStep"
+      initial={{ opacity: 0, y: 24, scale: 0.94 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{
+        duration: 0.45,
+        delay: index * 0.12,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       className={`relative w-full md:w-[300px] transform-gpu transition-all duration-300 ease-out hover:z-30 hover:scale-105 hover:rotate-0 cursor-default select-none ${position.rotate} ${position.className}`}
     >
       <meta itemProp="position" content={step.number} />
@@ -115,7 +125,7 @@ const Card: React.FC<{
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -263,7 +273,7 @@ export const HowItWorksPinboard: React.FC<HowItWorksPinboardProps> = ({
             <ol className="contents list-none p-0 m-0">
               {steps.map((step, idx) => (
                 <li key={step.number} className="contents">
-                  <Card step={step} position={positions[idx % positions.length]} />
+                  <Card step={step} position={positions[idx % positions.length]} index={idx} />
                 </li>
               ))}
             </ol>

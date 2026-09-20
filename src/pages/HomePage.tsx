@@ -408,7 +408,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {/* Editorial Split: Two cohesive surfaces */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {/* Side A: Students & Parents */}
-            <div className="p-8 sm:p-10 rounded-[28px] bg-[#F8FAFC] border border-[#E2E8F0] flex flex-col justify-between space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: isMobile ? 0 : 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="p-8 sm:p-10 rounded-[28px] bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#CBD5E1] hover:shadow-md transition-shadow flex flex-col justify-between space-y-8"
+            >
               <div className="space-y-4">
                 <span className="inline-block px-3 py-1 rounded-full bg-white text-[11px] font-bold uppercase tracking-wider text-[#2563EB] border border-[#E2E8F0]">
                   FOR STUDENTS &amp; PARENTS
@@ -431,10 +438,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Side B: Tutors & Teachers */}
-            <div className="p-8 sm:p-10 rounded-[28px] bg-[#F8FAFC] border border-[#E2E8F0] flex flex-col justify-between space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: isMobile ? 0 : 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 0.2, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="p-8 sm:p-10 rounded-[28px] bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#CBD5E1] hover:shadow-md transition-shadow flex flex-col justify-between space-y-8"
+            >
               <div className="space-y-4">
                 <span className="inline-block px-3 py-1 rounded-full bg-white text-[11px] font-bold uppercase tracking-wider text-[#0284C7] border border-[#E2E8F0]">
                   FOR TUTORS &amp; TEACHERS
@@ -457,7 +471,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <ArrowRight className="w-3.5 h-3.5 text-[#0F172A]" />
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -486,7 +500,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </motion.div>
 
           {/* Interactive 3-Phone Stage Carousel */}
-          <PhoneShowcaseCarousel />
+          <motion.div
+            initial={{ opacity: 0, y: isMobile ? 0 : 24, scale: isMobile ? 1 : 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: isMobile ? 0.2 : 0.55, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <PhoneShowcaseCarousel />
+          </motion.div>
         </div>
       </section>
 
@@ -607,10 +628,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
           {/* Minimal Feature Art Cards (4 Teaching Formats) */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-4xl mx-auto mb-10">
-            {teachingModes.map((mode) => (
-              <div
+            {teachingModes.map((mode, idx) => (
+              <motion.div
                 key={mode.name}
-                className="rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-sm hover:border-[#CBD5E1] transition-all duration-200 group overflow-hidden flex flex-col"
+                initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{
+                  duration: isMobile ? 0.15 : 0.45,
+                  delay: isMobile ? 0 : idx * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 group overflow-hidden flex flex-col cursor-default"
               >
                 {/* Visual Art Canvas */}
                 <div className="h-24 bg-[#F8FAFC] group-hover:bg-[#F0F7FF]/50 border-b border-[#E2E8F0]/70 flex items-center justify-center p-2.5 relative overflow-hidden transition-colors duration-200">
@@ -626,7 +656,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     {mode.badge}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -738,7 +768,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       <section className="py-20 sm:py-24 bg-white">
         <div className="container-edufy">
-          <div className="p-8 sm:p-14 rounded-[32px] bg-[#1E3A8A] text-white relative overflow-hidden shadow-lg text-center">
+          <motion.div
+            initial={{ opacity: 0, y: isMobile ? 0 : 24, scale: isMobile ? 1 : 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: isMobile ? 0.2 : 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="p-8 sm:p-14 rounded-[32px] bg-[#1E3A8A] text-white relative overflow-hidden shadow-lg text-center"
+          >
             {/* Ambient gradients */}
             <div
               className="absolute -right-20 -top-20 w-96 h-96 bg-[#2563EB]/30 rounded-full blur-3xl pointer-events-none"
@@ -781,7 +817,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -17,6 +17,7 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { DownloadPage } from './pages/DownloadPage';
 import { sanitizeQueryParams, containsSqlInjection, containsXss, sanitizeSql } from './utils/security';
+import { motion, useScroll } from 'motion/react';
 
 // SEO metadata dictionary matching the specific page purposes
 const routeMetadata: Record<string, { title: string; description: string }> = {
@@ -152,6 +153,7 @@ function normalizePath(rawPathname: string): PageRoute {
 }
 
 export default function App() {
+  const { scrollYProgress } = useScroll();
   const [currentRoute, setCurrentRoute] = useState<PageRoute>(() => {
     return typeof window !== 'undefined' ? normalizePath(window.location.pathname) : '/';
   });
@@ -258,6 +260,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans antialiased selection:bg-[#0EA5E9] selection:text-white">
+      {/* Top Scroll Progress Indicator */}
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#2563EB] via-[#0EA5E9] to-[#38BDF8] origin-left z-[100] pointer-events-none"
+      />
+
       {/* Top Navigation */}
       <Navbar currentRoute={currentRoute} onNavigate={handleNavigate} />
 
