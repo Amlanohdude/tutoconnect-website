@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               directly across Guwahati.
             </p>
 
-            <div className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#EFF6FF] text-[#2563EB] border border-[#DBEAFE]">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#2563EB]">
               <MapPin className="w-3.5 h-3.5 text-[#2563EB]" />
               <span>Guwahati, Assam</span>
             </div>

@@ -71,39 +71,68 @@ const routeMetadata: Record<string, { title: string; description: string }> = {
   },
 };
 
-// Normalize path to match PageRoute
-function normalizePath(pathname: string): PageRoute {
-  let path = pathname.toLowerCase();
-  // Strip trailing hash/query
-  path = path.split('?')[0].split('#')[0];
+const VALID_ROUTES: readonly PageRoute[] = [
+  '/',
+  '/tuition/guwahati/',
+  '/become-a-tutor/',
+  '/how-it-works/',
+  '/about/',
+  '/contact/',
+  '/privacy-policy/',
+  '/terms/',
+  '/download/',
+  '/find-a-tutor/',
+] as const;
 
-  if (!path || path === '' || path === '/') {
+// Defensive Open-Redirect & Path Traversal Sanitizer
+function normalizePath(rawPathname: string): PageRoute {
+  if (!rawPathname || typeof rawPathname !== 'string') {
     return '/';
   }
 
-  // Ensure trailing slash for directory routes
+  let path = rawPathname.trim().toLowerCase();
+
+  // 1. Strip trailing hash and query parameters (neutralizes ?redirect=... or #redirect=...)
+  path = path.split('?')[0].split('#')[0];
+
+  // 2. Decode URI components safely to catch double-encoding bypasses (e.g., %2f%2fevil.com)
+  try {
+    path = decodeURIComponent(path);
+  } catch {
+    // Malformed URI sequence — reject immediately
+    return '/';
+  }
+
+  // 3. Reject any protocol schemes, javascript execution, or external slashes
+  if (
+    path.includes(':') ||
+    path.startsWith('//') ||
+    path.startsWith('\\\\') ||
+    path.includes('javascript') ||
+    path.includes('data:')
+  ) {
+    return '/';
+  }
+
+  // 4. Strip all leading slashes, backslashes, and control characters to prevent protocol-relative redirects
+  path = path.replace(/[\0\r\n]/g, '').replace(/^[/\\]+/, '');
+
+  if (!path || path === '') {
+    return '/';
+  }
+
+  // 5. Ensure safe single leading slash and trailing slash for directory routes
+  path = '/' + path;
   if (!path.endsWith('/')) {
     path = path + '/';
   }
 
-  const validRoutes: PageRoute[] = [
-    '/',
-    '/tuition/guwahati/',
-    '/become-a-tutor/',
-    '/how-it-works/',
-    '/about/',
-    '/contact/',
-    '/privacy-policy/',
-    '/terms/',
-    '/download/',
-    '/find-a-tutor/',
-  ];
-
-  if (validRoutes.includes(path as PageRoute)) {
+  // 6. Check against strict whitelist
+  if (VALID_ROUTES.includes(path as PageRoute)) {
     return path as PageRoute;
   }
 
-  // Handle common aliases
+  // 7. Controlled alias mappings (internal only)
   if (path.includes('guwahati') || path.includes('tuition')) {
     return '/tuition/guwahati/';
   }
@@ -114,6 +143,7 @@ function normalizePath(pathname: string): PageRoute {
     return '/download/';
   }
 
+  // 8. Safe default fallback
   return '/';
 }
 
@@ -156,11 +186,13 @@ export default function App() {
   }, [currentRoute]);
 
   const handleNavigate = (route: PageRoute) => {
-    if (route !== currentRoute) {
+    // Defense-in-depth: sanitize and whitelist route before pushing to history
+    const safeRoute = normalizePath(route);
+    if (safeRoute !== currentRoute) {
       if (typeof window !== 'undefined') {
-        window.history.pushState({}, '', route);
+        window.history.pushState({}, '', safeRoute);
       }
-      setCurrentRoute(route);
+      setCurrentRoute(safeRoute);
     }
   };
 

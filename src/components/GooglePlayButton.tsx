@@ -13,13 +13,6 @@ export const GooglePlayButton: React.FC<GooglePlayButtonProps> = ({
   size = 'md',
   labelPrefix = 'GET IT ON',
 }) => {
-  // Direct Google Play Link (when official URL is configured or opens download modal)
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // If the play store link is generic, trigger direct download route or target URL
-    const targetUrl = 'https://play.google.com/store/apps/details?id=in.tutoconnect.app';
-    window.open(targetUrl, '_blank', 'noopener,noreferrer');
-  };
-
   const baseStyles =
     'inline-flex items-center gap-3 rounded-xl font-medium transition-all duration-200 shadow-sm active:scale-95 group select-none cursor-pointer';
 
@@ -42,7 +35,6 @@ export const GooglePlayButton: React.FC<GooglePlayButtonProps> = ({
       href="https://play.google.com/store/apps/details?id=in.tutoconnect.app"
       target="_blank"
       rel="noopener noreferrer"
-      onClick={handleClick}
       className={`${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`}
       aria-label="Download TutoConnect on Google Play"
     >
