@@ -42,9 +42,9 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   size = 'md',
 }) => {
   const widthClass =
-    size === 'sm' ? 'w-[260px]' : size === 'lg' ? 'w-[310px] sm:w-[330px]' : 'w-[285px] sm:w-[305px]';
+    size === 'sm' ? 'w-[280px]' : size === 'lg' ? 'w-[310px] sm:w-[330px]' : 'w-[285px] sm:w-[305px]';
   const screenHeightClass =
-    size === 'sm' ? 'h-[550px]' : size === 'lg' ? 'h-[630px]' : 'h-[580px]';
+    size === 'sm' ? 'h-[515px]' : size === 'lg' ? 'h-[630px]' : 'h-[580px]';
 
   return (
     <div
