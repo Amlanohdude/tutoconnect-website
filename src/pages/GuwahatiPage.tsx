@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { PageRoute } from '../types';
 import { PhoneMockup } from '../components/PhoneMockup';
 import { BrandStar } from '../components/ui/Decorations';
-import { motion, AnimatePresence } from 'motion/react';
+import { FaqSection } from '../components/ui/FaqSection';
+import { motion } from 'motion/react';
 import {
   MapPin,
   ChevronRight,
   ArrowRight,
-  ChevronDown,
   BookOpen,
   Home,
   Laptop,
@@ -58,11 +58,6 @@ const LOCALITIES = [
 ];
 
 export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaqIndex((prev) => (prev === index ? null : index));
-  };
 
   // Safe Schema.org JSON-LD structured data for Google Search local SEO
   const structuredData = {
@@ -426,67 +421,14 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Interactive Guwahati FAQ Section */}
-      <section className="py-16 sm:py-20 bg-white text-left">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 space-y-2 text-center sm:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] block">
-              Local FAQ
-            </span>
-            <h2 className="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] tracking-tight">
-              Frequently asked questions in Guwahati
-            </h2>
-            <p className="text-[#64748B] text-sm leading-relaxed">
-              Everything you need to know about finding tuition in Guwahati.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            {GUWAHATI_FAQS.map((faq, index) => {
-              const isOpen = openFaqIndex === index;
-              return (
-                <div
-                  key={faq.q}
-                  className={`rounded-xl border transition-all ${
-                    isOpen
-                      ? 'border-[#BFDBFE] bg-white shadow-sm'
-                      : 'border-[#E2E8F0] bg-[#F8FAFC] hover:bg-white hover:border-[#CBD5E1]'
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={() => toggleFaq(index)}
-                    aria-expanded={isOpen}
-                    className="w-full py-4 px-5 text-left font-display font-semibold text-sm sm:text-base text-[#0F172A] flex justify-between items-center gap-3 cursor-pointer min-h-[48px]"
-                  >
-                    <span>{faq.q}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-[#64748B] flex-shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 text-[#2563EB]' : ''
-                      }`}
-                    />
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2, ease: 'easeInOut' }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-5 pb-4 pt-1 text-xs sm:text-sm text-[#64748B] leading-relaxed border-t border-[#F1F5F9]">
-                          {faq.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        title="Frequently Asked Questions in Guwahati"
+        eyebrow="Local FAQ"
+        subtitle="Everything you need to know about finding tuition in Guwahati."
+        faqs={GUWAHATI_FAQS}
+        onNavigate={onNavigate}
+        includeJsonLd={false}
+      />
 
       {/* Clear CTA Banner */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] text-white text-center relative overflow-hidden">

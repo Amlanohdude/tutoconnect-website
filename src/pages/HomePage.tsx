@@ -5,6 +5,7 @@ import { PhoneShowcaseCarousel } from '../components/ui/PhoneShowcaseCarousel';
 import { InteractiveTiltPhone } from '../components/ui/InteractiveTiltPhone';
 import { HowItWorksPinboard, StepItem } from '../components/ui/HowItWorksPinboard';
 import { HeroLottieAnimation } from '../components/ui/HeroLottieAnimation';
+import { FaqSection } from '../components/ui/FaqSection';
 import {
   ArrowRight,
   Download,
@@ -24,12 +25,6 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
-  // FAQ accordion state
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
 
   const faqs = [
     {
@@ -631,83 +626,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 7. ULTRA-CLEAN MINIMAL FAQ (Linear / Apple Divider Style) */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0] relative overflow-hidden">
-        {/* Technical SEO: Schema.org FAQPage Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: faqs.map((faq) => ({
-                '@type': 'Question',
-                name: faq.q,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: faq.a,
-                },
-              })),
-            }),
-          }}
-        />
-
-        <div className="container-edufy relative z-10">
-          {/* Centered Minimal Header */}
-          <div className="max-w-2xl mx-auto mb-12 sm:mb-16 text-center space-y-3">
-            <h2 className="font-display-section text-[#0F172A]">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-sm sm:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
-              Clear, transparent answers about tuition discovery, fees, and safety in Guwahati.
-            </p>
-          </div>
-
-          {/* Hairline Divider List */}
-          <div className="max-w-3xl mx-auto border-t border-[#E2E8F0] divide-y divide-[#E2E8F0]">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <div key={faq.q} className="group">
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full py-5 sm:py-6 flex items-center justify-between gap-6 text-left cursor-pointer select-none transition-colors"
-                    aria-expanded={isOpen}
-                  >
-                    <span className="font-display text-base sm:text-lg font-semibold text-[#0F172A] group-hover:text-[#2563EB] transition-colors leading-snug">
-                      {faq.q}
-                    </span>
-                    <span
-                      className={`w-6 h-6 flex items-center justify-center shrink-0 text-[#64748B] group-hover:text-[#2563EB] transition-transform duration-200 ${
-                        isOpen ? 'rotate-45 text-[#2563EB]' : ''
-                      }`}
-                    >
-                      <Plus className="w-5 h-5" />
-                    </span>
-                  </button>
-
-                  {isOpen && (
-                    <div className="pb-6 pr-8 text-sm sm:text-[15px] text-[#475569] leading-relaxed">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Minimal 1-Line Contact Prompt */}
-          <div className="mt-12 text-center text-sm text-[#64748B]">
-            <span>Have another question? </span>
-            <button
-              onClick={() => onNavigate('/contact/')}
-              className="font-medium text-[#2563EB] hover:underline cursor-pointer inline-flex items-center gap-1"
-            >
-              <span>Reach out to our Guwahati team</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        title="Frequently Asked Questions"
+        subtitle="Clear, transparent answers about tuition discovery, fees, and safety in Guwahati."
+        faqs={faqs}
+        onNavigate={onNavigate}
+      />
 
       {/* ========================================================================= */}
       {/* 8. FINAL CALL TO ACTION */}
