@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TutoConnect — Terms & Conditions and Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --secondary: #0EA5E9;
+      --dark: #0F172A;
+      --slate-800: #1E293B;
+      --slate-700: #334155;
+      --slate-500: #64748B;
+      --slate-200: #E2E8F0;
+      --slate-100: #F1F5F9;
+      --slate-50: #F8FAFC;
+      --gold: #F59E0B;
+      --emerald: #10B981;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--slate-50);
+      color: var(--dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--slate-200);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1E3A8A, #2563EB, #3B82F6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--slate-700);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+      color: white;
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      background: rgba(37, 99, 235, 0.35);
+      border: 1px solid rgba(147, 197, 253, 0.3);
+      color: #93C5FD;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      color: #CBD5E1;
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .effective-date {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: #94A3B8;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 950px;
+      margin: -2rem auto 4rem auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Tab Switcher */
+    .tab-bar {
+      display: flex;
+      gap: 0.75rem;
+      background: white;
+      padding: 0.5rem;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      margin-bottom: 2rem;
+      border: 1px solid var(--slate-200);
+      position: sticky;
+      top: 75px;
+      z-index: 40;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 0.85rem 1.25rem;
+      border: none;
+      background: transparent;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--slate-500);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Legal Section Cards */
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--slate-100);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .clause {
+      margin-bottom: 2rem;
+    }
+
+    .clause:last-child {
+      margin-bottom: 0;
+    }
+
+    .clause-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--slate-800);
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .clause-num {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .clause p {
+      color: var(--slate-700);
+      font-size: 0.98rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .clause ul {
+      margin-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--slate-700);
+    }
+
+    .clause li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-box {
+      background: #EFF6FF;
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1rem 0;
+    }
+
+    .warning-box {
+      background: #FFFBEB;
+      border-left: 4px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1rem 0;
+    }
+
+    .danger-box {
+      background: #FEF2F2;
+      border-left: 4px solid #EF4444;
+      padding: 1.25rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1rem 0;
+    }
+
+    /* Grievance Officer Highlight Card */
+    .grievance-card {
+      background: linear-gradient(to right, #F8FAFC, #EFF6FF);
+      border: 1.5px solid #BFDBFE;
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .grievance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--slate-500);
+      margin-bottom: 0.25rem;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .info-value a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .info-value a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      color: var(--slate-500);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.85rem; }
+      .card { padding: 1.5rem; }
+      .tab-bar { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">🎓</div>
+        <span>TutoConnect</span>
+      </a>
+      <div class="nav-links">
+        <a href="#terms">Terms</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#grievance">Grievance</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">Statutory & Regulatory Framework</span>
+      <h1>Terms of Service & Privacy Policy</h1>
+      <p>Compliant with the Information Technology Act 2000, Intermediary Guidelines Rules 2021, and Digital Personal Data Protection (DPDP) Act 2023.</p>
+      <div class="effective-date">Last Updated: September 2026 • Effective Immediately</div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main>
+    <!-- Navigation Tabs -->
+    <nav class="tab-bar">
+      <a href="#terms" class="tab-btn active">Part 1: Terms & Conditions</a>
+      <a href="#privacy" class="tab-btn">Part 2: Privacy Policy (DPDP)</a>
+      <a href="#grievance" class="tab-btn">Grievance Redressal</a>
+    </nav>
+
+    <!-- ========================================================= -->
+    <!-- PART 1: TERMS AND CONDITIONS -->
+    <!-- ========================================================= -->
+    <article id="terms" class="card">
+      <h2 class="section-title">
+        <span>📜</span> Part 1: Terms and Conditions
+      </h2>
+
+      <!-- Clause 1 -->
+      <section class="clause">
+        <h3 class="clause-title"><span class="clause-num">1.</span> Acceptance of Terms & Eligibility</h3>
+        <p>By accessing or using TutoConnect, you agree to be bound by these Terms and Conditions. TutoConnect requires all registered users to be at least 18 years of age.</p>
+        <div class="warning-box">
+          <strong>Registration for Minors:</strong> If you are registering on behalf of a minor (under 18 years of age), you legally declare that you are their parent or lawful guardian and consent to these terms, and the processing of their data, on their behalf.
+        </div>
+      </section>
+
+      <!-- Clause 2 -->
+      <section class="clause">
+        <h3 class="clause-title"><span class="clause-num">2.</span> Nature of the Platform (Intermediary Status)</h3>
+        <p>TutoConnect operates strictly as a digital aggregator and matchmaking platform connecting students with independent tutors.</p>
+        <div class="highlight-box">
+          <strong>Statutory Intermediary Safe Harbor:</strong> TutoConnect is classified as an ‘Intermediary’ under Section 2(1)(w) and protected under <strong>Section 79 of the Information Technology Act, 2000</strong>. We do not employ tutors, nor do we direct, control, or monitor their teaching methods, schedules, or offline conduct.
+        </div>
+      </section>
+
+      <!-- Clause 3 -->
+      <section class="clause">
+        <h3 class="clause-title"><span class="clause-num">3.</span> Document Screening & Liability Disclaimer</h3>
+        <p>TutoConnect conducts a preliminary, manual review of the digital identity and educational documents submitted by tutors at the time of registration. This review checks for visible consistency only.</p>
+        <ul>
+          <li><strong>No Guarantee of Authenticity:</strong> TutoConnect does not conduct forensic document audits, university cross-checks, or police criminal background verifications. We do not warrant or guarantee that submitted documents are authentic, un-altered, or error-free.</li>
+          <li><strong>User Due Diligence:</strong> Parents and adult students are solely responsible for physically verifying original identity proofs (e.g., Aadhaar, Voter ID) and academic credentials in person before allowing any tutor into their residence or commencing sessions.</li>
+          <li><strong>Limitation of Liability:</strong> TutoConnect holds absolutely no liability for any physical harm, misconduct, harassment, financial disputes, or losses that occur during in-person home tuitions or online classes. Users engage with one another entirely at their own risk.</li>
+        </ul>
+      </section>
+
+      <!-- Clause 4 -->
+      <section class="clause">
+        <h3 class="clause-title"><span class="clause-num">4.</span> Financial Transactions</h3>
+        <p>Currently, TutoConnect is a free, ad-supported service. We do not process, hold, or manage any tuition fees.</p>
+        <ul>
+          <li>All financial agreements, payments, and refunds must be handled directly between the student (or parent) and the tutor offline.</li>
+          <li>TutoConnect is not responsible for unpaid wages or financial disputes.</li>
+          <li>We reserve the right to introduce platform fees, finder’s fees, or commissions in the future, with prior written notice to users.</li>
+        </ul>
+      </section>
+
+      <!-- Clause 5 -->
+      <section class="clause">
+        <h3 class="clause-title"><span class="clause-num">5.</span> User Conduct & Child Safety</h3>
+        <p>Users must maintain a professional and respectful environment at all times.</p>
+        <div class="danger-box">
+          <strong>Zero Tolerance & POCSO Compliance:</strong> Any form of harassment, abuse, or inappropriate behavior—especially concerning minors—will result in an immediate permanent account ban and potential reporting to local law enforcement under the <strong>Protection of Children from Sexual Offences (POCSO) Act</strong>.
+        </div>
+      </section>
+
+      <!-- Clause 6 -->
+      <section class="clause">
+        <h3 class="clause-title"><span class="clause-num">6.</span> Content Takedown & Accuracy Undertaking</h3>
+        <p>Upon receiving actual knowledge in the form of an order by a court or being notified by the appropriate government agency, TutoConnect will remove or disable access to unlawful content within <strong>36 hours</strong>.</p>
+        <p>Tutors undertake and guarantee that all descriptions, images, qualifications, and other content provided on their profile are completely accurate and correspond directly to their actual identity and credentials.</p>
+      </section>
+
+      <!-- Clause 7 -->
+      <section class="clause">
+        <h3 class="clause-title"><span class="clause-num">7.</span> Intellectual Property</h3>
+        <p>The TutoConnect brand, application design, logos, and original content are the exclusive property of TutoConnect. Users may not copy, reverse-engineer, or distribute the platform's code, design, or UI elements.</p>
+      </section>
+
+      <!-- Clause 8 -->
+      <section class="clause">
+        <h3 class="clause-title"><span class="clause-num">8.</span> Governing Law & Jurisdiction</h3>
+        <p>These Terms shall be governed by the laws of India. Any legal disputes arising from the use of TutoConnect shall be subject to the exclusive jurisdiction of the competent courts located in <strong>Guwahati, Assam, India</strong>.</p>
+      </section>
+
+      <!-- Clause 9 -->
+      <section id="grievance" class="clause">
+        <h3 class="clause-title"><span class="clause-num">9.</span> Grievance Redressal & Mandatory Disclosures</h3>
+        <p>In compliance with the <strong>Information Technology (Intermediary Guidelines) Rules, 2021</strong>, and the <strong>Consumer Protection (E-Commerce) Rules, 2020</strong>, TutoConnect has appointed a Grievance Officer.</p>
+
+        <div class="grievance-card">
+          <h4 style="font-weight: 800; font-size: 1.1rem; color: var(--primary);">Designated Grievance Officer</h4>
+          <p style="font-size: 0.9rem; color: var(--slate-700); margin-top: 0.25rem;">Complaints will be acknowledged within <strong>24–48 hours</strong> and resolved within <strong>15 days</strong> of receipt.</p>
+
+          <div class="grievance-grid">
+            <div class="info-item">
+              <span class="info-label">Officer Name</span>
+              <span class="info-value">Mauchum Datta Lahkar</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Legal Entity</span>
+              <span class="info-value">TutoConnect</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Email Address</span>
+              <span class="info-value"><a href="mailto:tutoconnect.support@gmail.com">tutoconnect.support@gmail.com</a></span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Contact Telephone</span>
+              <span class="info-value"><a href="tel:7636064162">+91 7636064162</a></span>
+            </div>
+            <div class="info-item" style="grid-column: 1 / -1;">
+              <span class="info-label">Registered Address</span>
+              <span class="info-value">Marowa Kamalpur Road, Purnadoichapara, Lahkarpara, 781350, Nalbari, Assam, India</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <!-- ========================================================= -->
+    <!-- PART 2: PRIVACY POLICY (DPDP ACT) -->
+    <!-- ========================================================= -->
+    <article id="privacy" class="card">
+      <h2 class="section-title">
+        <span>🛡️</span> Part 2: Privacy Policy (Lean DPDP Act Compliance)
+      </h2>
+
+      <!-- Data Collection -->
+      <section class="clause">
+        <h3 class="clause-title">Data Collection & Use</h3>
+        <p>We collect necessary data (names, masked IDs, locations, subjects) solely to facilitate matches between tutors and students. <strong>We do not sell this data to third parties.</strong></p>
+      </section>
+
+      <!-- Minors' Data -->
+      <section class="clause">
+        <h3 class="clause-title">Minors' Data & Parental Consent</h3>
+        <p>By registering a minor, the parent or lawful guardian provides verifiable consent for data processing under the Digital Personal Data Protection Act, 2023. Accounts created directly by minors without parental consent will be deleted immediately upon discovery.</p>
+      </section>
+
+      <!-- Data Storage (Aadhaar) -->
+      <section class="clause">
+        <h3 class="clause-title">Data Storage & Identity Document Safeguards (Aadhaar)</h3>
+        <p>For regulatory compliance and safety, TutoConnect strictly requires tutors to upload <strong>'Masked Aadhaar'</strong> (with only the last 4 digits visible).</p>
+        <div class="highlight-box">
+          <strong>Private Storage Protection:</strong> We store uploaded verification documents securely in private, encrypted cloud storage solely for internal screening. <strong>Uploaded identity documents are never made publicly visible</strong> on tutor profiles or anywhere on the platform.
+        </div>
+      </section>
+
+      <!-- Third-Party Advertising -->
+      <section class="clause">
+        <h3 class="clause-title">Third-Party Advertising (Google AdMob)</h3>
+        <p>TutoConnect uses third-party advertising companies, such as <strong>Google AdMob</strong>, to serve ads within the mobile application. These companies may use cookies, mobile advertising IDs (e.g., Google Advertising ID / AAID), and device identifiers to collect non-personally identifiable information about your visits to this and other apps in order to provide advertisements about goods and services of interest to you.</p>
+      </section>
+
+      <!-- User Rights & Account Deletion -->
+      <section id="delete-account" class="clause">
+        <h3 class="clause-title">User Rights, Account Deletion & Data Erasure</h3>
+        <p>TutoConnect provides full control over your personal data. Users can request the complete deletion of their account and associated personal data at any time through either of the following methods:</p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.75rem;">
+          <li><strong>In-App Self Service:</strong> Open TutoConnect ➔ Go to <em>Settings ➔ Account ➔ Delete Account</em> to instantly initiate account closure and data erasure.</li>
+          <li><strong>Email Request:</strong> Send an email from your registered email address to <a href="mailto:tutoconnect.support@gmail.com">tutoconnect.support@gmail.com</a> with the subject <em>"Account Deletion Request"</em>. Requests are processed within 24–48 hours.</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>Data Retention & Deletion Scope:</strong> Upon account deletion, all personal data—including your name, email, phone number, profile photo, subject preferences, and uploaded verification documents—is permanently purged from our database and storage. Non-identifiable aggregate logs may be retained solely to comply with applicable statutory legal obligations under Indian law.
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div style="font-weight: 700; font-size: 1rem; color: white;">TutoConnect Technologies</div>
+    <p>© 2026 TutoConnect. All rights reserved.</p>
+    <p style="font-size: 0.8rem; margin-top: 0.25rem;">Nalbari, Assam, India • Grievance: tutoconnect.support@gmail.com</p>
+  </footer>
+
+</body>
+</html>
