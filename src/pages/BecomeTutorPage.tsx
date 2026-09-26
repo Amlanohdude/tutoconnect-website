@@ -181,7 +181,7 @@ export const BecomeTutorPage: React.FC<BecomeTutorPageProps> = ({ onNavigate }) 
 
               <div className="pt-3 flex flex-wrap items-center gap-4">
                 <a
-                  href="https://play.google.com/store/apps/details?id=in.tutoconnect.app&referrer=utm_source%3Dwebsite%26utm_medium%3Dbecome_a_tutor"
+                  href="https://play.google.com/store/apps/details?id=com.tutoconnect&referrer=utm_source%3Dwebsite%26utm_medium%3Dbecome_a_tutor"
                   target="_blank"
                   rel="noopener noreferrer"
                   id="hero-become-tutor-cta"

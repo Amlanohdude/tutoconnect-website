@@ -71,7 +71,7 @@ export const DownloadPage: React.FC<DownloadPageProps> = ({ onNavigate }) => {
 
               <div className="pt-4 space-y-3">
                 <a
-                  href="https://play.google.com/store/apps/details?id=in.tutoconnect.app"
+                  href="https://play.google.com/store/apps/details?id=com.tutoconnect"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-tuto-primary px-8 py-3.5 font-semibold text-sm inline-flex items-center gap-2.5 cursor-pointer shadow-md"

@@ -352,7 +352,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 className="pt-2 flex items-center gap-2 text-xs text-[#64748B]"
               >
                 <a
-                  href="https://play.google.com/store/apps/details?id=in.tutoconnect.app"
+                  href="https://play.google.com/store/apps/details?id=com.tutoconnect"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 font-medium text-[#2563EB] hover:underline"
@@ -800,7 +800,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
               <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                 <a
-                  href="https://play.google.com/store/apps/details?id=in.tutoconnect.app"
+                  href="https://play.google.com/store/apps/details?id=com.tutoconnect"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-white text-[#1E3A8A] font-semibold text-xs inline-flex items-center gap-2 hover:bg-slate-100 transition-colors shadow-xs"

@@ -32,7 +32,7 @@ export const GooglePlayButton: React.FC<GooglePlayButtonProps> = ({
   return (
     <a
       id="google-play-cta-btn"
-      href="https://play.google.com/store/apps/details?id=in.tutoconnect.app"
+      href="https://play.google.com/store/apps/details?id=com.tutoconnect"
       target="_blank"
       rel="noopener noreferrer"
       className={`${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`}

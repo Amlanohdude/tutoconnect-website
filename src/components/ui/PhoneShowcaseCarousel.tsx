@@ -140,7 +140,7 @@ export const PhoneShowcaseCarousel: React.FC = () => {
               name: 'Guwahati',
             },
             downloadUrl:
-              'https://play.google.com/store/apps/details?id=in.tutoconnect.app',
+              'https://play.google.com/store/apps/details?id=com.tutoconnect',
           }),
         }}
       />
