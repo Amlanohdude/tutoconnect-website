@@ -321,14 +321,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 }}
                 className="flex flex-wrap items-center gap-3 pt-2"
               >
-                <button
+                <a
                   id="hero-find-tutor-btn"
-                  onClick={() => onNavigate('/tuition/guwahati/')}
+                  href="https://play.google.com/store/apps/details?id=com.tutoconnect&referrer=utm_source%3Dwebsite%26utm_medium%3Dfind_tuition_hero"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-pill-primary"
                 >
                   <span>Find a Tutor</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
 
                 <button
                   id="hero-become-tutor-btn"
@@ -430,13 +432,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
 
               <div>
-                <button
-                  onClick={() => onNavigate('/tuition/guwahati/')}
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.tutoconnect&referrer=utm_source%3Dwebsite%26utm_medium%3Dfind_tuition_card"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-pill-primary"
                 >
                   <span>Find a Tutor</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </motion.div>
 

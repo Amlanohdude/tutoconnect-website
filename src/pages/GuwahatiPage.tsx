@@ -174,13 +174,15 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
               </div>
 
               <div className="pt-3 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => onNavigate('/download/')}
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.tutoconnect&referrer=utm_source%3Dwebsite%26utm_medium%3Dguwahati_page_hero"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-tuto-primary px-7 py-3.5 font-semibold text-sm cursor-pointer inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
                 >
                   <span>Get Android App</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
                 <button
                   onClick={() => onNavigate('/become-a-tutor/')}
                   className="btn-tuto-white px-7 py-3.5 font-semibold text-sm cursor-pointer border border-[#E2E8F0] hover:border-[#CBD5E1] transition-all"
@@ -251,13 +253,15 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
                 </li>
               </ul>
               <div className="pt-2">
-                <button
-                  onClick={() => onNavigate('/download/')}
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.tutoconnect&referrer=utm_source%3Dwebsite%26utm_medium%3Dguwahati_browse_tutors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-tuto-primary px-6 py-3 font-semibold text-xs cursor-pointer inline-flex items-center gap-2"
                 >
                   <span>Browse Tutors in App</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -440,13 +444,15 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
             Download TutoConnect to browse educator profiles or join as a tutor today.
           </p>
           <div className="flex justify-center pt-2">
-            <button
-              onClick={() => onNavigate('/download/')}
+            <a
+              href="https://play.google.com/store/apps/details?id=com.tutoconnect&referrer=utm_source%3Dwebsite%26utm_medium%3Dguwahati_page_bottom"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-tuto-secondary px-8 py-3.5 font-semibold text-sm cursor-pointer inline-flex items-center gap-2 shadow-md"
             >
               <span>Download Android App</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
 
