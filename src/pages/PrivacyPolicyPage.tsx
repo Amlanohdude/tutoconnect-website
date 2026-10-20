@@ -28,7 +28,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
       </div>
 
       {/* Document Header */}
-      <section className="pt-14 pb-10 border-b border-[#E2E8F0] text-left bg-white">
+      <section className="pt-14 pb-10 border-b border-[#E2E8F0] text-left bg-white overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
           <PillBadge
             text="DPDP Act &amp; Play Store Compliance"
@@ -47,7 +47,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
       </section>
 
       {/* Document Body */}
-      <section className="py-14 text-left bg-white">
+      <section className="py-14 text-left bg-white overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 text-sm text-[#475569] leading-relaxed">
           
           {/* Summary Box */}

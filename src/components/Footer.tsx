@@ -19,6 +19,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, route: PageRoute) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    onNavigate(route);
+  };
+
   return (
     <footer
       id="site-footer"
@@ -47,44 +53,49 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <button
-                  onClick={() => onNavigate('/')}
+                <a
+                  href="/"
+                  onClick={(e) => handleLinkClick(e, '/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   Home
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/tuition/guwahati/')}
+                <a
+                  href="/tuition/guwahati/"
+                  onClick={(e) => handleLinkClick(e, '/tuition/guwahati/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   Find Tuition (Guwahati)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/become-a-tutor/')}
+                <a
+                  href="/become-a-tutor/"
+                  onClick={(e) => handleLinkClick(e, '/become-a-tutor/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   Become a Tutor
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/how-it-works/')}
+                <a
+                  href="/how-it-works/"
+                  onClick={(e) => handleLinkClick(e, '/how-it-works/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   How It Works
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/about/')}
+                <a
+                  href="/about/"
+                  onClick={(e) => handleLinkClick(e, '/about/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   About Us
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -96,36 +107,40 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <button
-                  onClick={() => onNavigate('/contact/')}
+                <a
+                  href="/contact/"
+                  onClick={(e) => handleLinkClick(e, '/contact/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   Contact Support
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/privacy-policy/')}
+                <a
+                  href="/privacy-policy/"
+                  onClick={(e) => handleLinkClick(e, '/privacy-policy/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   Privacy Policy
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/terms/')}
+                <a
+                  href="/terms/"
+                  onClick={(e) => handleLinkClick(e, '/terms/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   Terms of Service
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/download/')}
+                <a
+                  href="/download/"
+                  onClick={(e) => handleLinkClick(e, '/download/')}
                   className="text-[#64748B] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   Download App
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -167,19 +182,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#64748B] gap-4">
           <p>© {new Date().getFullYear()} TutoConnect. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <button
-              onClick={() => onNavigate('/privacy-policy/')}
+            <a
+              href="/privacy-policy/"
+              onClick={(e) => handleLinkClick(e, '/privacy-policy/')}
               className="hover:text-[#0F172A] transition-colors cursor-pointer"
             >
               Privacy Policy
-            </button>
+            </a>
             <span>•</span>
-            <button
-              onClick={() => onNavigate('/terms/')}
+            <a
+              href="/terms/"
+              onClick={(e) => handleLinkClick(e, '/terms/')}
               className="hover:text-[#0F172A] transition-colors cursor-pointer"
             >
               Terms &amp; Conditions
-            </button>
+            </a>
           </div>
         </div>
       </div>

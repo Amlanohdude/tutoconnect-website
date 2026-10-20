@@ -215,7 +215,7 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Two-Sided Focus in Guwahati */}
-      <section className="py-14 sm:py-18 bg-[#F8FAFC]">
+      <section className="py-14 sm:py-18 bg-[#F8FAFC] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="max-w-2xl mb-10 space-y-2">
             <h2 className="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] tracking-tight">
@@ -305,7 +305,7 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Tuition Formats (Modern 2x2 Matrix) */}
-      <section className="py-14 sm:py-18 bg-white text-left">
+      <section className="py-14 sm:py-18 bg-white text-left overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10 space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] block">
@@ -364,7 +364,7 @@ export const GuwahatiPage: React.FC<GuwahatiPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Localities & Boards Section */}
-      <section className="py-14 sm:py-18 bg-[#F8FAFC] text-left">
+      <section className="py-14 sm:py-18 bg-[#F8FAFC] text-left overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Localities Cloud */}

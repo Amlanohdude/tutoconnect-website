@@ -114,7 +114,7 @@ export const PhoneShowcaseCarousel: React.FC = () => {
       onKeyDown={handleKeyDown}
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
-      className="w-full relative outline-none focus:outline-none focus:ring-0 focus-visible:outline-none border-none select-none flex flex-col items-center"
+      className="w-full max-w-full relative outline-none focus:outline-none focus:ring-0 focus-visible:outline-none border-none select-none flex flex-col items-center"
     >
       {/* ========================================================================= */}
       {/* TECHNICAL SEO: Schema.org SoftwareApplication JSON-LD Structured Data */}
@@ -148,15 +148,9 @@ export const PhoneShowcaseCarousel: React.FC = () => {
       {/* ========================================================================= */}
       {/* 3-PHONE STAGE (Persistent Identity Stage Orbit, Pure GPU Transforms) */}
       {/* ========================================================================= */}
-      <div className="relative w-full min-h-[660px] sm:min-h-[720px] py-8 flex items-center justify-center overflow-visible">
-        {/* Soft Ambient Radial Glow (Seamless blend into white canvas) */}
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] sm:w-[600px] h-[520px] sm:h-[600px] bg-gradient-to-tr from-blue-100/40 via-indigo-50/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10"
-          aria-hidden="true"
-        />
-
+      <div className="relative w-full min-h-[660px] sm:min-h-[720px] py-8 flex items-center justify-center max-w-full">
         {/* 3-Phone Stage Anchor Box */}
-        <div className="relative w-[310px] sm:w-[330px] h-[630px] flex items-center justify-center">
+        <div className="relative w-[310px] sm:w-[330px] max-w-full h-[630px] flex items-center justify-center">
           {slides.map((slide, index) => {
             const diff = index - currentIndex;
             let rel = diff;
@@ -168,10 +162,10 @@ export const PhoneShowcaseCarousel: React.FC = () => {
             const isRight = rel === 1;
             const isWrapping = (direction === 1 && isRight) || (direction === -1 && isLeft);
 
-            // Responsive stage coordinates
-            const xPos = isFocal ? 0 : isRight ? (isDesktop ? 205 : 220) : isDesktop ? -205 : -220;
-            const rotateDeg = isFocal ? 0 : isRight ? 4 : -4;
-            const scaleVal = isFocal ? 1 : 0.94;
+            // Responsive stage coordinates: on mobile, non-focal slides stay centered at 0 to eliminate horizontal overflow
+            const xPos = isFocal ? 0 : isDesktop ? (isRight ? 205 : -205) : 0;
+            const rotateDeg = isFocal ? 0 : isDesktop ? (isRight ? 4 : -4) : 0;
+            const scaleVal = isFocal ? 1 : isDesktop ? 0.94 : 0.96;
             const opacityVal = isFocal ? 1 : isDesktop ? 0.6 : 0;
             const zIndexVal = isFocal ? 30 : isWrapping ? 5 : 10;
 

@@ -91,7 +91,7 @@ const Card: React.FC<{
         delay: index * 0.12,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className={`relative w-full md:w-[300px] transform-gpu transition-all duration-300 ease-out hover:z-30 hover:scale-105 hover:rotate-0 cursor-default select-none ${position.rotate} ${position.className}`}
+      className={`relative w-full max-w-full md:w-[300px] transform-gpu transition-all duration-300 ease-out hover:z-30 hover:scale-105 hover:rotate-0 cursor-default select-none ${position.rotate} ${position.className}`}
     >
       <meta itemProp="position" content={step.number} />
       <meta itemProp="url" content={`#${stepId}`} />
@@ -142,18 +142,18 @@ export const HowItWorksPinboard: React.FC<HowItWorksPinboardProps> = ({
 }) => {
   const isThreeSteps = steps.length === 3;
 
-  // Staggered zig-zag coordinates
+  // Staggered zig-zag coordinates: rotate-0 on mobile to prevent full-width card corners from pushing viewport width
   const positionsThree: StepPosition[] = [
-    { className: 'md:absolute md:top-0 md:left-[10%] lg:md:left-[15%]', rotate: 'rotate-3 md:rotate-6' },
-    { className: 'md:absolute md:top-[160px] md:right-[10%] lg:md:right-[15%]', rotate: '-rotate-3 md:-rotate-6' },
-    { className: 'md:absolute md:top-[380px] md:left-[12%] lg:md:left-[18%]', rotate: 'rotate-2 md:rotate-5' },
+    { className: 'md:absolute md:top-0 md:left-[10%] lg:md:left-[15%]', rotate: 'rotate-0 md:rotate-6' },
+    { className: 'md:absolute md:top-[160px] md:right-[10%] lg:md:right-[15%]', rotate: 'rotate-0 md:-rotate-6' },
+    { className: 'md:absolute md:top-[380px] md:left-[12%] lg:md:left-[18%]', rotate: 'rotate-0 md:rotate-5' },
   ];
 
   const positionsFour: StepPosition[] = [
-    { className: 'md:absolute md:top-0 md:left-[10%] lg:md:left-[15%]', rotate: 'rotate-3 md:rotate-6' },
-    { className: 'md:absolute md:top-[160px] md:right-[10%] lg:md:right-[15%]', rotate: '-rotate-3 md:-rotate-6' },
-    { className: 'md:absolute md:top-[360px] md:left-[10%] lg:md:left-[15%]', rotate: 'rotate-2 md:rotate-5' },
-    { className: 'md:absolute md:top-[520px] md:right-[10%] lg:md:right-[15%]', rotate: '-rotate-2 md:-rotate-5' },
+    { className: 'md:absolute md:top-0 md:left-[10%] lg:md:left-[15%]', rotate: 'rotate-0 md:rotate-6' },
+    { className: 'md:absolute md:top-[160px] md:right-[10%] lg:md:right-[15%]', rotate: 'rotate-0 md:-rotate-6' },
+    { className: 'md:absolute md:top-[360px] md:left-[10%] lg:md:left-[15%]', rotate: 'rotate-0 md:rotate-5' },
+    { className: 'md:absolute md:top-[520px] md:right-[10%] lg:md:right-[15%]', rotate: 'rotate-0 md:-rotate-5' },
   ];
 
   const positions = isThreeSteps ? positionsThree : positionsFour;

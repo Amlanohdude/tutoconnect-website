@@ -195,7 +195,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Update Page Title and Meta Description for SEO dynamically
+  // Update Page Title, Meta Description, Canonical URL, and Social Meta for Technical SEO dynamically
   useEffect(() => {
     const meta = routeMetadata[currentRoute] || routeMetadata['/'];
     document.title = meta.title;
@@ -208,11 +208,36 @@ export default function App() {
     }
     metaDesc.setAttribute('content', meta.description);
 
+    // Dynamic Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', `https://tutoconnect.in${currentRoute}`);
+
+    // Dynamic OpenGraph Metadata
     let ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute('content', meta.title);
 
     let ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', meta.description);
+
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (!ogUrl) {
+      ogUrl = document.createElement('meta');
+      ogUrl.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrl);
+    }
+    ogUrl.setAttribute('content', `https://tutoconnect.in${currentRoute}`);
+
+    // Dynamic Twitter Card Metadata
+    let twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twTitle) twTitle.setAttribute('content', meta.title);
+
+    let twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', meta.description);
 
     // Scroll to top upon page navigation
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -257,12 +282,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans antialiased selection:bg-[#0EA5E9] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans antialiased selection:bg-[#0EA5E9] selection:text-white w-full max-w-full overflow-x-clip">
       {/* Top Navigation */}
       <Navbar currentRoute={currentRoute} onNavigate={handleNavigate} />
 
       {/* Main Content Area */}
-      <main className="flex-grow">{renderPage()}</main>
+      <main className="flex-grow w-full max-w-full overflow-x-clip">{renderPage()}</main>
 
       {/* Site Footer */}
       <Footer onNavigate={handleNavigate} />

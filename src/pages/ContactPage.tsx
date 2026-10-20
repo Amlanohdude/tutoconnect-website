@@ -38,7 +38,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Main Support Header */}
-      <section className="pt-14 pb-16 border-b border-[#E2E8F0] bg-white text-left">
+      <section className="pt-14 pb-16 border-b border-[#E2E8F0] bg-white text-left overflow-hidden">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <PillBadge
             text="Support & Help • Direct Email"
@@ -57,7 +57,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Direct Contact Card */}
-      <section className="py-20 bg-[#F8FAFC] text-left">
+      <section className="py-20 bg-[#F8FAFC] text-left overflow-hidden">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 sm:p-12 rounded-[28px] bg-white border border-[#E2E8F0] shadow-xs space-y-6">
             <div className="space-y-1.5">

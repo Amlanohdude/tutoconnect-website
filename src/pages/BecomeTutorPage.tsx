@@ -219,7 +219,7 @@ export const BecomeTutorPage: React.FC<BecomeTutorPageProps> = ({ onNavigate }) 
       </section>
 
       {/* Clear 4-Step Breakdown */}
-      <section className="py-14 sm:py-18 bg-[#F8FAFC] text-left">
+      <section className="py-14 sm:py-18 bg-[#F8FAFC] text-left overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10 space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] block">

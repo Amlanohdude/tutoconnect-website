@@ -64,10 +64,6 @@ export const HeroLottieAnimation: React.FC<HeroLottieAnimationProps> = ({ classN
 
   return (
     <div className={`relative w-full max-w-[480px] sm:max-w-[540px] mx-auto flex items-center justify-center select-none ${className}`}>
-      {/* Ambient Radial Soft Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-gradient-to-tr from-blue-200/40 via-sky-100/30 to-transparent rounded-full blur-3xl pointer-events-none animate-tuto-glow" />
-
-
       {/* Layer 1: Floating Animated Student Companion with Interactive Sideways Glide on Phone Hover */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9, x: 0, y: 15 }}

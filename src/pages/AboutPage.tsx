@@ -27,7 +27,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Main Story & Purpose */}
-      <section className="pt-14 pb-18 border-b border-[#E2E8F0] bg-white text-left">
+      <section className="pt-14 pb-18 border-b border-[#E2E8F0] bg-white text-left overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <PillBadge
             text="Our Story • Guwahati, Assam"
@@ -57,7 +57,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* What TutoConnect Is vs. What It Is NOT */}
-      <section className="py-20 bg-[#F8FAFC] text-left">
+      <section className="py-20 bg-[#F8FAFC] text-left overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 space-y-3">
             <div className="inline-block px-3.5 py-1 rounded-full bg-white text-xs font-semibold text-[#2563EB] border border-[#DBEAFE]">
@@ -151,7 +151,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Conversion Banner */}
-      <section className="py-20 bg-white text-center">
+      <section className="py-20 bg-white text-center overflow-hidden">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <h3 className="font-display text-3xl sm:text-4xl font-bold text-[#0F172A]">
             Try TutoConnect on Android

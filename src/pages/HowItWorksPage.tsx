@@ -93,7 +93,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
       </div>
 
       {/* Header with Role Selector */}
-      <section className="pt-14 pb-12 border-b border-[#E2E8F0] bg-white text-center">
+      <section className="pt-14 pb-12 border-b border-[#E2E8F0] bg-white text-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto space-y-5 text-center">
             <div className="flex justify-center">
@@ -158,7 +158,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
       />
 
       {/* Visual Mobile Screen Mockups Showcase */}
-      <section className="py-20 bg-[#F8FAFC] border-t border-b border-[#E2E8F0]">
+      <section className="py-20 bg-[#F8FAFC] border-t border-b border-[#E2E8F0] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto mb-14 space-y-2.5 text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">

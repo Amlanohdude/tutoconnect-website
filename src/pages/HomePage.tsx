@@ -387,7 +387,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 2. TWO-SIDED ENTRY ("One Place. Two Sides.") */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0]">
+      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0] overflow-hidden">
         <div className="container-edufy">
           <motion.div
             initial={{ opacity: 0, y: isMobile ? 0 : 16 }}
@@ -483,7 +483,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 3. REAL APP SHOWCASE (3-Phone Stage Carousel) */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-white border-b border-[#E2E8F0]">
+      <section className="py-20 sm:py-28 bg-white border-b border-[#E2E8F0] overflow-hidden">
         <div className="container-edufy">
           <motion.div
             initial={{ opacity: 0, y: isMobile ? 0 : 16 }}
@@ -676,7 +676,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
 
             {/* River Stream Wrapper with Edge Mask and Hover Pause */}
-            <div className="mask-river-fade overflow-hidden py-1 space-y-2.5 pause-hover">
+            <div className="w-full max-w-full mask-river-fade overflow-hidden py-1 space-y-2.5 pause-hover">
               {/* Stream 1: Popular Subjects (Flows Left) */}
               <div className="animate-river-left flex items-center gap-2.5 w-max py-0.5">
                 {[...riverSubjects, ...riverSubjects].map((subject, idx) => (
@@ -722,7 +722,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 6. GUWAHATI SEO SECTION */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0]">
+      <section className="py-20 sm:py-24 bg-white border-b border-[#E2E8F0] overflow-hidden">
         <div className="container-edufy">
           <motion.div
             initial={{ opacity: 0, y: isMobile ? 0 : 16 }}
@@ -770,7 +770,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* ========================================================================= */}
       {/* 8. FINAL CALL TO ACTION */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-20 sm:py-24 bg-white overflow-hidden">
         <div className="container-edufy">
           <motion.div
             initial={{ opacity: 0, y: isMobile ? 0 : 24, scale: isMobile ? 1 : 0.98 }}
