@@ -239,6 +239,22 @@ export default function App() {
     let twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) twDesc.setAttribute('content', meta.description);
 
+    let twImage = document.querySelector('meta[name="twitter:image"]');
+    if (!twImage) {
+      twImage = document.createElement('meta');
+      twImage.setAttribute('name', 'twitter:image');
+      document.head.appendChild(twImage);
+    }
+    twImage.setAttribute('content', 'https://tutoconnect.in/og-image.png');
+
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (!ogImage) {
+      ogImage = document.createElement('meta');
+      ogImage.setAttribute('property', 'og:image');
+      document.head.appendChild(ogImage);
+    }
+    ogImage.setAttribute('content', 'https://tutoconnect.in/og-image.png');
+
     // Scroll to top upon page navigation
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [currentRoute]);
